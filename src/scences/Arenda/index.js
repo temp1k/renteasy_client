@@ -1,0 +1,1 @@
+export {default as Arenda} from './arenda.jsx'
