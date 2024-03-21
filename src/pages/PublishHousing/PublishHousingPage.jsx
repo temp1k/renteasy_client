@@ -1,14 +1,18 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 const PublishHousingPage = () => {
     const {id} = useParams()
+    const navigate = useNavigate()
+
+    const goBack = () => navigate(-1)
 
     return (
         <div>
-            Страница жилья {id}
+            <button onClick={goBack}>Назад</button>
+            <h3>Страница жилья {id}</h3>
         </div>
     );
 };
 
-export default PublishHousingPage;
+export {PublishHousingPage};

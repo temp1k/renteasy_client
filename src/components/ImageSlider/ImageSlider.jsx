@@ -1,0 +1,64 @@
+import React, {useState} from 'react';
+import './style/index.css'
+import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
+import PropTypes from "prop-types";
+
+const ImageSlider = ({slides}) => {
+    const [current, setCurrent] = useState(0);
+    // eslint-disable-next-line react/prop-types
+    const length = slides.length;
+
+    const nextSlide = (e) => {
+        e.stopPropagation()
+        setCurrent(current === length - 1 ? 0 : current + 1);
+    };
+
+    const prevSlide = (e) => {
+        e.stopPropagation()
+        setCurrent(current === 0 ? length - 1 : current - 1);
+    };
+
+    if (!Array.isArray(slides) || slides.length <= 0) {
+        return null;
+    }
+
+    if (slides.length < 2) {
+        return (
+            <div className={'image-container'}>
+                {/* eslint-disable-next-line react/prop-types */}
+                <img src={slides[0].image} alt='travel image' className='image'/>
+            </div>
+        )
+    }
+
+    return (
+        <section className='slider'>
+            {slides.map((slide, index) => {
+                return (
+                    <div
+                        className={index === current ? 'slide active' : 'slide'}
+                        key={index}
+                    >
+                        {index === current && (
+                            <div className={'image-container'}>
+                                <img src={slide.image} alt='travel image' className='image'/>
+                                <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
+                                <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </section>
+    );
+}
+
+ImageSlider.propTypes = {
+    slides: PropTypes.arrayOf(
+        PropTypes.shape({
+            image: PropTypes.string
+        })
+    ),
+}
+
+export {ImageSlider};

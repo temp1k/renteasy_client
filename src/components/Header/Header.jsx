@@ -1,6 +1,6 @@
 import {Button, Container, Nav, Navbar} from "react-bootstrap"
 import {Link} from "react-router-dom";
-import {HOME_ROUTE, PROFILE_ROUTE, RENT_SCENE_ROUTE} from "../../utils/paths.js";
+import {HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, RENT_SCENE_ROUTE} from "../../utils/paths.js";
 import {CustomLink} from "../../feutures";
 
 
@@ -17,7 +17,7 @@ const Header = () => {
                             <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
                                 Профиль
                             </CustomLink>
-                            <Button>Войти</Button>
+                            <Link to={LOGIN_ROUTE} className={'btn btn-primary'}>Войти</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -1,1 +1,1 @@
-export {default as HousingCard} from './HousingCard.jsx'
+export {HousingCard} from './HousingCard.jsx'

@@ -1,1 +1,1 @@
-export {default as PublishHousingPage} from './PublishHousingPage.jsx'
+export {PublishHousingPage} from './PublishHousingPage.jsx'

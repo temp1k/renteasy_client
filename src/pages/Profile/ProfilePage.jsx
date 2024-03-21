@@ -1,4 +1,6 @@
 import React from 'react';
+import {useLocation, Navigate} from "react-router-dom";
+
 
 const ProfilePage = () => {
     return (
@@ -8,4 +10,4 @@ const ProfilePage = () => {
     );
 };
 
-export default ProfilePage;
+export {ProfilePage};
