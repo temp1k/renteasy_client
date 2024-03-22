@@ -6,14 +6,16 @@ import {ImageSlider} from "../ImageSlider/index.js";
 
 
 
-const HousingCard = ({housing, click=null}) => {
+const HousingCard = ({housing, ...props}) => {
     const navigate = useNavigate()
 
-    if (!click) {
+    let click;
+    if (props.click === undefined) {
         click = () => {
             navigate(`${PUBLISH_HOUSING_ROUTE}/${housing.id}`)
         }
     }
+    else click = props.click
 
 
     return (
@@ -32,7 +34,7 @@ HousingCard.propTypes = {
         price: PropTypes.string,
         currency_detail: PropTypes.object
     }).isRequired,
-    click : PropTypes.func.isRequired,
+    click : PropTypes.func,
 };
 
 export {HousingCard};

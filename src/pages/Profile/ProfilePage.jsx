@@ -1,11 +1,13 @@
 import React from 'react';
-import {useLocation, Navigate} from "react-router-dom";
+import {useUser} from "../../hook/useUser.js";
 
 
 const ProfilePage = () => {
+    const user = useUser()
+    console.log(user)
     return (
         <div>
-            Страница профиля
+            Страница профиля {user.username}
         </div>
     );
 };

@@ -4,7 +4,11 @@ import {Link, useMatch} from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const CustomLink = ({children, to, ...props}) => {
-    const match = useMatch(to);
+    const match = useMatch({
+        path: to,
+        // eslint-disable-next-line react/prop-types
+        end: to.length === 1
+    });
     return (
         <Link
             to={to}
