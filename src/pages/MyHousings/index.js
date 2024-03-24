@@ -1,0 +1,1 @@
+export {default as MyHousingsPage} from './MyHousingsPage.jsx'

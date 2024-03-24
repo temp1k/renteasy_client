@@ -3,7 +3,7 @@ import './style/index.css'
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
 import PropTypes from "prop-types";
 
-const ImageSlider = ({slides}) => {
+const ImageSlider = ({slides, imgWidth=300, imgHeight = 280}) => {
     const [current, setCurrent] = useState(0);
     // eslint-disable-next-line react/prop-types
     const length = slides.length;
@@ -26,7 +26,7 @@ const ImageSlider = ({slides}) => {
         return (
             <div className={'image-container'}>
                 {/* eslint-disable-next-line react/prop-types */}
-                <img src={slides[0].image} alt='travel image' className='image'/>
+                <img src={slides[0].image} alt='travel image' className='image' width={imgWidth} height={imgHeight}/>
             </div>
         )
     }
@@ -41,7 +41,7 @@ const ImageSlider = ({slides}) => {
                     >
                         {index === current && (
                             <div className={'image-container'}>
-                                <img src={slide.image} alt='travel image' className='image'/>
+                                <img src={slide.image} alt='travel image' className='image' width={imgWidth} height={imgHeight}/>
                                 <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
                                 <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
                             </div>

@@ -34,19 +34,18 @@ export function useUser () {
         callback()
     }
 
-    function updateUserByJwt(jwt) {
+    async function updateUserByJwt(jwt) {
         const jwt_decode = jwtDecode(jwt.access)
-        getUserById(jwt_decode.user_id)
-            .then(data => {
-                console.log(data)
-                const user = userAPIToUserRedux(data)
+        try {
+            const data = await getUserById(jwt_decode.user_id)
+            console.log(data)
+            const user = userAPIToUserRedux(data)
 
-                dispatch(loginUser(user))
-            })
-            .catch(err => {
-                console.error(err)
-            })
-
+            dispatch(loginUser(user))
+        }
+        catch (error){
+            console.error(error)
+        }
     }
 
     function updateRoles(roles) {

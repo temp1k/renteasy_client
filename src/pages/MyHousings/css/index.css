@@ -1,0 +1,37 @@
+.my__card{
+    width: 70%;
+    margin: auto;
+    padding: 20px 50px 20px 10px;
+    border: #4d4d4d hidden 3px;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 5px 5px rgba(101, 100, 100, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 2rem;
+    /*Установка высоты строк*/
+    /*grid-auto-rows: minmax(300px, auto);*/
+}
+
+.my__card__main {
+    display: flex;
+    grid-template-rows: 4fr 1fr;
+    grid-row-gap: 1rem;
+    grid-template-columns: auto;
+}
+
+.my__card__img{
+    grid-row: 1/3;
+}
+
+.left__img {
+    justify-self: left;
+}
+
+.my__card__body {
+    justify-self: left;
+    text-align: left;
+}
+
+.my__card__footer{
+    justify-self: end;
+}
