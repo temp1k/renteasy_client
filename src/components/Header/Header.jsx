@@ -16,35 +16,33 @@ const Header = () => {
     }
 
     return (
-        <header>
-            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
-                <Container>
-                    <MyLogo/>
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto"></Nav>
-                        <Nav>
-                            {currentUser.roles.includes(LANDLORD_ROLE) ?
-                                (
-                                    <CustomLink to={PRO_SCENE_ROUTE} className={'nav-link'}>PRO панель</CustomLink>
-                                ) : (
-                                <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
-                                )
-                            }
-                            {currentUser.isAuth && <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
-                                Профиль
-                            </CustomLink>
-                            }
-                            {currentUser.isAuth ? (
-                                <Button variant={'outline-primary'} onClick={() => logout()}>Выйти</Button>
+        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" sticky={'top'}>
+            <Container>
+                <MyLogo/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto"></Nav>
+                    <Nav>
+                        {currentUser.roles.includes(LANDLORD_ROLE) ?
+                            (
+                                <CustomLink to={PRO_SCENE_ROUTE} className={'nav-link'}>PRO панель</CustomLink>
                             ) : (
-                                <Link to={LOGIN_ROUTE} className={'btn btn-primary'}>Войти</Link>
+                                <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
                             )
-                            }
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </header>
+                        }
+                        {currentUser.isAuth && <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
+                            Профиль
+                        </CustomLink>
+                        }
+                        {currentUser.isAuth ? (
+                            <Button variant={'outline-primary'} onClick={() => logout()}>Выйти</Button>
+                        ) : (
+                            <Link to={LOGIN_ROUTE} className={'btn btn-primary'}>Войти</Link>
+                        )
+                        }
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 

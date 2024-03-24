@@ -4,7 +4,7 @@ import {MyLogo} from "../../../../feutures/index.js";
 
 const Header = () => {
     return (
-        <Navbar className="bg-body-tertiary my__header">
+        <Navbar className="bg-body-tertiary my__header" sticky={'top'}>
             <Container>
                 <Navbar.Brand>
                     <span>PRO</span>{' '}

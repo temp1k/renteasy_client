@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getMyHousingsAPI} from "./api/myHousingsAPI.js";
-import {CenterLoading} from "../../feutures/index.js";
+import {CenterLoading, MyButton} from "../../feutures/index.js";
 import HousingCard from "./components/HousingCard.jsx";
 
 const MyHousingsPage = () => {
@@ -27,8 +27,12 @@ const MyHousingsPage = () => {
     }
 
     return (
-        <div>
-            Мои места
+        <div className={'container'}>
+            <h4>Мои места</h4>
+            <div className={'d-flex justify-content-end m-2'}>
+                <MyButton type={'button'}>Добавить жилье</MyButton>
+            </div>
+
             {housings.map((housing) => {
                 return (
                     <HousingCard housing={housing} key={housing.id}/>

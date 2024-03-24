@@ -12,15 +12,19 @@ function App() {
 
     useEffect(() => {
         const refreshToken = localStorage.getItem('refresh')
-        if (!refreshToken) return
+        if (!refreshToken) {
+            setLoading(false)
+            return
+        }
 
         refreshTokenAPI(refreshToken)
             .then(data => {
                 const jwt = {access: data}
-                updateUserByJwt(jwt).then(result => setLoading(false))
+                updateUserByJwt(jwt).then(result => setLoading(false)).catch(err => setLoading(false))
             })
             .catch(err => {
                 console.error(err)
+                setLoading(false)
             })
     }, []);
 
@@ -28,6 +32,7 @@ function App() {
         return (
             <div className="h-100">
                 <CenterLoading />
+                aboba
             </div>
         )
     }

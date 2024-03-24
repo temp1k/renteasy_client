@@ -13,22 +13,22 @@ const HousingCard = ({housing}) => {
                 <ImageSlider slides={housing.images}/>
             </div>
             <Card.Body className={'my__card__body'}>
-                <Card.Title><b>Название:</b> {housing.name}</Card.Title>
-                <Card.Subtitle>{housing.short_name}</Card.Subtitle>
-                <Card.Text>
+                <div className={'my__card__title'}><b>Название:</b> {housing.name}</div>
+                <div className={'my__card__subtitle'}>{housing.short_name}</div>
+                <div className={'text__description'}>
                     <b>Описание:</b>{housing.description}
-                </Card.Text>
-                <Card.Text>Страна: {housing.country.name}</Card.Text>
-                <Card.Text>Категории:{' '}
+                </div>
+                <div className={'my__card__text'}><b>Страна:</b> {housing.country.name}</div>
+                <div className={'my__card__text'}><b>Категории:</b>{' '}
                     {housing.categories.map(category =>
                         <span key={category.id}>{category.name} </span>
                     )}
-                </Card.Text>
-                <Card.Text>Теги:{' '}
+                </div>
+                <div className={'my__card__text'}><b>Теги:</b>{' '}
                     {housing.tags.map(tag =>
                         <span key={tag.id}>{tag.name} </span>
                     )}
-                </Card.Text>
+                </div>
             </Card.Body>
             <div className={'my__card__footer'}>
                 <CustomLink to={'#'} className={'btn btn-outline-primary'}>Изменить</CustomLink>

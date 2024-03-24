@@ -7,7 +7,9 @@ const HomeLayout = () => {
     return (
         <>
             <Header />
-            <Outlet />
+            <main style={{minHeight: '80vh'}}>
+                <Outlet />
+            </main>
             <Footer />
         </>
     );
