@@ -12,6 +12,68 @@
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 
-.nav-link.active {
-  text-decoration: underline;
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form__header {
+  font-weight: 400;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.form-center {
+  width: 35%;
+  align-self: center;
+  justify-self: center;
+  border: 3px solid var(--second-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+.input__group {
+  margin-bottom: 1rem;
+  padding: 0 15%;
+}
+
+.input__group input {
+  width: 100%;
+  margin: auto;
+}
+
+.my__logo {
+  color: var(--second-color)
+}
+
+.my-btn {
+  display: inline-block;
+  padding: 0.45rem 0.65rem;
+  font-size: var(--btn-font-size);
+  font-weight: var(--bs-btn-font-weight);
+  line-height: var(--bs-btn-line-height);
+  color: var(--btn-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border-radius: var(--btn-border-radius);
+  background-color: var(--btn-bg-color);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input__group .input__error {
+  font-size: 60%;
+  display: block;
+  margin-left: 15px;
+  text-align: left;
+  line-height: 1.2;
+  color: var(--danger-color)
 }

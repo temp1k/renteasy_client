@@ -3,11 +3,11 @@ import {useUser} from "../../hook/useUser.js";
 
 
 const ProfilePage = () => {
-    const user = useUser()
-    console.log(user)
+    const {currentUser} = useUser()
+    console.log(currentUser)
     return (
         <div>
-            Страница профиля {user.username}
+            Страница профиля {currentUser.username}
         </div>
     );
 };

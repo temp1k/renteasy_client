@@ -3,3 +3,7 @@ export {ProfilePage} from './Profile'
 export {NotFoundPage} from "./NotFound";
 export {PublishHousingPage} from './PublishHousing'
 export {LoginPage} from './Login'
+export {SignUp} from './SignUp'
+export {NoPermissionsPage} from './NoPermissionsPage'
+export {ArendaHomePage} from './ArendaHomePage'
+export {SubscribeProPage} from './SubscribePro'

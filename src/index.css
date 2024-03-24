@@ -4,9 +4,19 @@
   line-height: 1.5;
   font-weight: 400;
 
+  /*btn consts*/
+  --btn-font-size: 24px;
+  --btn-border-radius: 0.4rem;
+  --btn-bg-color: var(--second-color);
+  --btn-color: #f5f5f5;
+
+  --default-font-size: 24px;
+
+
   --background-color: #f5f5f5;
   --main-color: #242424;
   --second-color: #ff8800;
+  --danger-color: #e31010;
 
   color-scheme: light dark;
   color: var(--main-color);

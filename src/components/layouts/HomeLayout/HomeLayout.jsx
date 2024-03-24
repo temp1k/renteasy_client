@@ -1,9 +1,9 @@
 import React from 'react';
-import {Header} from "../Header/index.js";
-import {Footer} from "../Footer/index.js";
+import {Header} from "../../Header/index.js";
+import {Footer} from "../../Footer/index.js";
 import {Outlet} from "react-router-dom";
 
-const Layout = () => {
+const HomeLayout = () => {
     return (
         <>
             <Header />
@@ -13,4 +13,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default HomeLayout;

@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './css/mybutton.css'
 
 const MyButton = props => {
     return (
-        <button type={props.type} className={props.class}>{props.children}</button>
+        <button onClick={props.onClick} type={props.type} className={props.className + ' btn__custom_style'}>{props.children}</button>
     );
 };
 
 MyButton.propTypes = {
     type: PropTypes.string,
-    class: PropTypes.string,
-    children: PropTypes.element,
+    className: PropTypes.string,
+    children: PropTypes.any,
+    onClick: PropTypes.func
 };
 
 export default MyButton;

@@ -1,0 +1,20 @@
+.nav-auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-auth .nav-link {
+    opacity: 0.8;
+}
+
+.nav-auth .nav-link:hover{
+    opacity: 1;
+}
+
+.nav-auth .nav-link.active {
+    opacity: 1;
+    font-weight: bold;
+    font-size: 32px
+}

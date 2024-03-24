@@ -1,6 +1,6 @@
 import React from 'react';
 import {Header, Footer} from "../../components"
-import {MainRoutes} from "../../components/Routes/MainRoutes.jsx";
+import {MainRoutes} from "../../hoc/Routes/MainRoutes.jsx";
 
 
 const Main = () => {

@@ -6,6 +6,7 @@ const defaultUser = {
     role: '',
     access: '',
     email: '',
+    roles: [],
     isAuth: false
 }
 
@@ -23,7 +24,7 @@ const userSlice = createSlice({
                 id: user.id,
                 username: user.username,
                 access: user.access,
-                role: user.role,
+                roles: user.roles,
                 email: user.email,
                 isAuth: true,
             }
@@ -31,10 +32,18 @@ const userSlice = createSlice({
         logoutUser(state, action) {
             state.currentUser = defaultUser
         },
+        updateRolesUser(state, action) {
+            const roles = action.payload
+            state.currentUser.roles = roles
+        }
 
     },
 })
 
-export const {loginUser, logoutUser} = userSlice.actions;
+export const {
+    loginUser,
+    logoutUser,
+    updateRolesUser
+} = userSlice.actions;
 
 export default userSlice.reducer;

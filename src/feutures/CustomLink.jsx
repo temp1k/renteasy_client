@@ -9,6 +9,9 @@ const CustomLink = ({children, to, ...props}) => {
         // eslint-disable-next-line react/prop-types
         end: to.length === 1
     });
+    if (match) {
+        props.className += ' active'
+    }
     return (
         <Link
             to={to}

@@ -1,42 +1,45 @@
 import {Button, Container, Nav, Navbar} from "react-bootstrap"
 
 import {Link, useNavigate} from "react-router-dom";
-import {HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, RENT_SCENE_ROUTE} from "../../utils/paths.js";
-import {CustomLink} from "../../feutures";
+import {LOGIN_ROUTE, PRO_SCENE_ROUTE, PROFILE_ROUTE, RENT_SCENE_ROUTE} from "../../utils/consts/paths.js";
+import {CustomLink, MyLogo} from "../../feutures";
 import {useUser} from "../../hook/useUser.js";
-import {useDispatch} from "react-redux";
-import {logoutUser} from "../../store/userSlice.js";
+import {LANDLORD_ROLE} from "../../utils/consts/roles.js";
 
 
 const Header = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const {currentUser} = useUser()
-    console.log(currentUser)
+    const {currentUser, logoutFn} = useUser()
 
     const logout = () => {
-        dispatch(logoutUser())
+        logoutFn()
     }
 
     return (
         <header>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Link to={HOME_ROUTE} className={'navbar-brand'}>RENTEASY</Link>
+                    <MyLogo/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto"></Nav>
                         <Nav>
-                            <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
-                            <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
+                            {currentUser.roles.includes(LANDLORD_ROLE) ?
+                                (
+                                    <CustomLink to={PRO_SCENE_ROUTE} className={'nav-link'}>PRO панель</CustomLink>
+                                ) : (
+                                <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
+                                )
+                            }
+                            {currentUser.isAuth && <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
                                 Профиль
                             </CustomLink>
+                            }
                             {currentUser.isAuth ? (
                                 <Button variant={'outline-primary'} onClick={() => logout()}>Выйти</Button>
                             ) : (
                                 <Link to={LOGIN_ROUTE} className={'btn btn-primary'}>Войти</Link>
                             )
                             }
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

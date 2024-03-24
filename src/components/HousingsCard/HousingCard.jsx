@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useNavigate} from "react-router-dom";
-import {PUBLISH_HOUSING_ROUTE} from "../../utils/paths.js";
+import {PUBLISH_HOUSING_ROUTE} from "../../utils/consts/paths.js";
 import {ImageSlider} from "../ImageSlider/index.js";
 
 

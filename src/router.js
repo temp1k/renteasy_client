@@ -1,5 +1,5 @@
 import {Home, ProfilePage} from "./pages/index.js";
-import {HOME_ROUTE, RENT_SCENE_ROUTE, PROFILE_ROUTE} from "./utils/paths.js";
+import {HOME_ROUTE, RENT_SCENE_ROUTE, PROFILE_ROUTE} from "./utils/consts/paths.js";
 import {Arenda} from "./scences/Arenda";
 
 export const rentRoutes = [

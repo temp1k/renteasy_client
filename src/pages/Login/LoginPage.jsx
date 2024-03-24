@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 
 import useForm from "../../hook/useForm.js";
 import {PASSWORD_REGEXP} from "../../utils/validation.js";
-import {loginUser} from "../../store/userSlice.js";
-import {loginAPI} from "./api/index.js";
+import {loginAPI} from "../../http/api/authAPI.js";
 import {useUser} from "../../hook/useUser.js";
+import {MyButton} from "../../feutures/index.js";
 
 const initialFieldValues = {
     login: '',
@@ -48,8 +47,6 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate(values)) {
-            const form = e.target;
-
             loginAPI(values.login, values.password)
                 .then(data => {
                     login(data, () => navigate(fromPage, {replace: true}))
@@ -58,31 +55,28 @@ const LoginPage = () => {
                     setError(err.response.data?.detail || err.message)
                     console.error(err)
                 })
-
-
         }
-
     }
 
     return (
-        <div>
-            <h2>Авторизация</h2>
-            <form onSubmit={handleSubmit} className={'form-auth'}>
-                <span className="error-form">{error}</span>
-                <div className={'form-group'}>
+        <div className={'container-center'}>
+            <form onSubmit={handleSubmit} className={'form-center'}>
+                <div className={'form__header'}>Войдите</div>
+                <span className="form__error">{error}</span>
+                <div className={'input__group'}>
                     <input type="text" placeholder={'Логин'}
                            name={'login'} value={values.login}
                            onChange={handleInputChange}/>
-                    <span className={'form-error-validate'}>{errors.login}</span>
+                    <span className={'input__error'}>{errors.login}</span>
                 </div>
-                <div className="form-group">
+                <div className="input__group">
                     <input type="password" placeholder={'Пароль'}
                            name={'password'} value={values.password}
                            onChange={handleInputChange}
                     />
-                    <span className={'form-error-validate'}>{errors.password}</span>
+                    <span className={'input__error'}>{errors.password}</span>
                 </div>
-                <button type={"submit"}>Войти</button>
+                <MyButton type={"submit"}>Войти</MyButton>
             </form>
 
         </div>

@@ -1,0 +1,1 @@
+export {default as NoPermissionsPage} from './NoPermissionsPage.jsx'
