@@ -44,18 +44,7 @@
   border: 3px hidden var(--second-color);
   box-shadow: 0 0 5px 5px var(--second-color-opacity);
   border-radius: 10px;
-  padding: 10px;
-}
-
-
-.input__group {
-  margin-bottom: 1rem;
-  padding: 0 15%;
-}
-
-.input__group input {
-  width: 100%;
-  margin: auto;
+  padding: 10px 3rem;
 }
 
 .my__logo {

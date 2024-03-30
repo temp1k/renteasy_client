@@ -1,0 +1,44 @@
+.container__items {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.container__items button {
+    font-size: 14px;
+}
+
+.container__btn__atr {
+    display: flex;
+    justify-content: end;
+}
+
+.selected__atr {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.selected__atr label {
+    font-size: 18px;
+}
+
+.list__atr {
+    display: flex;
+    width: auto;
+    overflow-x: auto;
+    gap: 3px;
+}
+
+.item__atr {
+    border-radius: 0.3rem;
+    background-color: var(--second-color);
+    color: var(--background-color);
+    font-size: 14px;
+    padding: 0.2rem 0.4rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    max-width: 5rem;
+}

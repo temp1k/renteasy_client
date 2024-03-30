@@ -1,0 +1,1 @@
+export {default as HousingViewPage} from './HousingViewPage.jsx'

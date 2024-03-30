@@ -1,0 +1,1 @@
+export {default as HousingCreatePage} from './HousingCreatePage.jsx'

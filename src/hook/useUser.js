@@ -1,7 +1,7 @@
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {loginUser, logoutUser, updateRolesUser} from "../store/userSlice.js";
 import {jwtDecode} from "jwt-decode";
-import {getUserById} from "../http/api/authAPI.js";
+import {getUserByIdAPI, refreshTokenAPI, virifyTokenAPI} from "../http/api/authAPI.js";
 
 
 export function useUser () {
@@ -19,7 +19,7 @@ export function useUser () {
         }
     }
 
-    function login(jwt, callback) {
+    function jwtToUserRedux(jwt) {
         const jwt_decode = jwtDecode(jwt.access)
         const user = {
             id: jwt_decode.user_id,
@@ -29,15 +29,49 @@ export function useUser () {
             roles: jwt_decode.roles,
             isAuth: true
         }
+        return user
+    }
+
+    async function reloadUser(jwtAccess) {
+        console.log('Обновление пользователя')
+        try{
+            const result = await verifyToken(jwtAccess)
+            if (result) await updateUserByAPI({access: jwtAccess}).catch(err => console.error(err))
+            else {
+                const refreshToken = localStorage.getItem('refresh')
+
+                if (refreshToken) {
+                    console.log('refresh токен')
+                    await refreshTokenAPI(refreshToken)
+                        .then(async newJwtAccess => {
+                            localStorage.setItem('access', newJwtAccess)
+                            await updateUserByAPI({access: newJwtAccess}).catch(err => console.log(err))
+                        })
+                        .catch(err => {
+                            console.warn(err)
+                            localStorage.removeItem('refresh')
+                            localStorage.removeItem('access')
+                        })
+                }
+            }
+        }
+        catch(err) {
+            console.warn(err)
+        }
+    }
+
+    function login(jwt, callback) {
+       const user = jwtToUserRedux(jwt)
 
         dispatch(loginUser(user))
         callback()
     }
 
-    async function updateUserByJwt(jwt) {
+    async function updateUserByAPI(jwt) {
+        console.log('Обновление пользователя через API')
         const jwt_decode = jwtDecode(jwt.access)
         try {
-            const data = await getUserById(jwt_decode.user_id)
+            const data = await getUserByIdAPI(jwt_decode.user_id)
             console.log(data)
             const user = userAPIToUserRedux(data)
 
@@ -45,6 +79,31 @@ export function useUser () {
         }
         catch (error){
             console.error(error)
+        }
+    }
+
+    function updateUserByJwt(jwtAccess) {
+        console.log('Обновление пользователя по токену')
+        const jwt = {access: jwtAccess}
+        const user = jwtToUserRedux(jwt)
+        dispatch(loginUser(user))
+    }
+
+
+    function updateUser(userFromAPI) {
+        const user = userAPIToUserRedux(userFromAPI)
+        dispatch(loginUser(user))
+    }
+
+    async function verifyToken(jwt) {
+        console.log('Верификация токена')
+        try {
+            await virifyTokenAPI(jwt)
+            return true
+        }
+        catch(err) {
+            console.warn(err)
+            return false
         }
     }
 
@@ -63,6 +122,9 @@ export function useUser () {
         login,
         logoutFn,
         updateRoles,
-        updateUserByJwt
+        updateUserByJwt,
+        verifyToken,
+        updateUser,
+        reloadUser
     }
 }

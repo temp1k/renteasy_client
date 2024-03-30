@@ -13,6 +13,8 @@ export const PRO_SCENE_ROUTE = 'pro'
 export const MY_HOUSING_ROUTE = 'housings'
 export const MY_PUBLISH_HOUSING_ROUTE = 'publish_housings'
 
+export const HOUSING_CREATE_ROUTE = 'housings/create'
+
 export const SUBSCRIBE_PRO_ROUTE = '/subscribe_pro'
 
 export const LOGIN_ROUTE = '/login'

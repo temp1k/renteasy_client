@@ -1,0 +1,17 @@
+.my-btn {
+    padding: 0.5rem 0.8rem;
+    background-color: var(--btn-bg-color);
+    border-radius: var(--btn-border-radius);
+    font-size: var(--btn-font-size);
+    color: var(--btn-color);
+    transition: background-color 0.3s;
+}
+
+.my-btn:hover {
+    background-color: var(--btn-bg-color-opacity);
+}
+
+.no-link {
+    text-decoration: none;
+    color: var(--btn-color)
+}

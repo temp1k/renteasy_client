@@ -5,7 +5,7 @@ import useForm from "../../hook/useForm.js";
 import {PASSWORD_REGEXP} from "../../utils/validation.js";
 import {loginAPI} from "../../http/api/authAPI.js";
 import {useUser} from "../../hook/useUser.js";
-import {MyButton} from "../../feutures/index.js";
+import {Input, MyButton} from "../../feutures/index.js";
 
 const initialFieldValues = {
     login: '',
@@ -64,13 +64,13 @@ const LoginPage = () => {
                 <div className={'form__header'}>Войдите</div>
                 <span className="form__error">{error}</span>
                 <div className={'input__group'}>
-                    <input type="text" placeholder={'Логин'}
+                    <Input type="text" placeholder={'Логин'}
                            name={'login'} value={values.login}
                            onChange={handleInputChange}/>
                     <span className={'input__error'}>{errors.login}</span>
                 </div>
                 <div className="input__group">
-                    <input type="password" placeholder={'Пароль'}
+                    <Input type="password" placeholder={'Пароль'}
                            name={'password'} value={values.password}
                            onChange={handleInputChange}
                     />

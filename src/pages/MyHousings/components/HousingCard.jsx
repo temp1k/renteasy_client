@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {Card} from "react-bootstrap";
 import {ImageSlider} from "../../../components/index.js";
-import {CustomLink} from "../../../feutures/index.js";
+import {CustomLinkButton} from "../../../feutures/index.js";
 import '../css/index.css'
+import {MY_HOUSING_ROUTE} from "../../../utils/consts/paths.js";
 
 const HousingCard = ({housing}) => {
     console.log(housing)
     return (
         <div className={'my__card'}>
             <div className={'my__card__img left__img'}>
-                <ImageSlider slides={housing.images}/>
+                <ImageSlider slides={housing.images_d}/>
             </div>
             <Card.Body className={'my__card__body'}>
                 <div className={'my__card__title'}><b>Название:</b> {housing.name}</div>
@@ -31,7 +32,7 @@ const HousingCard = ({housing}) => {
                 </div>
             </Card.Body>
             <div className={'my__card__footer'}>
-                <CustomLink to={'#'} className={'btn btn-outline-primary'}>Изменить</CustomLink>
+                <CustomLinkButton to={MY_HOUSING_ROUTE+'/'+housing.id}>Изменить</CustomLinkButton>
             </div>
         </div>
     );

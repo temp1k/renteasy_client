@@ -7,25 +7,22 @@ import {CenterLoading} from "./feutures/index.js";
 
 
 function App() {
-    const {updateUserByJwt} = useUser()
+    const {reloadUser} = useUser()
     const [loading, setLoading] = useState(true);
+    let kostil = true
 
     useEffect(() => {
-        const refreshToken = localStorage.getItem('refresh')
-        if (!refreshToken) {
+        const accessToken = localStorage.getItem('access')
+        if (!accessToken) {
             setLoading(false)
             return
         }
-
-        refreshTokenAPI(refreshToken)
-            .then(data => {
-                const jwt = {access: data}
-                updateUserByJwt(jwt).then(result => setLoading(false)).catch(err => setLoading(false))
-            })
-            .catch(err => {
-                console.error(err)
-                setLoading(false)
-            })
+        if (kostil) {
+            console.log('ПРОВЕРКА')
+            reloadUser(accessToken).then(result => setLoading(false)).catch(err => setLoading(false))
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            kostil = false
+        }
     }, []);
 
     if (loading) {

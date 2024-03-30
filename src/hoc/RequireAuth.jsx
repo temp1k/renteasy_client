@@ -8,7 +8,6 @@ import {useUser} from "../hook/useUser.js";
 const RequireAuth = ({requireRoles=[], unrequireRoles= [], children}) => {
     const location = useLocation();
     const {currentUser} = useUser()
-    console.log('auuu')
 
     // Проверка авторизации
     if (!currentUser.isAuth) {
@@ -19,7 +18,6 @@ const RequireAuth = ({requireRoles=[], unrequireRoles= [], children}) => {
     if (!has_perm) {
         return <Navigate to={NO_PERMISSIONS_ROUTE} />
     }
-    console.log(currentUser.roles)
     const no_has_perm = currentUser.roles.some(element => unrequireRoles.includes(element))
     if (no_has_perm) {
         return <Navigate to={HOME_ROUTE} />

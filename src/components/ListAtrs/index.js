@@ -1,0 +1,1 @@
+export {default as ListAtrs} from './ListAtrs.jsx'

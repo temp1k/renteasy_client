@@ -29,7 +29,12 @@ export const refreshTokenAPI = async (refresh_token) => {
     }
 };
 
-export const getUserById = async (user_id) => {
+export const getUserByIdAPI = async (user_id) => {
     const {data} = await $api.get('api/users/'+user_id)
     return data
+}
+
+export const virifyTokenAPI = async (jwt) => {
+    const response = await $api.post('api/token/verify/', {token: jwt})
+    return response
 }

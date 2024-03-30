@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './css/mybutton.css'
 
-const MyButton = props => {
+const MyButton = ({...props}) => {
     return (
         <button onClick={props.onClick} type={props.type} className={props.className + ' btn__custom_style'}>{props.children}</button>
     );
