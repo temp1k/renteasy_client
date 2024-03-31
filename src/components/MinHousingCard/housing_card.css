@@ -1,0 +1,17 @@
+.container__housing {
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    font-size: 14px;
+    text-align: left;
+}
+
+.container__housing p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.card__header {
+    font-size: 16px;
+    font-weight: bold;
+}

@@ -1,0 +1,59 @@
+.container_dates {
+
+}
+
+.container_modal {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_about_housing {
+    display: flex;
+    align-items: center;
+}
+
+.container__header {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.react-datepicker {
+    font-size: 12px; /* Установите желаемый размер шрифта */
+}
+
+.react-datepicker__month-container {
+    width: 250px; /* Установите желаемую ширину календаря */
+}
+
+.react-datepicker__current-month,
+.react-datepicker__navigation {
+    font-size: 12px; /* Установите желаемый размер шрифта для месяца и кнопок навигации */
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+    width: 20px; /* Установите желаемую ширину дней недели и дней */
+    height: 20px; /* Установите желаемую высоту дней недели и дней */
+    line-height: 16px; /* Установите желаемую высоту строки */
+}
+
+.container_dates {
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+    margin-bottom: 1rem;
+}
+
+.result_dates {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 14px;
+}
+

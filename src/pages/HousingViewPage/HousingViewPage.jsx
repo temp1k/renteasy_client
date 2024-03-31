@@ -6,7 +6,7 @@ import './css/housing_view.css'
 import useForm from "../../hook/useForm.js";
 import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
 import {Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
-import {CategoriesModal, TypesModal} from "../../components/Modals/index.js";
+import {CategoriesModal, PublishHousingModal, TypesModal} from "../../components/Modals/index.js";
 import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
 
 let defaultValues = {
@@ -31,6 +31,7 @@ const HousingViewPage = () => {
     const {id} = useParams()
     const [modalTypesActive, setModalTypesActive] = useState(false)
     const [modalCategoriesActive, setModalCategoriesActive] = useState(false)
+    const [modalPublishActive, setModalPublishActive] = useState(false)
     const [images, setImages] = useState([])
     const [categories, setCategories] = useState([])
     const [types, setTypes] = useState([])
@@ -44,16 +45,14 @@ const HousingViewPage = () => {
         if ('address' in fieldValues) {
             temp.address = fieldValues.address ? "" : "Адрес не может быть пустым"
         }
-        if ('description' in fieldValues) {
-            temp.description = fieldValues.description ? "" : "Описание не может быть пустым"
-        }
+        // if ('description' in fieldValues) {
+        //     temp.description = fieldValues.description ? "" : "Описание не может быть пустым"
+        // }
         temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
         temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
         temp.types = types.length ? "" : 'Типы не могут быть пустыми'
 
         setErrors({...temp});
-
-        console.log(categories)
 
         return Object.values(temp).every(x => x === "")
     }
@@ -199,8 +198,9 @@ const HousingViewPage = () => {
                         </div>
                         <div className="row_footer">
                             <MyButton type={'submit'}>Сохранить</MyButton>
-                            <MyButton type={'button'}>Опубликовать</MyButton>
-                            <Button onClick={cancelChangesHandle} variant={'outline-danger'} type={'button'}>Отменить изменения</Button>
+                            <MyButton type={'button'} onClick={() => setModalPublishActive(true)}>Опубликовать</MyButton>
+                            <Button onClick={cancelChangesHandle} variant={'outline-danger'} type={'button'}>Отменить
+                                изменения</Button>
                         </div>
                     </div>
                 </div>
@@ -214,6 +214,9 @@ const HousingViewPage = () => {
                 active={modalCategoriesActive} setActive={setModalCategoriesActive}
                 label={'Выбор категории'}
                 selectedCategories={categories} setSelectedCategories={setCategories}
+            />
+            <PublishHousingModal
+                active={modalPublishActive} setActive={setModalPublishActive} housing={values}
             />
         </Container>
     );

@@ -1,7 +1,6 @@
 import './App.css'
 import React, {useEffect, useState} from "react";
 import {Main} from "./scences/index.js";
-import {refreshTokenAPI} from "./http/api/authAPI.js";
 import {useUser} from "./hook/useUser.js";
 import {CenterLoading} from "./feutures/index.js";
 
