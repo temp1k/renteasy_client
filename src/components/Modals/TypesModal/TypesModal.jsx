@@ -10,7 +10,7 @@ import {Button} from "react-bootstrap";
 const TypeItem = ({item, onClick}) => {
     return (
         <div className={'item'} onClick={onClick}>
-            <label>{item.name}</label>
+            {item.name}
         </div>
     )
 }

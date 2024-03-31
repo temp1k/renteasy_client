@@ -20,8 +20,10 @@
     margin-bottom: 4px;
 }
 
-.selected__atr label {
-    font-size: 18px;
+.list__label {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: bold;
 }
 
 .list__atr {
@@ -33,12 +35,11 @@
 
 .item__atr {
     border-radius: 0.3rem;
-    background-color: var(--second-color);
-    color: var(--background-color);
-    font-size: 14px;
+    background-color: #d2d0d0;
+    font-size: 12px;
     padding: 0.2rem 0.4rem;
     display: flex;
     align-items: center;
     line-height: 1;
-    max-width: 5rem;
+    max-width: 6rem;
 }

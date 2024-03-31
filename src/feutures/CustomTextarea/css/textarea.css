@@ -2,6 +2,7 @@
     width: 100%;
     text-align: left;
     margin-bottom: 0.8rem;
+    display: grid;
 }
 
 label {
@@ -27,4 +28,8 @@ label {
     border: var(--second-color) solid 2px;
     outline: 0;
     box-shadow: 0 0 0 2px rgba(158, 158, 158, 0.25)
+}
+
+.error__input {
+
 }

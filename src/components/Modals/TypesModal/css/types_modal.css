@@ -1,5 +1,5 @@
 .modal__container {
-    max-width: 80%;
+    max-width: 90%;
     margin: 8px auto;
 }
 
@@ -19,6 +19,13 @@
     margin-bottom: 0.3rem;
 }
 
+.wrap label {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
 .custom__select {
     padding-right: 10px;
     border-right: 2px solid black;
@@ -28,6 +35,8 @@
 
 .item {
     text-align: left;
+    font-size: 14px;
+    line-height: 1;
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
     border: rgba(36, 36, 36, 0) solid 1px;

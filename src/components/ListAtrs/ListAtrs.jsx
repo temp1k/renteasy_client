@@ -7,7 +7,7 @@ const ListAtrs = ({items, onClick, label}) => {
     return (
         <div className="container__items">
             <div className={'selected__atr'}>
-                <label>{label}</label>
+                <label className={'list__label'}>{label}:</label>
                 <div className={'list__atr'}>
                     {items.map(type =>
                         <div key={type.id} className={'item__atr'}>{type.name}</div>
@@ -15,7 +15,7 @@ const ListAtrs = ({items, onClick, label}) => {
                 </div>
             </div>
             <div className={'container__btn__atr'}>
-                <MyButton type={'button'} onClick={onClick}>Добавить</MyButton>
+                <MyButton type={'button'} onClick={onClick}>Изменить {label}</MyButton>
             </div>
         </div>
     );
