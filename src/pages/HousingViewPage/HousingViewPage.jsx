@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getHousingById} from "../../http/api/housingAPI.js";
+import {getHousingById, updateHousingAPI} from "../../http/api/housingAPI.js";
 import {Button, Container} from "react-bootstrap";
 import './css/housing_view.css'
 import useForm from "../../hook/useForm.js";
 import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
 import {Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
 import {CategoriesModal, TypesModal} from "../../components/Modals/index.js";
+import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
 
 let defaultValues = {
     name: '',
@@ -35,8 +36,26 @@ const HousingViewPage = () => {
     const [types, setTypes] = useState([])
     const [tags, setTags] = useState([])
 
-    const validate = (fields = defaultValues) => {
-        return true
+    const validate = (fieldValues = defaultValues) => {
+        let temp = {...errors}
+        if ('name' in fieldValues) {
+            temp.name = fieldValues.name ? "" : "Название не может быть пустым"
+        }
+        if ('address' in fieldValues) {
+            temp.address = fieldValues.address ? "" : "Адрес не может быть пустым"
+        }
+        if ('description' in fieldValues) {
+            temp.description = fieldValues.description ? "" : "Описание не может быть пустым"
+        }
+        temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
+        temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
+        temp.types = types.length ? "" : 'Типы не могут быть пустыми'
+
+        setErrors({...temp});
+
+        console.log(categories)
+
+        return Object.values(temp).every(x => x === "")
     }
 
     const {
@@ -47,21 +66,24 @@ const HousingViewPage = () => {
         handleInputChange
     } = useForm(defaultValues, validate)
 
+    const remakeHousingAPIToHousingObj = (housingAPI) => {
+        setValues(housingAPI)
+        setImages(housingAPI.images_d)
+        setTypes(housingAPI.types_d)
+        setCategories(housingAPI.categories_d)
+        setTags(housingAPI.tags_d)
+    }
+
     useEffect(() => {
         getHousingById(id)
             .then(data => {
                 console.log(data)
                 defaultValues = data
-                setValues(data)
-                setImages(data.images_d)
-                setTypes(data.types_d)
-                console.log(data.types_d)
-                setCategories(data.categories_d)
-                setTags(data.tags_d)
+                remakeHousingAPIToHousingObj(data)
             })
             .catch(err => {
                 console.error(err)
-                alert('Не удалось получить жилье\n'+err)
+                alert('Не удалось получить жилье\n' + err)
             })
     }, []);
 
@@ -74,67 +96,115 @@ const HousingViewPage = () => {
         setModalCategoriesActive(true)
     }
 
+    const cancelChangesHandle = (e) => {
+        e.preventDefault()
+        if (!window.confirm('Вы уверены что хотите отменить все изменения?\n' +
+            'Все введенные данные будут удалены.')) return
+
+        remakeHousingAPIToHousingObj(defaultValues)
+    }
+
+    const handleChangeSubmit = e => {
+        e.preventDefault()
+        if (!validate()) return
+
+        const formData = new FormData()
+        for (let key in values) {
+            if (Array.isArray(values[key])) {
+                // Если значение является массивом, переберем его и добавим каждый элемент
+                values[key].forEach((value) => {
+                    formData.append(key, value);
+                });
+            } else {
+                formData.append(key, values[key]);
+            }
+        }
+
+        let imagesOfIds = remakeArrayOfObjectsToArrayId(images);
+        imagesOfIds.forEach((value) => {
+            formData.append('images', value);
+        });
+        let typesOfIds = remakeArrayOfObjectsToArrayId(types);
+        typesOfIds.forEach((value) => {
+            formData.append('types', value);
+        });
+        let categoriesOfIds = remakeArrayOfObjectsToArrayId(categories);
+        categoriesOfIds.forEach((value) => {
+            formData.append('categories', value);
+        });
+
+        updateHousingAPI(id, formData)
+            .then(data => {
+                console.log(data)
+                defaultValues = data
+                alert('Запись успешно обновлена')
+            })
+            .catch(err => {
+                console.error(`Ошибка обновления записи!\n${err}`)
+            })
+    }
+
     return (
         <Container>
             <ButtonBack className={'btn__back'}>Назад</ButtonBack>
-            Страница жилья {id}
-            <div className="container_housing">
-                <div className="col_images">
-                    <div className="carousel">
-                        <ImageSlider slides={images}/>
-                    </div>
-                    <div className="image_picker">
-                        <DropImages images={images} setImages={setImages}/>
-                    </div>
-                </div>
-                <div className="col_fields">
-                    <div className={'row_body'}>
-                        <div className="container_fields">
-                            <Input type={'text'} label={'Название'}
-                                   name={'name'}
-                                   value={values.name} onChange={handleInputChange}
-                                   error={errors.name}
-                            />
-                            <Input type={'text'} label={'Сокращенное название'}
-                                   name={'short_name'}
-                                   value={values.short_name} onChange={handleInputChange}
-                                   error={errors.short_name}
-                            />
-                            <Input type={'text'} label={'Адрес'}
-                                   name={'address'}
-                                   value={values.address} onChange={handleInputChange}
-                                   error={errors.address}
-                            />
-                            <Textarea label={'Описание'} rows={3}
-                                      name={'description'}
-                                      value={values.description} onChange={handleInputChange}
-                                      error={errors.description}
-                            />
-                            <Input type={'number'} label={'Кол-во мест'} min={'0'} pattern={'\d+'}
-                                   name={'number_of_seats'}
-                                   value={values.number_of_seats} onChange={handleInputChange}
-                                   error={errors.number_of_seats}
-                            />
-                            {/*<MySelect items={countries} label={'Страна'}*/}
-                            {/*          name={'country'}*/}
-                            {/*          selectValue={values.country} onChange={handleInputChange}*/}
-                            {/*          error={errors.country}*/}
-                            {/*/>*/}
+            <br/>
+            <form onSubmit={handleChangeSubmit}>
+                <div className="container_housing">
+                    <div className="col_images">
+                        <div className="carousel">
+                            <ImageSlider slides={images}/>
                         </div>
-                        <div className="container_attrs">
-                            <ListAtrs items={types} onClick={openTypeModalHandler} label={'Типы'}/>
-                            <ListAtrs items={categories} onClick={openCategoriesModalHandler} label={'Катергории'}/>
+                        <div className="image_picker">
+                            <DropImages images={images} setImages={setImages}/>
                         </div>
                     </div>
-                    <div className="row_footer">
-                        <MyButton>Сохранить</MyButton>
-                        <MyButton>Опубликовать</MyButton>
-                        <Button variant={'outline-danger'}>Отменить изменения</Button>
+                    <div className="col_fields">
+                        <div className={'row_body'}>
+                            <div className="container_fields">
+                                <Input type={'text'} label={'Название'}
+                                       name={'name'}
+                                       value={values.name} onChange={handleInputChange}
+                                       error={errors.name}
+                                />
+                                <Input type={'text'} label={'Сокращенное название'}
+                                       name={'short_name'}
+                                       value={values.short_name} onChange={handleInputChange}
+                                       error={errors.short_name}
+                                />
+                                <Input type={'text'} label={'Адрес'}
+                                       name={'address'}
+                                       value={values.address} onChange={handleInputChange}
+                                       error={errors.address}
+                                />
+                                <Textarea label={'Описание'} rows={3}
+                                          name={'description'}
+                                          value={values.description} onChange={handleInputChange}
+                                          error={errors.description}
+                                />
+                                <Input type={'number'} label={'Кол-во мест'} min={'0'} pattern={'\d+'}
+                                       name={'number_of_seats'}
+                                       value={values.number_of_seats} onChange={handleInputChange}
+                                       error={errors.number_of_seats}
+                                />
+                                {/*<MySelect items={countries} label={'Страна'}*/}
+                                {/*          name={'country'}*/}
+                                {/*          selectValue={values.country} onChange={handleInputChange}*/}
+                                {/*          error={errors.country}*/}
+                                {/*/>*/}
+                            </div>
+                            <div className="container_attrs">
+                                <ListAtrs items={types} onClick={openTypeModalHandler} label={'Типы'}/>
+                                <ListAtrs items={categories} onClick={openCategoriesModalHandler} label={'Катергории'}/>
+                            </div>
+                        </div>
+                        <div className="row_footer">
+                            <MyButton type={'submit'}>Сохранить</MyButton>
+                            <MyButton type={'button'}>Опубликовать</MyButton>
+                            <Button onClick={cancelChangesHandle} variant={'outline-danger'} type={'button'}>Отменить изменения</Button>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-
+            </form>
             <TypesModal
                 active={modalTypesActive} setActive={setModalTypesActive}
                 label={'Выберите типы жилья'}

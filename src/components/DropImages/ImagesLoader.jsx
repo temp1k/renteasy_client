@@ -20,7 +20,11 @@ const ImagesLoader = ({images, setImages}) => {
     const onDropHandler = e => {
         e.preventDefault()
         let files = [...e.dataTransfer.files]
-        console.log(files.length)
+        addImageToServer(files)
+        setDrag(false)
+    }
+
+    const addImageToServer = (files) => {
         try {
             const formData = new FormData()
             formData.append('image', files[0])
@@ -36,7 +40,6 @@ const ImagesLoader = ({images, setImages}) => {
         } catch (err) {
             console.error(err)
         }
-        setDrag(false)
     }
 
     const deleteImageHandler = image_id => {
@@ -48,6 +51,16 @@ const ImagesLoader = ({images, setImages}) => {
             .catch(err => {
                 console.warn(err)
             })
+    }
+
+    const handleClickBtn = () => {
+        document.getElementById('fileInput').click();
+    }
+
+    function handleInputFileChange(e) {
+        e.preventDefault()
+        let files = e.target.files;
+        addImageToServer(files)
     }
 
     return (
@@ -68,7 +81,11 @@ const ImagesLoader = ({images, setImages}) => {
                          onDragLeave={dragLeaveHandler}
                          onDragOver={dragStartHandler}
                     >
-                        Перенесите изображения, чтобы загрузить их
+                        <div>
+                            Перенесите изображения, чтобы загрузить их
+                        </div>
+                        <button type={'button'} onClick={handleClickBtn} className={'btn-upload'}>Выбрать файл</button>
+                        <input id={'fileInput'} type={'file'} onChange={handleInputFileChange} style={{display: 'none'}} accept=".jpg, .jpeg, .png"/>
                     </div>
                 }
             </div>
