@@ -7,7 +7,7 @@ import {HOME_ROUTE, MY_HOUSING_ROUTE, MY_PUBLISH_HOUSING_ROUTE} from "../../../.
 
 const SideMenu = () => {
     return (
-        <aside>
+        <aside className={'sideMenu'}>
             <ul>
                 <CustomLink to={MY_HOUSING_ROUTE}><li><FaHouse className={'icon'}/>Ваши места</li></CustomLink>
                 <CustomLink to={MY_PUBLISH_HOUSING_ROUTE}><li><FaLaptopHouse className={'icon'}/> Опубликованные места</li></CustomLink>

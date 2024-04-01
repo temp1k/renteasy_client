@@ -31,6 +31,7 @@ const PublishHousingModal = ({active, setActive, housing, ...props}) => {
         formDate.append('date_end', endDate.toJSON())
         formDate.append('price', price)
         formDate.append('currency', 1)
+        formDate.append('activity', true)
 
 
         createPublishHousingAPI(formDate)

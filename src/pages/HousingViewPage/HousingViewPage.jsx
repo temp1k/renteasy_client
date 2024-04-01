@@ -5,7 +5,7 @@ import {Button, Container} from "react-bootstrap";
 import './css/housing_view.css'
 import useForm from "../../hook/useForm.js";
 import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
-import {Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
+import {CenterLoading, Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
 import {CategoriesModal, PublishHousingModal, TypesModal} from "../../components/Modals/index.js";
 import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
 
@@ -28,6 +28,8 @@ let defaultValues = {
 }
 
 const HousingViewPage = () => {
+    const [loading, setLoading] = useState(true)
+
     const {id} = useParams()
     const [modalTypesActive, setModalTypesActive] = useState(false)
     const [modalCategoriesActive, setModalCategoriesActive] = useState(false)
@@ -45,9 +47,9 @@ const HousingViewPage = () => {
         if ('address' in fieldValues) {
             temp.address = fieldValues.address ? "" : "Адрес не может быть пустым"
         }
-        // if ('description' in fieldValues) {
-        //     temp.description = fieldValues.description ? "" : "Описание не может быть пустым"
-        // }
+        if ('description' in fieldValues) {
+            temp.description = fieldValues.description ? "" : "Описание не может быть пустым"
+        }
         temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
         temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
         temp.types = types.length ? "" : 'Типы не могут быть пустыми'
@@ -79,10 +81,12 @@ const HousingViewPage = () => {
                 console.log(data)
                 defaultValues = data
                 remakeHousingAPIToHousingObj(data)
+                setLoading(false)
             })
             .catch(err => {
                 console.error(err)
                 alert('Не удалось получить жилье\n' + err)
+                setLoading(false)
             })
     }, []);
 
@@ -106,6 +110,8 @@ const HousingViewPage = () => {
     const handleChangeSubmit = e => {
         e.preventDefault()
         if (!validate()) return
+
+        setLoading(true)
 
         const formData = new FormData()
         for (let key in values) {
@@ -137,10 +143,20 @@ const HousingViewPage = () => {
                 console.log(data)
                 defaultValues = data
                 alert('Запись успешно обновлена')
+                setLoading(false)
             })
             .catch(err => {
-                console.error(`Ошибка обновления записи!\n${err}`)
+                alert(`Ошибка обновления записи!\n${err}`)
+                setLoading(false)
             })
+    }
+
+    if (loading) {
+        return (
+            <div style={{marginTop: '15%'}}>
+                <CenterLoading />
+            </div>
+        )
     }
 
     return (

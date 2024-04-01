@@ -1,7 +1,7 @@
 .my__card{
     width: 70%;
     margin: 20px auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: var(--background-color);
     padding: 20px 30px 20px 10px;
     border: #4d4d4d hidden 3px;
@@ -66,4 +66,18 @@
     margin-right: 3px;
     background-color: #d2d0d0;
     padding: .07rem .15rem;
+}
+
+.status {
+    padding: 0.2rem 0.35rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.status__active {
+    background-color: var(--bs-success);
+}
+
+.status__no_active {
+    background-color: var(--danger-color);
 }

@@ -5,7 +5,6 @@ import HousingCard from "./components/HousingCard.jsx";
 import {HOUSING_CREATE_ROUTE} from "../../utils/consts/paths.js";
 
 const MyHousingsPage = () => {
-    console.log('CHECK!!!')
     const [housings, setHousings] = useState([])
     const [loading, setLoading] = useState(true)
 

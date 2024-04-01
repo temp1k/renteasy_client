@@ -10,3 +10,10 @@ export function getLastFragmentFromUrl(url) {
 export function remakeArrayOfObjectsToArrayId(objects) {
     return objects.map(obj => obj.id);
 }
+
+export function formatJsonDateTo_ddMMyyyy(jsonDate) {
+    const date = new Date(jsonDate);
+    // Форматируем дату в формат dd.mm.yyyy
+    const formattedDate = ("0" + date.getDate()).slice(-2) + "." + ("0" + (date.getMonth() + 1)).slice(-2) + "." + date.getFullYear();
+    return formattedDate
+}

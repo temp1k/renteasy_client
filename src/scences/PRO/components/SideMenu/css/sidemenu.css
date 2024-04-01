@@ -1,0 +1,59 @@
+.sideMenu {
+    float: left;
+    position: fixed;
+    background: var(--bg-color-menu);
+    padding: 20px 2.5vw 3vh 2vw;
+    color: var(--default-font-color);
+    border-right: 5px solid #4d4d4d;
+    width: 20%;
+    height: 90%; /* Задаем высоту в 100% от высоты видимой области */
+}
+
+.sideMenu img {
+    width: 60px;
+    float: left;
+}
+.sideMenu .logo {
+    font-size: 28px;
+    margin-left: 5px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+}
+.sideMenu a:hover {
+    color: var(--default-font-color)
+}
+.sideMenu h3 {
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.sideMenu ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.sideMenu ul li {
+    color: var(--default-font-color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.2;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: transform .6s ease;
+}
+.sideMenu ul a {
+    text-decoration: none;
+}
+
+.sideMenu .icon {
+    width: 30px;
+    height: 26px;
+}
+
+.sideMenu ul li:hover, aside ul a:hover {
+    color: var(--second-color);
+    transform: scale(1.05);
+}

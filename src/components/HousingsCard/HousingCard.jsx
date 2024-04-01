@@ -20,9 +20,9 @@ const HousingCard = ({housing, ...props}) => {
 
     return (
         <div onClick={click}>
-            <ImageSlider slides={housing.housing_detail.images_d} />
-            <p>{housing.housing_detail.name}</p>
-            <p>{housing.price} {housing.currency_detail.publish_name}</p>
+            <ImageSlider slides={housing.housing_d.images_d} />
+            <p>{housing.housing_d.name}</p>
+            <p>{housing.price} {housing.currency_d.publish_name}</p>
         </div>
     );
 };
