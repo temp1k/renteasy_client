@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CenterLoading} from "../../feutures/index.js";
 import {getMyPublishHousingsAPI} from "../../http/api/publishHousingAPI.js";
 import {SelfPublishHousingCard} from "../../components/index.js";
+import {CustomSelect} from "../../feutures/CustomSelect/index.js";
 
 const MyPublishHousingsPage = () => {
     const [activity, setActivity] = useState('')
@@ -38,17 +39,16 @@ const MyPublishHousingsPage = () => {
 
     return (
         <div>
-            Мои опубликованные места
+            <div className="label__page">Мои опубликованные места</div>
             <div className="container__select">
-                <label htmlFor={'select_filter'}>Фильтр:</label>
-                <select
-                    id={'select_filter'}
+                <CustomSelect
                     onChange={changeFilterSelectHandler}
+                    label={'Фильтр:'}
                 >
                     <option value="" selected>Все</option>
                     <option value='true'>Активные</option>
                     <option value="false">Не активные</option>
-                </select>
+                </CustomSelect>
             </div>
             {loading &&
                 <div className={'mt-5'}>

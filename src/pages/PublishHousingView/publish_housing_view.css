@@ -1,0 +1,44 @@
+.container__ph__view {
+    max-width: 776px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.container_about_housing {
+    width: auto;
+    margin:auto;
+    display: block;
+}
+
+.label__dates {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.result_dates {
+    display: block;
+    font-size: 18px;
+}
+
+.date_str {
+    color: var(--second-color);
+    font-weight: 450;
+}
+
+.group__field {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.8rem;
+}
+
+.container__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container__buttons button {
+    font-size: 16px;
+}

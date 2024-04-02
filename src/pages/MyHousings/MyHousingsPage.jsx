@@ -29,7 +29,7 @@ const MyHousingsPage = () => {
 
     return (
         <div className={'container'}>
-            <h4>Мои места</h4>
+            <h4 className={'label__page'}>Мои места</h4>
             <div className={'d-flex justify-content-end m-2'}>
                 <CustomLinkButton to={HOUSING_CREATE_ROUTE}>Добавить жилье</CustomLinkButton>
             </div>

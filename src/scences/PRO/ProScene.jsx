@@ -13,7 +13,7 @@ import {
     NotFoundPage,
     MyPublishHousingsPage,
     HousingCreatePage,
-    HousingViewPage
+    HousingViewPage, PublishHousingViewPage
 } from "../../pages/index.js";
 
 const ProScene = () => {
@@ -26,6 +26,7 @@ const ProScene = () => {
                 <Route path={MY_HOUSING_ROUTE + '/:id'} element={<HousingViewPage/> } />
 
                 <Route path={MY_PUBLISH_HOUSING_ROUTE} element={<MyPublishHousingsPage/> } />
+                <Route path={MY_PUBLISH_HOUSING_ROUTE + '/:id'} element={<PublishHousingViewPage/> } />
 
                 <Route path={"*"} element={<NotFoundPage/>} />
             </Route>

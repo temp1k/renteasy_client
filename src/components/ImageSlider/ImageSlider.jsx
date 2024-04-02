@@ -7,6 +7,7 @@ const ImageSlider = ({slides, imgWidth=300, imgHeight = 280}) => {
     const [current, setCurrent] = useState(0);
     // eslint-disable-next-line react/prop-types
     const length = slides.length;
+    let sizeArrows = imgWidth < 180 ? '1rem' : '1.5rem'
 
     const nextSlide = (e) => {
         e.stopPropagation()
@@ -41,9 +42,11 @@ const ImageSlider = ({slides, imgWidth=300, imgHeight = 280}) => {
                     >
                         {index === current && (
                             <div className={'image-container'}>
-                                <img src={slide.image} alt='travel image' className='image' width={imgWidth} height={imgHeight}/>
-                                <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
-                                <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
+                                <div className="img__container" style={{width:imgWidth, height:imgHeight}}>
+                                    <img src={slide.image} alt='travel image' className='image' />
+                                </div>
+                                <FaArrowAltCircleLeft style={{fontSize: sizeArrows}} className='left-arrow' onClick={prevSlide}/>
+                                <FaArrowAltCircleRight style={{fontSize: sizeArrows}} className='right-arrow' onClick={nextSlide}/>
                             </div>
                         )}
                     </div>

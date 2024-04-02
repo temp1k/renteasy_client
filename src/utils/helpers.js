@@ -17,3 +17,7 @@ export function formatJsonDateTo_ddMMyyyy(jsonDate) {
     const formattedDate = ("0" + date.getDate()).slice(-2) + "." + ("0" + (date.getMonth() + 1)).slice(-2) + "." + date.getFullYear();
     return formattedDate
 }
+
+export function formatJsonDateToJsDate(jsonDate) {
+    return new Date(jsonDate)
+}

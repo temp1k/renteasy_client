@@ -4,12 +4,6 @@
     column-gap: 10px;
 }
 
-.btn__back{
-    position: absolute;
-    top: 0;
-    left: 0
-}
-
 .col_images {
     width: 100%;
 }

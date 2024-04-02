@@ -30,10 +30,18 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-bottom: 8px;
 }
 
 .my__card__footer{
     justify-self: end;
+    display: flex;
+    gap: 10px;
+}
+
+.my__card__footer > button, .my-btn {
+    font-size: 16px;
+    padding: .3rem .5rem;
 }
 
 .my__card__title {

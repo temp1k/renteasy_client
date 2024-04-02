@@ -31,4 +31,8 @@
   color-scheme: light dark;
   color: var(--main-color);
   background-color: var(--background-color);
+
+/*  select */
+  --bg-color-select: #e3e1e1;
+  --bg-border-color-select: #919090;
 }
