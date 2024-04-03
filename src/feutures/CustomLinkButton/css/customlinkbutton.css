@@ -9,6 +9,7 @@
 
 .my-btn:hover {
     background-color: var(--btn-bg-color-opacity);
+    color: white;
 }
 
 .no-link {

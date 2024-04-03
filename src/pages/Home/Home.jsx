@@ -11,6 +11,7 @@ const Home = () => {
 
     const getPublishHousing = (country='', name='', begin_date='', end_date='') => {
         setLoading(true)
+        setError('')
         getPublishHousingAPI({country, name, begin_date, end_date})
             .then(data => {
                 setHousings(data.results)
@@ -18,7 +19,7 @@ const Home = () => {
             })
             .catch(err =>{
                 console.warn(err)
-                setError(err)
+                setError(err.message)
                 setLoading(false)
             })
     }

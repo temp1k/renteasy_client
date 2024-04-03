@@ -20,6 +20,7 @@ const HousingCard = ({housing, ...props}) => {
     if (props.click === undefined) {
         click = () => {
             navigate(`${PUBLISH_HOUSING_ROUTE}/${housing.id}`)
+            // window.open(`${PUBLISH_HOUSING_ROUTE}/${housing.id}`, '_blank');
         }
     }
     else click = props.click

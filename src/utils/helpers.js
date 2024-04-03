@@ -21,3 +21,12 @@ export function formatJsonDateTo_ddMMyyyy(jsonDate) {
 export function formatJsonDateToJsDate(jsonDate) {
     return new Date(jsonDate)
 }
+
+export function differenceDatesInDays(date1, date2) {
+    const differenceInMs = date2.getTime() - date1.getTime();
+
+    // Преобразуем разницу в дни
+    const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+
+    return differenceInDays
+}

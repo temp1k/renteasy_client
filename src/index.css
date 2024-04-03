@@ -10,6 +10,8 @@
   --btn-bg-color: var(--second-color);
   --btn-bg-color-opacity: rgba(255, 136, 0, 0.9);
   --btn-color: #f5f5f5;
+  --btn-color-disable: rgba(245, 245, 245, 0.7);
+  --btn-bg-color-disable: rgba(255, 136, 0, 0.7);
 
   --default-font-size: 24px;
   --default-font-color: #242424;

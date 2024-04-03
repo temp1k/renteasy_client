@@ -25,8 +25,8 @@ const Search = ({fetchFunc}) => {
                 console.log(data)
             })
             .catch(err => {
-                console.err('Ошибка загрузки стран')
-                console.err(err)
+                console.error('Ошибка загрузки стран')
+                console.error(err)
             })
     }, []);
 
@@ -62,24 +62,20 @@ const Search = ({fetchFunc}) => {
                 <DatePicker
                     className={'field datepicker'}
                     id={'start_date'}
-                    showIcon
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     dateFormat="dd.MM.yyyy"
-                    icon="fa fa-calendar"
                     isClearable
                     placeholderText="Прибытие"
                 />
                 <DatePicker
                     className={'field datepicker last_input'}
                     id={'end_date'}
-                    showIcon
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     dateFormat="dd.MM.yyyy"
                     isClearable
                     placeholderText="Выезд"
-                    icon="fa fa-calendar"
                 />
                 <ButtonSearch
                     className={'position__search__button'}

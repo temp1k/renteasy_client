@@ -18,6 +18,8 @@
 .img__container {
     overflow: hidden;
     border-radius: 7px;
+    display: flex;
+    align-items: end;
 }
 
 .img__container img{

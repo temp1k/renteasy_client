@@ -1,1 +1,1 @@
-export {default as Search} from './search.jsx'
+export {default as Search} from './Search.jsx'
