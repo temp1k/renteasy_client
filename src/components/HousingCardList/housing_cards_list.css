@@ -1,0 +1,70 @@
+.container__housing_cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    --default-color: gray;
+    --header-color: black;
+}
+
+.container__card {
+    width: auto;
+    cursor: pointer;
+}
+
+.card__body {
+    padding: .2rem .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    color: var(--default-color)
+}
+
+.card__body p {
+    padding: 0;
+    margin: 0 0 .1rem 0;
+}
+
+.header__card {
+    height: 2rem;
+    color: var(--header-color);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.housing__name {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.housing__number {
+    font-size: 13px;
+    display: inline;
+    line-height: 1;
+    min-width: 2rem;
+}
+
+.housing__dates{
+    text-align: left;
+    font-size: 14px;
+}
+
+.housing__price {
+    text-align: left;
+    font-size: 13px;
+}
+
+.price__info {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--header-color)
+}

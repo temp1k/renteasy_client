@@ -1,0 +1,13 @@
+.button__search {
+    background-color: var(--second-color);
+    border: none;
+    border-radius: 2rem;
+    padding: .7rem;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.button__search:hover {
+    background-color: var(--second-color-hover);
+}

@@ -1,43 +1,38 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {HousingCard} from "../HousingsCard/index.js";
 import {CenterLoading} from "../../feutures/index.js";
-import {Col, Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
+import PropTypes from "prop-types";
+import './housing_cards_list.css'
 
 // eslint-disable-next-line react/prop-types
-const HousingCardList = ({fetchFunc}) => {
-    const [housings, setHousings] = useState([])
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('')
-
+const HousingCardList = ({housings, loading, error}) => {
     useEffect(() => {
-        fetchFunc()
-            .then(data => {
-                setHousings(data.results)
-                setLoading(false)
-            })
-            .catch(err => {
-                console.error(err.message)
-                setError(err.message)
-            })
+
     }, []);
 
     return (
         <Container>
             <p>{error}</p>
-            <Row>
-                {loading ? (
-                    <CenterLoading />
-                ) : (
-                    housings.map(housing =>
-                        <Col md={4} key={housing.id}>
-                            <HousingCard housing={housing}/>
-                        </Col>
-                    )
-                )}
-            </Row>
+            {loading ? (
+                <CenterLoading/>
+            ) : (
+                <div className={'container__housing_cards'}>
+                    {housings.map(housing =>
+                        <div key={housing.id}>
+                            <HousingCard housing={housing} />
+                        </div>
+                    )}
+                </div>
+            )}
 
         </Container>
     );
 };
+
+HousingCardList.propTypes = {
+    housings: PropTypes.array,
+    loading: PropTypes.bool
+}
 
 export {HousingCardList};

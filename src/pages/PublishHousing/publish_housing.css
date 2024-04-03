@@ -1,0 +1,36 @@
+
+.button__back {
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+}
+
+.container__ph_page {
+    padding-top: 1rem;
+    position: relative;
+}
+
+.container_images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+    gap: 5px 10px;
+}
+
+.container_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container_img {
+    display: flex;
+    align-items: start;
+    overflow: hidden;
+    height: 80%;
+}
+
+.container_img:first-child{
+    grid-column: 1/3;
+    grid-row: 1/3;
+}

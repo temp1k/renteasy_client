@@ -1,4 +1,4 @@
-export {default as CustomLink} from './CustomLink.jsx'
+export {default as CustomLink} from './CustomLink/CustomLink.jsx'
 export {default as CenterLoading} from './CenterLoading.jsx'
 export {default as Input} from './Input/Input.jsx'
 export {default as MyButton} from './MyButton/MyButton.jsx'

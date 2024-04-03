@@ -1,0 +1,66 @@
+.container__search {
+    --border-radius: 1rem;
+    --bg-color: #ffffff;
+    --bg-color-hover: #EBEBEB;
+    --color: black;
+    --border-color: rgb(110, 110, 110);
+
+    display: inline-flex;
+    margin: auto;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--color);
+    position: relative;
+}
+
+.container__search--focus {
+    background-color: var(--bg-color-hover);
+}
+
+.field {
+    outline: none;
+    border: none;
+    height: 2.5rem;
+    width: auto;
+    padding: .1rem .3rem;
+    border-radius: var(--border-radius);
+    border-right: var(--border-color) solid 1px;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+.field:hover {
+    background-color: var(--bg-color-hover);
+    border-right: rgba(255, 255, 255, 0) solid 1px;
+}
+
+.field:focus {
+    background-color: var(--bg-color-hover);
+    border-color: var(--second-color-hover);
+}
+
+.datepicker {
+    width: 8rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.select_country {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.position__search__button {
+    position: absolute;
+    align-self: center;
+    right: 3px;
+}
+
+.last_input {
+    width: 10rem;
+    border: none;
+}
