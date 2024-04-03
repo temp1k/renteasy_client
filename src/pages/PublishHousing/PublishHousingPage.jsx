@@ -9,12 +9,13 @@ import {useUser} from "../../hook/useUser.js";
 import {MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../utils/consts/paths.js";
 import {FaStar} from "react-icons/fa";
 import {IoIosPeople} from "react-icons/io";
+import {getFeedbackByProductAPI} from "../../http/api/feedbackAPI.js";
 
 const PublishHousingPage = () => {
     const {id} = useParams()
     const [loading, setLoading] = useState(true)
     const [publishHousing, setPublishHousing] = useState({})
-    const [feedbacks, setFeedbacks] = useState({})
+    const [feedbacks, setFeedbacks] = useState([])
     let housing = publishHousing?.housing_d
     const {currentUser} = useUser()
 
@@ -29,6 +30,15 @@ const PublishHousingPage = () => {
                 setLoading(false)
                 console.warn(err)
             })
+
+        getFeedbackByProductAPI({product: id})
+            .then(data => {
+                console.log(data)
+                setFeedbacks(data.results)
+            })
+            .catch(err => {
+                console.warn(err)
+            })
     }, []);
 
     if (loading) {
@@ -37,6 +47,10 @@ const PublishHousingPage = () => {
                 <CenterLoading />
             </div>
         )
+    }
+
+    const addFeedback = (feedback) => {
+        setFeedbacks([feedback, ...feedbacks])
     }
 
     return (
@@ -86,8 +100,10 @@ const PublishHousingPage = () => {
                 </div>
             </div>
             <br/>
-            <PostFeedback />
-            <Feedbacks />
+            {currentUser.id !== housing.owner_d.id && currentUser.isAuth &&
+                <PostFeedback addFeedback={addFeedback} publishHousing={publishHousing}/>
+            }
+            <Feedbacks feedbacks={feedbacks}/>
         </Container>
     );
 };

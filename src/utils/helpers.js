@@ -18,6 +18,13 @@ export function formatJsonDateTo_ddMMyyyy(jsonDate) {
     return formattedDate
 }
 
+export function formatJsonDateTo_HHmm(jsonDate) {
+    const date = new Date(jsonDate);
+    // Форматируем дату в формат dd.mm.yyyy
+    const formattedTime = ("0" + date.getHours()).slice(-2) + ":" + ("0" + (date.getMinutes() + 1)).slice(-2);
+    return formattedTime
+}
+
 export function formatJsonDateToJsDate(jsonDate) {
     return new Date(jsonDate)
 }

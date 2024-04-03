@@ -1,0 +1,12 @@
+.footer_post_feedback {
+    display: flex;
+    justify-content: start;
+}
+
+.footer_post_feedback button {
+    font-size: var(--btn-font-size);
+}
+
+.container_post_feedback {
+    display: flex;
+}

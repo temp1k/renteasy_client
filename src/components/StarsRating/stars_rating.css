@@ -1,0 +1,7 @@
+.star_rating {
+    color: var(--second-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    height: auto;
+    display: inline-flex;
+}
