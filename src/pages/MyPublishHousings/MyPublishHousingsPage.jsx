@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {CenterLoading} from "../../feutures/index.js";
+import {CenterLoading, CustomLink} from "../../feutures/index.js";
 import {getMyPublishHousingsAPI} from "../../http/api/publishHousingAPI.js";
 import {SelfPublishHousingCard} from "../../components/index.js";
 import {CustomSelect} from "../../feutures/CustomSelect/index.js";
+import {MY_HOUSING_ROUTE, MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../utils/consts/paths.js";
 
 const MyPublishHousingsPage = () => {
     const [activity, setActivity] = useState('')
@@ -25,10 +26,12 @@ const MyPublishHousingsPage = () => {
             })
             .catch(err => {
                 console.warn(err)
-                alert(`Ошбика получения ваших опубликованных мест\n${err}`)
                 setLoading(false)
+                console.log(err.response.status)
+                if (err.response.status === 404) return
+                alert(`Ошбика получения ваших опубликованных мест\n${err}`)
+
             })
-        console.log('useEffect')
     }, [activity]);
 
     const changeFilterSelectHandler = (e) => {
@@ -58,6 +61,13 @@ const MyPublishHousingsPage = () => {
             {publishHousings.map(ph =>
                 <SelfPublishHousingCard key={ph.id} publishHousing={ph}/>
             )}
+
+            {publishHousings.length < 1 &&
+                <div style={{height: '40vh'}} className={'d-flex justify-content-center flex-column'}>
+                    <p>У вас нет публикаций</p>
+                    <p><CustomLink to={'/'+PRO_SCENE_ROUTE+'/'+MY_HOUSING_ROUTE}>Опубликуйте ваше жилье</CustomLink></p>
+                </div>
+            }
 
         </div>
     );

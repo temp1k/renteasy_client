@@ -18,6 +18,7 @@ const defaultValues = {
 const SignUp = () => {
     const navigate = useNavigate()
     const [globalError, setGlobalError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
@@ -52,8 +53,8 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(values)
         if (validate()){
+            setLoading(true)
             const newUser = {
                 username: values.username,
                 email: values.email,
@@ -64,14 +65,13 @@ const SignUp = () => {
                 .then(data => {
                     console.log(data)
                     navigate(LOGIN_ROUTE, {replace: true})
+                    setLoading(false)
                 })
                 .catch(err => {
                     console.error(err)
+                    setLoading(false)
                     setGlobalError(err.response?.data?.username || 'Непредвиденная ошибка')
                 })
-        }
-        else {
-            alert('Ошибка')
         }
     }
 
@@ -110,7 +110,7 @@ const SignUp = () => {
                     />
                     <span className='input__error'>{errors.repeatPassword}</span>
                 </div>
-                <MyButton type={'submit'}>Зарегистрироваться</MyButton>
+                <MyButton loading={loading} type={'submit'}>Зарегистрироваться</MyButton>
             </form>
 
         </div>

@@ -18,6 +18,7 @@ const LoginPage = () => {
     const location = useLocation()
     const fromPage = location.state?.from?.pathname || '/';
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const {login} = useUser()
 
     const validate = (fieldValues = values) => {
@@ -47,13 +48,16 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate(values)) {
+            setLoading(true)
             loginAPI(values.login, values.password)
                 .then(data => {
                     login(data, () => navigate(fromPage, {replace: true}))
+                    setLoading(false)
                 })
                 .catch(err => {
                     setError(err.response.data?.detail || err.message)
                     console.error(err)
+                    setLoading(false)
                 })
         }
     }
@@ -76,7 +80,7 @@ const LoginPage = () => {
                     />
                     <span className={'input__error'}>{errors.password}</span>
                 </div>
-                <MyButton type={"submit"}>Войти</MyButton>
+                <MyButton loading={loading} type={"submit"}>Войти</MyButton>
             </form>
 
         </div>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getMyHousingsAPI} from "./api/myHousingsAPI.js";
-import {CenterLoading, CustomLinkButton, MyButton} from "../../feutures/index.js";
+import {CenterLoading, CustomLink, CustomLinkButton, MyButton} from "../../feutures/index.js";
 import HousingCard from "./components/HousingCard.jsx";
 import {HOUSING_CREATE_ROUTE} from "../../utils/consts/paths.js";
 
@@ -16,6 +16,7 @@ const MyHousingsPage = () => {
             })
             .catch(err => {
                 console.error(err)
+                setLoading(false)
             })
     }, []);
 
@@ -39,6 +40,12 @@ const MyHousingsPage = () => {
                     <HousingCard housing={housing} key={housing.id}/>
                 );
             })}
+            {housings.length < 1 &&
+                <div>
+                    <p>У вас нет жилья</p>
+                    <p><CustomLink to={HOUSING_CREATE_ROUTE}>Создайте ваше первое жилье</CustomLink></p>
+                </div>
+            }
         </div>
     );
 };

@@ -3,6 +3,8 @@ import './css/images_loader.css'
 import {MdCancel} from "react-icons/md";
 import {deleteImageAPI, postImageAPI} from "./api/imageAPI.js";
 import {getLastFragmentFromUrl} from "../../utils/helpers.js";
+import Swal from "sweetalert2";
+import {DeleteAlert, SuccessAlert} from "../../feutures/index.js";
 
 const ImagesLoader = ({images, setImages}) => {
     const [drag, setDrag] = useState(false)
@@ -43,13 +45,16 @@ const ImagesLoader = ({images, setImages}) => {
     }
 
     const deleteImageHandler = image_id => {
-        if (!confirm('Вы уверены, что хотите удалить это изображение?')) return
-        deleteImageAPI(image_id)
-            .then(() => {
-                setImages(images.filter(image => image.id !== image_id))
-            })
-            .catch(err => {
-                console.warn(err)
+        DeleteAlert("Изображение", 'После удаления, изображение станет недоступным',
+            () => {
+                deleteImageAPI(image_id)
+                    .then(() => {
+                        setImages(images.filter(image => image.id !== image_id))
+                        SuccessAlert('Удалено!', 'Вы успешно удалили изображение')
+                    })
+                    .catch(err => {
+                        console.warn(err)
+                    })
             })
     }
 
@@ -85,7 +90,8 @@ const ImagesLoader = ({images, setImages}) => {
                             Перенесите изображения, чтобы загрузить их
                         </div>
                         <button type={'button'} onClick={handleClickBtn} className={'btn-upload'}>Выбрать файл</button>
-                        <input id={'fileInput'} type={'file'} onChange={handleInputFileChange} style={{display: 'none'}} accept=".jpg, .jpeg, .png"/>
+                        <input id={'fileInput'} type={'file'} onChange={handleInputFileChange} style={{display: 'none'}}
+                               accept=".jpg, .jpeg, .png"/>
                     </div>
                 }
             </div>
