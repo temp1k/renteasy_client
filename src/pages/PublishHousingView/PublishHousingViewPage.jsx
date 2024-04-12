@@ -1,19 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import {CenterLoading, CustomCheckBox, MyButton} from "../../feutures/index.js";
+import {CenterLoading, CustomCheckBox, MessageAlert, MyButton, SuccessAlert} from "../../feutures/index.js";
 import {useParams} from "react-router-dom";
-import {
-    createPublishHousingAPI,
-    getPublishHousingByIdAPI,
-    updatePublishHousingAPI
-} from "../../http/api/publishHousingAPI.js";
+import {getPublishHousingByIdAPI, updatePublishHousingAPI} from "../../http/api/publishHousingAPI.js";
 import {ButtonBack, MinHousingCard} from "../../components/index.js";
 import DatePicker from "react-datepicker";
 import {Button} from "react-bootstrap";
 import useFormatDate from "../../hook/useFormatDate.js";
 import './publish_housing_view.css'
 import useForm from "../../hook/useForm.js";
-import {PASSWORD_REGEXP} from "../../utils/validation.js";
 
 let defaultValues = {
     date_begin: new Date(),
@@ -24,6 +18,7 @@ let defaultValues = {
 
 const PublishHousingViewPage = props => {
     const [loading, setLoading] = useState(true)
+    const [loadingBnt, setLoadingBtn] = useState(false)
     const [publishHousing, setPublishHousing] = useState({})
 
     const [dateRange, setDateRange] = useState([new Date(), new Date()]);
@@ -31,7 +26,6 @@ const PublishHousingViewPage = props => {
     const formatStartDate = useFormatDate(startDate)
     const formatEndDate = useFormatDate(endDate)
 
-    const [test, setTest] = useState(false)
     const {id} = useParams()
 
 
@@ -93,6 +87,7 @@ const PublishHousingViewPage = props => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!validate()) return
+        setLoadingBtn(true)
         const formDate = new FormData()
         formDate.append('housing', publishHousing.housing)
         formDate.append('date_begin', startDate.toJSON())
@@ -105,11 +100,13 @@ const PublishHousingViewPage = props => {
         updatePublishHousingAPI(id, formDate)
             .then(data => {
                 console.log(data)
-                alert('Публикация успешно изменена')
+                MessageAlert('Публикация успешно изменена')
+                setLoadingBtn(false)
                 defaultValues = data
             })
             .catch(err => {
                 console.error(err)
+                setLoadingBtn(false)
                 alert('Ошибка изменения публикации жилья')
             })
     }
@@ -166,7 +163,7 @@ const PublishHousingViewPage = props => {
                     </div>
                 </div>
                 <div className="container__buttons">
-                    <MyButton type={'submit'}>Изменить</MyButton>
+                    <MyButton type={'submit'} loading={loadingBnt}>Изменить</MyButton>
                     <Button variant={'outline-danger'} type={'button'} onClick={resetFullForm}>Отменить</Button>
                     {/*<Button variant={'danger'} onClick={handleCancel}>Отмена</Button>*/}
                 </div>

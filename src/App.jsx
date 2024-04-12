@@ -28,7 +28,6 @@ function App() {
         return (
             <div className="h-100">
                 <CenterLoading />
-                aboba
             </div>
         )
     }

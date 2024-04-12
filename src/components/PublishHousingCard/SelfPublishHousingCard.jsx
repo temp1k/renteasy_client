@@ -5,7 +5,7 @@ import {Button, Card} from "react-bootstrap";
 import '../../pages/MyHousings/css/index.css'
 import './publish_housing.css'
 import {formatJsonDateTo_ddMMyyyy} from "../../utils/helpers.js";
-import {CustomLinkButton} from "../../feutures/index.js";
+import {ConfirmAlert, CustomLinkButton} from "../../feutures/index.js";
 import {MY_HOUSING_ROUTE} from "../../utils/consts/paths.js";
 import {updatePublishHousingAPI} from "../../http/api/publishHousingAPI.js";
 
@@ -22,20 +22,24 @@ const SelfPublishHousingCard = ({publishHousing}) => {
             ? 'Вы уверены, что хотите деактивировать данную запись?\nЕсли это сделать, то она не будет видна вашим клиентам'
             : 'Активиронная запись будет попадаться клиентам. Перепроверьть все введенные данные.\nВы уверены, что хотите активаровать данную запись?'
 
-        if (!confirm(message)) return
 
-        const updatedStatus = {activity: !activity}
-        const updatePublishHousing = {...publishHousing, ...updatedStatus}
+        ConfirmAlert(
+            message,
+            () => {
+                const updatedStatus = {activity: !activity}
+                const updatePublishHousing = {...publishHousing, ...updatedStatus}
 
-        updatePublishHousingAPI(publishHousing.id, updatePublishHousing)
-            .then(data => {
-                console.log(data)
-                setStatus(data.activity)
-            })
-            .catch(err => {
-                alert('Ошибка!!!')
-                console.error(err)
-            })
+                updatePublishHousingAPI(publishHousing.id, updatePublishHousing)
+                    .then(data => {
+                        console.log(data)
+                        setStatus(data.activity)
+                    })
+                    .catch(err => {
+                        alert('Ошибка!!!')
+                        console.error(err)
+                    })
+            }
+        )
     }
 
     return (

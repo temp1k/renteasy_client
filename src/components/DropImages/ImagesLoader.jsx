@@ -45,7 +45,9 @@ const ImagesLoader = ({images, setImages}) => {
     }
 
     const deleteImageHandler = image_id => {
-        DeleteAlert("Изображение", 'После удаления, изображение станет недоступным',
+        DeleteAlert(
+            "Изображение",
+            'После удаления, изображение станет недоступным',
             () => {
                 deleteImageAPI(image_id)
                     .then(() => {

@@ -65,7 +65,10 @@ const Search = ({fetchFunc}) => {
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     dateFormat="dd.MM.yyyy"
+                    selectsStart
                     isClearable
+                    endDate={endDate}
+                    maxDate={endDate}
                     placeholderText="Прибытие"
                 />
                 <DatePicker
@@ -74,6 +77,9 @@ const Search = ({fetchFunc}) => {
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     dateFormat="dd.MM.yyyy"
+                    selectsEnd
+                    startDate={startDate}
+                    minDate={startDate}
                     isClearable
                     placeholderText="Выезд"
                 />

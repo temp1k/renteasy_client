@@ -1,0 +1,21 @@
+.my_btn_back {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--second-color);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0.5rem;
+    left: .5rem;
+    transition: all .5s;
+}
+
+.my_btn_back:hover{
+    transform: scale(1.05);
+    left: .7rem;
+}

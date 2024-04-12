@@ -5,7 +5,7 @@ import {Button, Container} from "react-bootstrap";
 import './css/housing_view.css'
 import useForm from "../../hook/useForm.js";
 import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
-import {CenterLoading, Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
+import {CenterLoading, Input, MessageAlert, MyButton, MySelect, SuccessAlert, Textarea} from "../../feutures/index.js";
 import {CategoriesModal, PublishHousingModal, TypesModal} from "../../components/Modals/index.js";
 import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
 
@@ -29,6 +29,7 @@ let defaultValues = {
 
 const HousingViewPage = () => {
     const [loading, setLoading] = useState(true)
+    const [loadingBtn, setLoadingBtn] = useState(false)
 
     const {id} = useParams()
     const [modalTypesActive, setModalTypesActive] = useState(false)
@@ -111,7 +112,7 @@ const HousingViewPage = () => {
         e.preventDefault()
         if (!validate()) return
 
-        setLoading(true)
+        setLoadingBtn(true)
 
         const formData = new FormData()
         for (let key in values) {
@@ -142,12 +143,12 @@ const HousingViewPage = () => {
             .then(data => {
                 console.log(data)
                 defaultValues = data
-                alert('Запись успешно обновлена')
-                setLoading(false)
+                MessageAlert('Запись успешно обновлена!')
+                setLoadingBtn(false)
             })
             .catch(err => {
                 alert(`Ошибка обновления записи!\n${err}`)
-                setLoading(false)
+                setLoadingBtn(false)
             })
     }
 
@@ -213,7 +214,7 @@ const HousingViewPage = () => {
                             </div>
                         </div>
                         <div className="row_footer">
-                            <MyButton type={'submit'}>Сохранить</MyButton>
+                            <MyButton type={'submit'} loading={loadingBtn}>Сохранить</MyButton>
                             <MyButton type={'button'} onClick={() => setModalPublishActive(true)}>Опубликовать</MyButton>
                             <Button onClick={cancelChangesHandle} variant={'outline-danger'} type={'button'}>Отменить
                                 изменения</Button>

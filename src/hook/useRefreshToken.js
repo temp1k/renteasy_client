@@ -1,6 +1,6 @@
 import {$api} from '../http/instance.js'
 
-export default function useRefreshToken () {
+    export default function useRefreshToken () {
 
     const refresh = async () => {
         const response = await $api.post('api/token/refresh', {

@@ -1,5 +1,8 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import PropTypes from "prop-types";
+import './button_back.css'
+import {IoArrowBack} from "react-icons/io5";
 
 const ButtonBack = ({children, ...props}) => {
     const navigate = useNavigate()
@@ -10,8 +13,20 @@ const ButtonBack = ({children, ...props}) => {
     }
 
     return (
-        <button type={'button'} onClick={clickBack} {...props}>{children}</button>
+        <button type={'button'}
+                onClick={clickBack}
+                {...props}
+                className={'my_btn_back'}
+        >
+            <IoArrowBack />
+            {/*{children}*/}
+        </button>
     );
 };
+
+ButtonBack.propTypes = {
+    children: PropTypes.element,
+    className: PropTypes.string,
+}
 
 export default ButtonBack;
