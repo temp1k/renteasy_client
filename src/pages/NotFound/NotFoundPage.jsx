@@ -1,11 +1,11 @@
 import React from 'react';
 import {useRouteError} from "react-router-dom";
 
-const NotFoundPage = () => {
+const NotFoundPage = ({text='Извините, такой страницы не существует'}) => {
     return (
         <div id="error-page">
             <h1>Ой-ой</h1>
-            <p>Извините, такой страницы не существует</p>
+            <p>{text}</p>
             <p>{404}</p>
             <p>
                 <i>Страница не найдена</i>

@@ -47,6 +47,7 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        alert('Ошибка')
         if (validate(values)) {
             setLoading(true)
             loginAPI(values.login, values.password)
@@ -63,7 +64,7 @@ const LoginPage = () => {
     }
 
     return (
-        <div className={'container-center'}>
+        <div className={'container-center mt-5'}>
             <form onSubmit={handleSubmit} className={'form-center'}>
                 <div className={'form__header'}>Войдите</div>
                 <span className="form__error">{error}</span>

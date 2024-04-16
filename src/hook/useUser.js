@@ -82,6 +82,18 @@ export function useUser () {
         }
     }
 
+    function updateUser(user) {
+        try {
+            const validUser = userAPIToUserRedux(user)
+
+            dispatch(loginUser(validUser))
+        }
+        catch {
+            
+        }
+
+    }
+
     function updateUserByJwt(jwtAccess) {
         console.log('Обновление пользователя по токену')
         const jwt = {access: jwtAccess}

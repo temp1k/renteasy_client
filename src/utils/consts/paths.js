@@ -10,6 +10,8 @@ export const RENT_SCENE_ROUTE = '/rent'
 
 export const PRO_SCENE_ROUTE = 'pro'
 
+export const CHAT_SCENE_ROUTE = 'chats'
+
 export const MY_HOUSING_ROUTE = 'housings'
 export const MY_PUBLISH_HOUSING_ROUTE = 'publish_housings'
 

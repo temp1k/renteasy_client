@@ -11,13 +11,14 @@ import {
 } from "../../pages/index.js";
 import {HomeLayout, AuthLayout} from "../../components";
 import {
+    CHAT_SCENE_ROUTE,
     LOGIN_ROUTE,
     NO_PERMISSIONS_ROUTE, PRO_SCENE_ROUTE,
     PROFILE_ROUTE,
     PUBLISH_HOUSING_ROUTE, REGISTRATION_ROUTE,
     RENT_SCENE_ROUTE, SUBSCRIBE_PRO_ROUTE
 } from "../../utils/consts/paths.js";
-import {Arenda, ProScene} from "../../scences/index.js";
+import {Arenda, ChatScene, ProScene} from "../../scences/index.js";
 import {RequireAuth} from "../index.js";
 import {ADMIN_ROLE, LANDLORD_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
 
@@ -50,6 +51,11 @@ export const MainRoutes = () => {
             <Route path={'/' + PRO_SCENE_ROUTE + '/*'} element={
                 <RequireAuth requireRoles={[LANDLORD_ROLE]}>
                     <ProScene/>
+                </RequireAuth>
+            }/>
+            <Route path={'/' + CHAT_SCENE_ROUTE+'/*'} element={
+                <RequireAuth requireRoles={[LANDLORD_ROLE]}>
+                    <ChatScene />
                 </RequireAuth>
             }/>
         </Routes>
