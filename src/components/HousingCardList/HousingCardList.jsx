@@ -6,13 +6,11 @@ import PropTypes from "prop-types";
 import './housing_cards_list.css'
 
 // eslint-disable-next-line react/prop-types
-const HousingCardList = ({housings, loading, error}) => {
-    useEffect(() => {
-
-    }, []);
-
+const HousingCardList = ({housings, loading, error, ...props}) => {
     return (
-        <Container>
+        <Container
+            {...props}
+        >
             <p>{error}</p>
             {loading ? (
                 <CenterLoading/>

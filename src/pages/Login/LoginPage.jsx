@@ -47,7 +47,6 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Ошибка')
         if (validate(values)) {
             setLoading(true)
             loginAPI(values.login, values.password)

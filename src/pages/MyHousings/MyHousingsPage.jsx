@@ -3,22 +3,27 @@ import {getMyHousingsAPI} from "./api/myHousingsAPI.js";
 import {CenterLoading, CustomLink, CustomLinkButton, MyButton} from "../../feutures/index.js";
 import HousingCard from "./components/HousingCard.jsx";
 import {HOUSING_CREATE_ROUTE} from "../../utils/consts/paths.js";
+import {MyPagination} from "../../components/index.js";
 
 const MyHousingsPage = () => {
     const [housings, setHousings] = useState([])
     const [loading, setLoading] = useState(true)
+    const [count, setCount] = useState(0);
+    const [offset, setOffset] = useState(0)
+    const limit = 2
 
     useEffect(() => {
-        getMyHousingsAPI()
+        getMyHousingsAPI({offset, limit})
             .then(data => {
-                setHousings(data.housings)
+                setHousings(data.results)
+                setCount(data.count)
                 setLoading(false)
             })
             .catch(err => {
                 console.error(err)
                 setLoading(false)
             })
-    }, []);
+    }, [offset]);
 
     if (loading) {
         return (
@@ -46,6 +51,7 @@ const MyHousingsPage = () => {
                     <p><CustomLink to={HOUSING_CREATE_ROUTE}>Создайте ваше первое жилье</CustomLink></p>
                 </div>
             }
+            <MyPagination count={count} setOffset={setOffset} itemsPerPage={limit}/>
         </div>
     );
 };

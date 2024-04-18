@@ -6,11 +6,17 @@ import {Outlet} from "react-router-dom";
 const HomeLayout = () => {
     return (
         <>
-            <Header />
-            <main style={{minHeight: '80vh'}}>
-                <Outlet />
+            <Header/>
+            <main style={{
+                minHeight: '80vh',
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'center',
+            }}
+            >
+                <Outlet/>
             </main>
-            <Footer />
+            <Footer/>
         </>
     );
 };

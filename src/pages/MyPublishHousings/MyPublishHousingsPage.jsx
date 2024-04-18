@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {CenterLoading, CustomLink} from "../../feutures/index.js";
 import {getMyPublishHousingsAPI} from "../../http/api/publishHousingAPI.js";
-import {SelfPublishHousingCard} from "../../components/index.js";
+import {MyPagination, SelfPublishHousingCard} from "../../components/index.js";
 import {CustomSelect} from "../../feutures/CustomSelect/index.js";
 import {MY_HOUSING_ROUTE, MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../utils/consts/paths.js";
 
@@ -9,6 +9,9 @@ const MyPublishHousingsPage = () => {
     const [activity, setActivity] = useState('')
     const [loading, setLoading] = useState(true)
     const [publishHousings, setPublishHousings] = useState([])
+    const [count, setCount] = useState(0);
+    const [offset, setOffset] = useState(0)
+    const limit = 2
 
     const resetPage = () => {
         setPublishHousings([])
@@ -18,10 +21,11 @@ const MyPublishHousingsPage = () => {
 
     useEffect(() => {
         resetPage()
-        getMyPublishHousingsAPI(activity)
+        getMyPublishHousingsAPI(activity, {limit, offset})
             .then(data => {
                 console.log(data)
-                setPublishHousings(data.housings)
+                setPublishHousings(data.results)
+                setCount(data.count)
                 setLoading(false)
             })
             .catch(err => {
@@ -30,12 +34,12 @@ const MyPublishHousingsPage = () => {
                 console.log(err.response.status)
                 if (err.response.status === 404) return
                 alert(`Ошбика получения ваших опубликованных мест\n${err}`)
-
             })
-    }, [activity]);
+    }, [activity, offset]);
 
     const changeFilterSelectHandler = (e) => {
         setActivity(e.target.value)
+        setOffset(0)
         console.log('change select')
     }
 
@@ -62,15 +66,39 @@ const MyPublishHousingsPage = () => {
                 <SelfPublishHousingCard key={ph.id} publishHousing={ph}/>
             )}
 
-            {publishHousings.length < 1 &&
-                <div style={{height: '40vh'}} className={'d-flex justify-content-center flex-column'}>
-                    <p>У вас нет публикаций</p>
-                    <p><CustomLink to={'/'+PRO_SCENE_ROUTE+'/'+MY_HOUSING_ROUTE}>Опубликуйте ваше жилье</CustomLink></p>
-                </div>
+            {publishHousings.length < 1 && !loading &&
+                <SwitchLabelComponent selectedActivity={activity} />
             }
+            <MyPagination count={count} setOffset={setOffset} itemsPerPage={limit}/>
 
         </div>
     );
 };
 
 export default MyPublishHousingsPage;
+
+
+const SwitchLabelComponent = ({selectedActivity}) => {
+    switch(selectedActivity) {
+        case 'true':
+            return (
+                <div style={{height: '40vh'}} className={'d-flex justify-content-center flex-column'}>
+                    <p>У вас нет активных публикаций</p>
+                </div>
+            )
+        case 'false':
+            return (
+                <div style={{height: '40vh'}} className={'d-flex justify-content-center flex-column'}>
+                    <p>У вас нет неактивных публикаций</p>
+                </div>
+            )
+        default:
+            return (
+                <div style={{height: '40vh'}} className={'d-flex justify-content-center flex-column'}>
+                    <p>У вас нет публикаций</p>
+                    <p><CustomLink to={'/' + PRO_SCENE_ROUTE + '/' + MY_HOUSING_ROUTE}>Опубликуйте ваше
+                        жилье</CustomLink></p>
+                </div>
+            )
+    }
+}

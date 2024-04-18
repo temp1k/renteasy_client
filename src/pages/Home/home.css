@@ -1,0 +1,19 @@
+.container__home {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.container__home > * {
+    flex-shrink: 0; /* Запрещаем элементам уменьшаться в размере */
+}
+
+.container__home .container__list {
+    flex: 1; /* Растягиваем контейнер на всю доступную высоту container__home */
+}
+
+.pagination {
+    justify-self: end;
+    margin: auto;
+}

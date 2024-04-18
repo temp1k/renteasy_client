@@ -10,9 +10,9 @@ export const updatePublishHousingAPI = async (id, publishHousing) => {
     return data
 }
 
-export const getMyPublishHousingsAPI = async (activity=null) => {
+export const getMyPublishHousingsAPI = async (activity=null, params={}) => {
     let where = activity ? `?activity=${activity}` : ''
-    const {data} = await $apiAuth.get('/api/published_housings/my/'+where)
+    const {data} = await $apiAuth.get('/api/published_housings/my/'+where, {params})
     return data
 }
 

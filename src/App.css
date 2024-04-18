@@ -38,7 +38,7 @@
 }
 
 .form-center {
-  width: 35%;
+  width: 100%;
   align-self: center;
   justify-self: center;
   border: 3px hidden var(--second-color);
