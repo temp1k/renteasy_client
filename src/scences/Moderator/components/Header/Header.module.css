@@ -6,6 +6,7 @@
     height: var(--height-header);
     min-height: 50px;
     grid-column: 1/5;
+    background-color: var(--header-color);
 }
 
 .container_header {

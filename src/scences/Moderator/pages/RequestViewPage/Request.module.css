@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+}
+
+.container__request {
+    font-size: var(--field-font-size);
+}
+
+.container__info__housing {
+
+}
+
+.categories {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.categories > * {
+    margin: 0;
+}
+
+.categories p {
+    padding: .125rem .25rem;
+    border-radius: .5rem;
+    background-color: var(--norm-color);
+    color: var(--background-color)
+}

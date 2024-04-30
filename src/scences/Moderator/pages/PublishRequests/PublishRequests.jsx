@@ -17,6 +17,7 @@ import {TfiReload} from "react-icons/tfi";
 import {MyPagination} from "../../../../components/index.js";
 
 import '../requests.css'
+import {MyContainer} from "../../../../feutures/MyContainer/index.js";
 
 const TrPublishRequest = ({request, offset = 0, index}) => {
     let housing = request.housing_d
@@ -85,7 +86,7 @@ const PublishRequests = props => {
     }, [offset]);
 
     return (
-        <Container>
+        <MyContainer>
             <div className={'legend__table'}>
                 <span className={'danger_cr'}>- срочно</span>
                 <span className={'warn_cr'} >- давно</span>
@@ -128,7 +129,7 @@ const PublishRequests = props => {
             </MyTable>
             <MyPagination count={count} setOffset={setOffset} itemsPerPage={limit}/>
 
-        </Container>
+        </MyContainer>
     );
 };
 

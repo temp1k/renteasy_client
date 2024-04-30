@@ -3,6 +3,6 @@
     line-height: 1;
 }
 
-.my__table td {
-    
+.my__table tbody {
+    font-size: 14px;
 }

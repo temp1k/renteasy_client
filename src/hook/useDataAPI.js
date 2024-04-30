@@ -3,8 +3,7 @@ import {getRequestsAPI} from "../scences/Moderator/api/requestsAPI.js";
 import {AWAIT_REQUEST_STATUS} from "../utils/consts/statuses.js";
 import {getErrorText} from "../utils/helpers.js";
 
-const useDataAPI = (options) => {
-    const {limit, requestAPI, params} = options
+const useDataAPI = (limit, params, requestAPI) => {
     const [data, setData] = useState([])
     const [count, setCount] = useState(0);
     const [offset, setOffset] = useState(0)
@@ -12,7 +11,6 @@ const useDataAPI = (options) => {
     const [loading, setLoading] = useState(true)
 
     const updateData = () => {
-        setData([])
         requestAPI({limit: limit, offset: offset, ...params})
             .then(d => {
                 setData(d.results)
@@ -30,13 +28,13 @@ const useDataAPI = (options) => {
     useEffect(() => {
         setLoading(true)
         updateData()
-    }, [offset]);
+    }, [offset, params.search]);
 
 
     return {
         data, updateData,
         error,
-        loading,
+        loading, setLoading,
         count,
         offset, setOffset
     }

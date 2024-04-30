@@ -17,6 +17,6 @@ export const getMyPublishHousingsAPI = async (activity=null, params={}) => {
 }
 
 export const getPublishHousingByIdAPI = async (id) => {
-    const {data} = await $api.get('/api/published_housings/'+id)
+    const {data} = await $apiAuth.get('/api/published_housings/'+id)
     return data
 }

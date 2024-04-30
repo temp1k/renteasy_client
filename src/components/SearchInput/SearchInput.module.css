@@ -1,0 +1,31 @@
+.container__search {
+    display: inline-flex;
+    width: 50%;
+    height: auto;
+    position: relative;
+    align-items: center;
+    --padding-horizontal: .5rem;
+    --padding-vertical: .25rem;
+}
+
+
+.search {
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+    border: 1px solid var(--second-color);
+    outline: none;
+    color: var(--main-color);
+    padding: var(--padding-vertical) var(--padding-horizontal);
+    background-color: var(--bg-color);
+}
+
+.search:focus {
+    box-shadow: 0 0 4px 2px var(--second-color);
+}
+
+.icon_cancel {
+    position: absolute;
+    right: var(--padding-horizontal);
+    cursor: pointer;
+}

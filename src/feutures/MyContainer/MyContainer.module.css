@@ -1,0 +1,6 @@
+.my__container {
+    box-sizing: border-box;
+    padding: 0 40px;
+    margin: auto;
+    overflow-x: auto;
+}

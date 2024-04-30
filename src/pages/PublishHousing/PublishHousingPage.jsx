@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {ButtonBack, BuyForm, Feedbacks, PostFeedback} from "../../components/index.js";
+import {ButtonBack, BuyForm, ContainerImages, Feedbacks, PostFeedback} from "../../components/index.js";
 import {Container} from "react-bootstrap";
 import './publish_housing.css'
 import {CenterLoading, CustomLinkButton} from "../../feutures/index.js";
@@ -63,6 +63,7 @@ const PublishHousingPage = () => {
                     Изменить
                 </CustomLinkButton>
             }
+            <ContainerImages housing={housing} />
             <div className="ph__card">
                 <p className={'title_housing'}>{housing.name}</p>
                 <div className="container_images">

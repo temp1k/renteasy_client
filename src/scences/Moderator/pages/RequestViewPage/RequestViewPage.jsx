@@ -1,95 +1,84 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import useDataAPI from "../../../../hook/useDataAPI.js";
-import {getAllUsersAPI} from "../../api/usersAPI.js";
 import {Container} from "react-bootstrap";
-import {CenterLoading, CustomLinkButton, MyButton, MyTable} from "../../../../feutures/index.js";
-import {TfiReload} from "react-icons/tfi";
-import {formatJsonDateTo_ddMMyyyy, formatJsonDateTo_ddMMyyyy_HHmm} from "../../../../utils/helpers.js";
-import {FaEye} from "react-icons/fa";
+import {CenterLoading} from "../../../../feutures/index.js";
+import {formatJsonDateTo_ddMMyyyy, getErrorText} from "../../../../utils/helpers.js";
+import {getPublishHousingByIdAPI} from "../../../../http/api/publishHousingAPI.js";
+import {ButtonBack, ContainerImages} from "../../../../components/index.js";
+import s from './Request.module.css'
+import {MyContainer} from "../../../../feutures/MyContainer/index.js";
 
-const TrUser = ({user, offset = 0, index}) => {
+const FieldItem = ({title, data}) =>{
     return (
-        <tr key={user.id} className={`tr-request`}>
-            <td>{index + 1 + offset}</td>
-            <td>{user.username}</td>
-            <td>{user.email}</td>
-            <td>{user.first_name + ' ' + user.last_name}</td>
-            <td>{
-                user.groups.map(role =>
-                    <span key={role}>{role+' '}</span>
-                )
-            }</td>
-            <td>{formatJsonDateTo_ddMMyyyy(user.date_joined)}</td>
-            <td></td>
-            <td>
-                <CustomLinkButton to={`../${request.id}`}><FaEye/></CustomLinkButton>
-            </td>
-        </tr>
-    );
+        <div>
+            <span>{title}</span>
+            <p>{data}</p>
+        </div>
+    )
 }
-
-TrUser.propTypes = {
-    user: PropTypes.object,
-    offset: PropTypes.number,
-    index: PropTypes.number,
-}
-
 
 const RequestViewPage = props => {
     const {id} = useParams()
+    const [publishHousing, setPublishHousing] = useState([])
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(true)
+    let housing = publishHousing?.housing_d;
 
-    const {
-        data, updateData,
-        error,
-        loading,
-        count,
-        offset, setOffset
-    } = useDataAPI({limit: 10, requestAPI: getAllUsersAPI, params: {}})
+    useEffect(() => {
+        setLoading(true)
+        getPublishHousingByIdAPI(id)
+            .then(data =>{
+                setPublishHousing(data)
+            })
+            .catch(err => {
+                console.error(err)
+                setError(getErrorText(err))
+            })
+            .finally(() => setLoading(false))
+    }, []);
+
+
+    if (loading) {
+        return (
+            <div>
+                <CenterLoading />
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <Container>
+                {error}
+            </Container>
+        )
+    }
 
     return (
-        <Container>
-            <MyTable bordered>
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Логин</th>
-                    <th>Почта</th>
-                    <th>Имя</th>
-                    <th>Роль</th>
-                    <th>Дата регистрации</th>
-                    <th>Активность пользователя</th>
-                    <th>Подтвержденный аккаунт</th>
-                    <th></th>
-                    <th>
-                        <MyButton
-                            onClick={() => {
-                                setLoading(true)
-                                setRequests([])
-                                updateRequests()
-                            }}
-                            variant={'secondary'}
-                        >
-                            <TfiReload/>
-                        </MyButton>
-                    </th>
-                </tr>
-                {error}
-                </thead>
-                <tbody>
-                {loading &&
-                    <tr>
-                        <td colSpan={6}><CenterLoading/></td>
-                    </tr>
-                }
-                {data.map((user, index) =>
-                    <TrUser key={user.id} user={user} offset={offset} index={index}/>
-                )}
-                </tbody>
-            </MyTable>
-        </Container>
-    );
+        <MyContainer className={s.container}>
+            <ButtonBack />
+            <div className={s.container__request}>
+                <h3>{housing.name}</h3>
+                <ContainerImages housing={housing} height={'30vh'}/>
+                <div className={s.container__info__housing}>
+                    <FieldItem title={'Название'} data={housing.name}/>
+                    <FieldItem title={'Сокращенное название'} data={housing.short_name}/>
+                    <FieldItem title={'Описание'} data={housing.description}/>
+                    <FieldItem title={'Цена'} data={`${publishHousing.price} ${publishHousing.currency_d.publish_name}`}/>
+                    <FieldItem title={'Дата публикации'} data={formatJsonDateTo_ddMMyyyy(publishHousing.date_publish)}/>
+                    <FieldItem title={'Округ'} data={housing.district_d.name}/>
+                    <div className={s.categories}>
+                        <span>Категории:</span>
+                        {housing.categories_d.map(category =>
+                            <p key={category.id}>{category.name}</p>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </MyContainer>
+    )
+
+
 };
 
 RequestViewPage.propTypes = {

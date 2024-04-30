@@ -17,7 +17,6 @@
     height: 90vh;
 }
 
-
 .layout__requests {
     width: 100%;
 }
@@ -33,4 +32,9 @@
 
 .nav__requests a {
     text-decoration: none;
+}
+
+.main {
+    overflow-y: auto;
+    max-height: 90vh;
 }

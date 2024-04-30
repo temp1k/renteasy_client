@@ -16,37 +16,36 @@
 
 .legend__table {
     text-align: left;
+    font-size: 14px;
     padding: 0.5rem .4rem;
     display: flex;
     gap: 10px;
 }
 
-.danger_cr::before {
+.legend__table span {
+    display: flex;
+    align-items: center;
+}
+
+.legend__table span::before {
     content: "";
     display: inline-flex;
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: var(--danger-color);
+    margin-top: 3px;
     margin-right: 5px; /* расстояние между кружком и текстом */
+
+}
+
+.danger_cr::before {
+    background-color: var(--danger-color);
 }
 
 .normal_cr::before {
-    content: "";
-    display: inline-flex;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
     background-color: var(--norm-color);
-    margin-right: 5px; /* расстояние между кружком и текстом */
 }
 
 .warn_cr::before {
-    content: "";
-    display: inline-flex;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
     background-color: var(--warn-color);
-    margin-right: 5px; /* расстояние между кружком и текстом */
 }

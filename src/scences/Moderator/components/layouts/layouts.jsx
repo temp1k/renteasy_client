@@ -17,7 +17,7 @@ const ModeratorLayout = props => {
             <aside className={s.aside__menu}>
                 <AsideMenu/>
             </aside>
-            <main>
+            <main className={s.main}>
                 <Outlet/>
             </main>
         </div>
