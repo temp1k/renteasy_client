@@ -8,13 +8,19 @@
   --btn-font-size: 16px;
   --btn-border-radius: 0.4rem;
   --btn-bg-color: var(--second-color);
-  --btn-bg-color-opacity: rgba(255, 136, 0, 0.9);
+  --btn-bg-secondary: #2b2bf3;
+  --btn-bg-dark: var(--main-color);
+  --btn-bg-white: var(--background-color);
+  --btn-bg-color-opacity: rgba(255, 136, 0, 0.8);
   --btn-color: #f5f5f5;
+  --btn-color-secondary: var(--main-color);
   --btn-color-disable: rgba(245, 245, 245, 0.7);
   --btn-bg-color-disable: rgba(255, 136, 0, 0.7);
 
-  --default-font-size: 24px;
+  --default-font-size: 20px;
+  --header1-font-size: 24px;
   --default-font-color: #242424;
+  --table-font-size: 16px;
 
   --bg-color-menu: #f5f5f5;
 
@@ -26,7 +32,9 @@
   --white-color: #f5f5f5;
   --second-color-opacity: rgba(255, 136, 0, 0.3);
   --danger-color: #e31010;
-
+  --norm-color: #6f726f;
+  --warn-color: #d3d312;
+  --transparent-color: rgba(0, 0, 0, 0);
   /*image loader*/
   --bg-color-loader: #dad8d8;
   --bg-color-loader-active: rgba(245, 244, 244, 0.6);

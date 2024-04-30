@@ -12,15 +12,15 @@ import {
 import {HomeLayout, AuthLayout} from "../../components";
 import {
     CHAT_SCENE_ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, MODERATOR_SCENE_ROUTE,
     NO_PERMISSIONS_ROUTE, PRO_SCENE_ROUTE,
     PROFILE_ROUTE,
     PUBLISH_HOUSING_ROUTE, REGISTRATION_ROUTE,
     RENT_SCENE_ROUTE, SUBSCRIBE_PRO_ROUTE
 } from "../../utils/consts/paths.js";
-import {Arenda, ChatScene, ProScene} from "../../scences/index.js";
+import {Arenda, ChatScene, ModeratorScene, ProScene} from "../../scences/index.js";
 import {RequireAuth} from "../index.js";
-import {ADMIN_ROLE, LANDLORD_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
+import {ADMIN_ROLE, LANDLORD_ROLE, MODERATOR_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
 
 
 export const MainRoutes = () => {
@@ -56,6 +56,11 @@ export const MainRoutes = () => {
             <Route path={'/' + CHAT_SCENE_ROUTE+'/*'} element={
                 <RequireAuth requireRoles={[LANDLORD_ROLE]}>
                     <ChatScene />
+                </RequireAuth>
+            }/>
+            <Route path={MODERATOR_SCENE_ROUTE+'/*'} element={
+                <RequireAuth requireRoles={[MODERATOR_ROLE]}>
+                    <ModeratorScene />
                 </RequireAuth>
             }/>
         </Routes>

@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    --height-header: 10vh;
+    padding: 0;
+    margin: 0;
+    height: var(--height-header);
+    min-height: 50px;
+    grid-column: 1/5;
+}
+
+.container_header {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: var(--header1-font-size);
+}
+
+.content__header {
+
+}

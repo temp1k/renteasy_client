@@ -53,7 +53,7 @@ const SelfPublishHousingCard = ({publishHousing}) => {
                 <div className={'text__description'}>
                     <b>Описание:</b> {housing.description}
                 </div>
-                <div className={'my__card__text'}><b>Страна:</b> {housing.country_d.name}</div>
+                <div className={'my__card__text'}><b>Округ:</b> {housing.district_d.name}</div>
                 <div className={'my__card__text__sm'}><b>Категории:</b>{' '}
                     {housing.categories_d.map(category =>
                         <span key={category.id}>{category.name} </span>

@@ -4,7 +4,7 @@ import {jwtDecode} from "jwt-decode";
 import {getUserByIdAPI, refreshTokenAPI, virifyTokenAPI} from "../http/api/authAPI.js";
 
 
-export function useUser () {
+export function useUser() {
 
     const currentUser = useSelector(state => state.user.currentUser)
     const dispatch = useDispatch()
@@ -34,34 +34,29 @@ export function useUser () {
 
     async function reloadUser(jwtAccess) {
         console.log('Обновление пользователя')
-        try{
-            const result = await verifyToken(jwtAccess)
-            if (result) await updateUserByAPI({access: jwtAccess}).catch(err => console.error(err))
-            else {
-                const refreshToken = localStorage.getItem('refresh')
+        const result = await verifyToken(jwtAccess)
+        if (result) await updateUserByAPI({access: jwtAccess}).catch(err => console.error(err))
+        else {
+            const refreshToken = localStorage.getItem('refresh')
 
-                if (refreshToken) {
-                    console.log('refresh токен')
-                    await refreshTokenAPI(refreshToken)
-                        .then(async newJwtAccess => {
-                            localStorage.setItem('access', newJwtAccess)
-                            await updateUserByAPI({access: newJwtAccess}).catch(err => console.log(err))
-                        })
-                        .catch(err => {
-                            console.warn(err)
-                            localStorage.removeItem('refresh')
-                            localStorage.removeItem('access')
-                        })
-                }
+            if (refreshToken) {
+                console.log('refresh токен')
+                await refreshTokenAPI(refreshToken)
+                    .then(async newJwtAccess => {
+                        localStorage.setItem('access', newJwtAccess)
+                        await updateUserByAPI({access: newJwtAccess}).catch(err => console.log(err))
+                    })
+                    .catch(err => {
+                        console.warn(err)
+                        // localStorage.removeItem('refresh')
+                        // localStorage.removeItem('access')
+                    })
             }
-        }
-        catch(err) {
-            console.warn(err)
         }
     }
 
     function login(jwt, callback) {
-       const user = jwtToUserRedux(jwt)
+        const user = jwtToUserRedux(jwt)
 
         dispatch(loginUser(user))
         callback()
@@ -76,22 +71,9 @@ export function useUser () {
             const user = userAPIToUserRedux(data)
 
             dispatch(loginUser(user))
-        }
-        catch (error){
+        } catch (error) {
             console.error(error)
         }
-    }
-
-    function updateUser(user) {
-        try {
-            const validUser = userAPIToUserRedux(user)
-
-            dispatch(loginUser(validUser))
-        }
-        catch {
-            
-        }
-
     }
 
     function updateUserByJwt(jwtAccess) {
@@ -112,9 +94,12 @@ export function useUser () {
         try {
             await virifyTokenAPI(jwt)
             return true
-        }
-        catch(err) {
+        } catch (err) {
             console.warn(err)
+
+            if (err.code === 'ERR_NETWORK') {
+                throw err;
+            }
             return false
         }
     }
@@ -123,7 +108,7 @@ export function useUser () {
         dispatch(updateRolesUser(roles))
     }
 
-    function logoutFn(){
+    function logoutFn() {
         localStorage.setItem('refresh', '')
         localStorage.setItem('access', '')
         dispatch(logoutUser())

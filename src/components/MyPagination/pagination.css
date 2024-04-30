@@ -5,6 +5,7 @@
     gap: 5px;
     --padding-vertical: 3px;
     --padding-horizontal: 10px;
+    padding: 0;
 }
 
 .page a {

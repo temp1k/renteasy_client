@@ -1,10 +1,16 @@
 import {Button, Container, Nav, Navbar} from "react-bootstrap"
 
 import {Link, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, PRO_SCENE_ROUTE, PROFILE_ROUTE, RENT_SCENE_ROUTE} from "../../utils/consts/paths.js";
+import {
+    LOGIN_ROUTE,
+    MODERATOR_SCENE_ROUTE,
+    PRO_SCENE_ROUTE,
+    PROFILE_ROUTE,
+    RENT_SCENE_ROUTE
+} from "../../utils/consts/paths.js";
 import {CustomLink, MyLogo} from "../../feutures";
 import {useUser} from "../../hook/useUser.js";
-import {LANDLORD_ROLE} from "../../utils/consts/roles.js";
+import {LANDLORD_ROLE, MODERATOR_ROLE} from "../../utils/consts/roles.js";
 
 
 const Header = () => {
@@ -28,6 +34,9 @@ const Header = () => {
                             ) : (
                                 <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
                             )
+                        }
+                        {currentUser.roles.includes(MODERATOR_ROLE) &&
+                            <CustomLink to={MODERATOR_SCENE_ROUTE} className={'nav-link'}>Модерация</CustomLink>
                         }
                         {currentUser.isAuth && <CustomLink to={PROFILE_ROUTE} className={'nav-link'}>
                             Профиль

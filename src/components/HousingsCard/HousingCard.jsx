@@ -14,7 +14,7 @@ const HousingCard = ({housing, ...props}) => {
 
     let startDate = formatJsonDateTo_ddMMyyyy(housing.date_begin)
     let endDate = formatJsonDateTo_ddMMyyyy(housing.date_end)
-    let country = housing.housing_d.country_d.name
+    let district = housing.housing_d.district_d
 
     let click;
     if (props.click === undefined) {
@@ -33,7 +33,7 @@ const HousingCard = ({housing, ...props}) => {
             </div>
             <div className={'card__body'}>
                 <div className={'header__card'}>
-                    <p className={'housing__name'}>{housing.housing_d.name} ({country})</p>
+                    <p className={'housing__name'}>{housing.housing_d.name} ({district.code_name})</p>
                     <div className={'housing__number'}>{housing.housing_d.number_of_seats} <IoIosPeople /></div>
                 </div>
                 <p className="housing__dates">{startDate} - {endDate}</p>
@@ -46,9 +46,12 @@ const HousingCard = ({housing, ...props}) => {
 HousingCard.propTypes = {
     housing: PropTypes.shape({
         id: PropTypes.number,
-        housing_detail: PropTypes.object,
+        housing_d: PropTypes.object,
+        city_d: PropTypes.object,
         price: PropTypes.string,
-        currency_detail: PropTypes.object
+        currency_detail: PropTypes.object,
+        date_end: PropTypes.string,
+        date_begin: PropTypes.string,
     }).isRequired,
     click : PropTypes.func,
 };

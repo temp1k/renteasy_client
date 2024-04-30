@@ -8,6 +8,7 @@ import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/in
 import {CenterLoading, Input, MessageAlert, MyButton, MySelect, SuccessAlert, Textarea} from "../../feutures/index.js";
 import {CategoriesModal, PublishHousingModal, TypesModal} from "../../components/Modals/index.js";
 import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
+import SelectDistricts from "../../components/SelectDistricts/SelectDistricts.jsx";
 
 let defaultValues = {
     name: '',
@@ -15,16 +16,15 @@ let defaultValues = {
     address: '',
     number_of_seats: 0,
     description: '',
-    country: 1,
+    district: 0,
     rating: 0,
     categories: [],
     tags: [],
     images: [],
-    types: [],
+    metro: 0,
     categories_d: [],
     tags_d: [],
     images_d: [],
-    types_d: [],
 }
 
 const HousingViewPage = () => {
@@ -37,8 +37,8 @@ const HousingViewPage = () => {
     const [modalPublishActive, setModalPublishActive] = useState(false)
     const [images, setImages] = useState([])
     const [categories, setCategories] = useState([])
-    const [types, setTypes] = useState([])
     const [tags, setTags] = useState([])
+    const [district, setDistrict] = useState({})
 
     const validate = (fieldValues = defaultValues) => {
         let temp = {...errors}
@@ -53,7 +53,7 @@ const HousingViewPage = () => {
         }
         temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
         temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
-        temp.types = types.length ? "" : 'Типы не могут быть пустыми'
+        temp.district = district.value ? "" : 'Округ не может быть пустым'
 
         setErrors({...temp});
 
@@ -71,9 +71,9 @@ const HousingViewPage = () => {
     const remakeHousingAPIToHousingObj = (housingAPI) => {
         setValues(housingAPI)
         setImages(housingAPI.images_d)
-        setTypes(housingAPI.types_d)
         setCategories(housingAPI.categories_d)
         setTags(housingAPI.tags_d)
+        setDistrict({label: housingAPI.district_d.name, value: housingAPI.district_d.id})
     }
 
     useEffect(() => {
@@ -89,12 +89,8 @@ const HousingViewPage = () => {
                 alert('Не удалось получить жилье\n' + err)
                 setLoading(false)
             })
-    }, []);
+    }, [id]);
 
-    const openTypeModalHandler = (e) => {
-        e.preventDefault()
-        setModalTypesActive(true)
-    }
     const openCategoriesModalHandler = (e) => {
         e.preventDefault()
         setModalCategoriesActive(true)
@@ -130,14 +126,12 @@ const HousingViewPage = () => {
         imagesOfIds.forEach((value) => {
             formData.append('images', value);
         });
-        let typesOfIds = remakeArrayOfObjectsToArrayId(types);
-        typesOfIds.forEach((value) => {
-            formData.append('types', value);
-        });
         let categoriesOfIds = remakeArrayOfObjectsToArrayId(categories);
         categoriesOfIds.forEach((value) => {
             formData.append('categories', value);
         });
+        formData.append('district', district.value)
+        formData.delete('metro')
 
         updateHousingAPI(id, formData)
             .then(data => {
@@ -187,6 +181,11 @@ const HousingViewPage = () => {
                                        value={values.short_name} onChange={handleInputChange}
                                        error={errors.short_name}
                                 />
+                                <SelectDistricts
+                                    selectedDistrict={district}
+                                    setSelectedDistrict={setDistrict}
+                                    error={errors.district}
+                                />
                                 <Input type={'text'} label={'Адрес'}
                                        name={'address'}
                                        value={values.address} onChange={handleInputChange}
@@ -209,8 +208,7 @@ const HousingViewPage = () => {
                                 {/*/>*/}
                             </div>
                             <div className="container_attrs">
-                                <ListAtrs items={types} onClick={openTypeModalHandler} label={'Типы'}/>
-                                <ListAtrs items={categories} onClick={openCategoriesModalHandler} label={'Катергории'}/>
+                                <ListAtrs items={categories} onClick={openCategoriesModalHandler} label={'Категории'}/>
                             </div>
                         </div>
                         <div className="row_footer">
@@ -222,11 +220,6 @@ const HousingViewPage = () => {
                     </div>
                 </div>
             </form>
-            <TypesModal
-                active={modalTypesActive} setActive={setModalTypesActive}
-                label={'Выберите типы жилья'}
-                selectedTypes={types} setSelectedTypes={setTypes}
-            />
             <CategoriesModal
                 active={modalCategoriesActive} setActive={setModalCategoriesActive}
                 label={'Выбор категории'}

@@ -1,0 +1,1 @@
+export {default as AsideMenu} from './SideMenu.jsx'

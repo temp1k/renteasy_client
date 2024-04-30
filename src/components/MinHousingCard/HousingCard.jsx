@@ -21,7 +21,7 @@ const HousingCard = ({housing, haveImage=false}) => {
             <div className={'card__body'}>
                 <div>
                     <p className="card__header">{housing.name}</p>
-                    <p><b>Адрес:</b> {housing.country_d.name}, {housing.address}</p>
+                    <p><b>Адрес:</b> {housing.district_d.name} округ, {housing.address}</p>
                     <p><b>Кол-во мест:</b> {housing.number_of_seats}</p>
                 </div>
                 <div className="card__footer">

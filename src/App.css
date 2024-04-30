@@ -1,5 +1,6 @@
 #root {
   text-align: center;
+  min-height: 100vh;
 }
 
 .my__container {
@@ -71,6 +72,26 @@
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.my-btn-primary {
+  background-color: var(--btn-bg-color);
+  color: var(--btn-color)
+}
+
+.my-btn-secondary {
+  background-color: var(--btn-bg-secondary);
+  color: var(--btn-color)
+}
+
+.my-btn-white {
+  background-color: var(--btn-bg-white);
+  color: var(--btn-color-secondary)
+}
+
+.my-btn-dark {
+  background-color: var(--btn-bg-dark);
+  color: var(--btn-color)
+}
+
 .input__group .input__error {
   font-size: 60%;
   display: block;
@@ -113,4 +134,21 @@
   left: 0;
   font-size: 1rem;
   padding: .1rem .2rem;
+}
+
+.container_field {
+  width: 100%;
+  display: grid;
+  text-align: start;
+  margin-bottom: 0.2rem;
+}
+
+.select_form_container {
+  font-size: 14px;
+  width: 100%;
+
+}
+
+.select_prefix {
+  margin-bottom: 10rem;
 }

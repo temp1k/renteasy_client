@@ -5,11 +5,9 @@ import {Container} from "react-bootstrap";
 import './css/housingcreate.css'
 import {CategoriesModal, TypesModal} from "../../components/Modals/index.js";
 import {createHousingAPI} from "./api/housingCreateAPI.js";
-import {getAllCountriesAPI} from "../../http/api/countryAPI.js";
 import useForm from "../../hook/useForm.js";
-import {PASSWORD_REGEXP} from "../../utils/validation.js";
 import {useNavigate} from "react-router-dom";
-import {MY_HOUSING_ROUTE} from "../../utils/consts/paths.js";
+import SelectDistricts from "../../components/SelectDistricts/SelectDistricts.jsx";
 
 let defaultValues = {
     name: '',
@@ -17,7 +15,7 @@ let defaultValues = {
     address: '',
     number_of_seats: 0,
     description: '',
-    country: 1,
+    district: null,
     rating: 0,
     categories: [],
     tags: [],
@@ -36,9 +34,7 @@ const HousingCreatePage = () => {
     const [categories, setCategories] = useState([])
     const [modalCategoriesActive, setModalCategoriesActive] = useState(false)
 
-    const [tags, setTags] = useState([])
-
-    const [countries, setCountries] = useState([])
+    const [selectedDistrict, setSelectedDistrict]= useState(0)
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
@@ -53,11 +49,9 @@ const HousingCreatePage = () => {
         }
         temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
         temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
-        temp.types = types.length ? "" : 'Типы не могут быть пустыми'
+        temp.district = selectedDistrict.value ? "" : "Округ не может быть пустым"
 
         setErrors({...temp});
-
-        console.log(categories)
 
         return Object.values(temp).every(x => x === "")
     }
@@ -71,14 +65,8 @@ const HousingCreatePage = () => {
     } = useForm(defaultValues, validate)
 
     useEffect(() => {
-        getAllCountriesAPI()
-            .then(data => {
-                setCountries(data)
-            })
-            .catch(err => {
-                console.warn(err)
-            })
-    }, []);
+
+    }, [selectedDistrict]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -95,6 +83,7 @@ const HousingCreatePage = () => {
                     formData.append(key, values[key]);
                 }
             }
+            formData.append('district', selectedDistrict.value)
 
             let imagesOfIds = images.map(obj => obj.id);
             imagesOfIds.forEach((value) => {
@@ -123,11 +112,7 @@ const HousingCreatePage = () => {
                     alert('Ошибка добавления жилья\n'+err)
                 })
         }
-    }
-
-    const openTypeModalHandle = (e) => {
-        e.preventDefault()
-        setModalTypesActive(true)
+        console.log(errors)
     }
 
     const openCategoriesModalHandle = (e) => {
@@ -136,7 +121,7 @@ const HousingCreatePage = () => {
     }
 
     return (
-        <div>
+        <div className={'container'}>
             <h4>Создание жилья</h4>
             <Container>
                 <form className={'form__create__housing'} onSubmit={handleSubmit}>
@@ -150,6 +135,11 @@ const HousingCreatePage = () => {
                                name={'short_name'}
                                value={values.short_name} onChange={handleInputChange}
                                error={errors.short_name}
+                        />
+                        <SelectDistricts
+                            selectedDistrict={selectedDistrict}
+                            setSelectedDistrict={setSelectedDistrict}
+                            error={errors.district}
                         />
                         <Input type={'text'} label={'Адрес'}
                                name={'address'}
@@ -166,17 +156,16 @@ const HousingCreatePage = () => {
                                value={values.number_of_seats} onChange={handleInputChange}
                                error={errors.number_of_seats}
                         />
-                        <MySelect items={countries} label={'Страна'}
-                                  name={'country'}
-                                  selectValue={values.country} onChange={handleInputChange}
-                                  error={errors.country}
-                        />
+                        {/*<MySelect items={districts} label={'Округ:'}*/}
+                        {/*          name={'country'}*/}
+                        {/*          selectValue={values.country} onChange={handleInputChange}*/}
+                        {/*          error={errors.country}*/}
+                        {/*/>*/}
                     </div>
                     <div className="container__images">
                         <DropImages images={images} setImages={setImages}/>
                     </div>
                     <div className="container__atrs">
-                        <ListAtrs items={types} onClick={openTypeModalHandle} label={'Типы'}/>
                         <ListAtrs items={categories} onClick={openCategoriesModalHandle} label={'Категории'}/>
                     </div>
                     <div className="container__footer">
@@ -184,11 +173,6 @@ const HousingCreatePage = () => {
                     </div>
                 </form>
 
-                <TypesModal
-                    active={modalTypesActive} setActive={setModalTypesActive}
-                    label={'Выберите типы жилья'}
-                    selectedTypes={types} setSelectedTypes={setTypes}
-                />
                 <CategoriesModal
                     active={modalCategoriesActive} setActive={setModalCategoriesActive}
                     label={'Выбор категории'}

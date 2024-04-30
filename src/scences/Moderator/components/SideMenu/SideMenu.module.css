@@ -1,0 +1,21 @@
+.side__menu {
+    height: 100%;
+    padding: 2.25rem 1.75rem;
+    text-align: left;
+    border-right: var(--second-color) 5px solid;
+}
+
+.ul__menu {
+    line-height: 2rem;
+    padding: 0;
+    text-decoration: none;
+
+}
+
+.ul__menu a {
+    text-decoration: none;
+}
+
+.active {
+    color: var(--second-color)
+}

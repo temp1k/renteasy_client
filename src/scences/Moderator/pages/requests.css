@@ -1,0 +1,52 @@
+.td-danger {
+    --bs-table-bg: var(--danger-color);
+}
+
+.td-warn {
+    background-color: var(--warn-color);
+}
+
+.td-norm {
+    background-color: var(--norm-color);
+}
+
+/*.tr-request td{*/
+/*    --bs-table-bg: var(--transparent-color);*/
+/*}*/
+
+.legend__table {
+    text-align: left;
+    padding: 0.5rem .4rem;
+    display: flex;
+    gap: 10px;
+}
+
+.danger_cr::before {
+    content: "";
+    display: inline-flex;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--danger-color);
+    margin-right: 5px; /* расстояние между кружком и текстом */
+}
+
+.normal_cr::before {
+    content: "";
+    display: inline-flex;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--norm-color);
+    margin-right: 5px; /* расстояние между кружком и текстом */
+}
+
+.warn_cr::before {
+    content: "";
+    display: inline-flex;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--warn-color);
+    margin-right: 5px; /* расстояние между кружком и текстом */
+}

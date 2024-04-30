@@ -25,6 +25,13 @@ export function formatJsonDateTo_HHmm(jsonDate) {
     return formattedTime
 }
 
+export function formatJsonDateTo_ddMMyyyy_HHmm(jsonDate) {
+    // Форматируем дату в формат dd.MM.yyyy HH:mm
+    const timeStr = formatJsonDateTo_HHmm(jsonDate)
+    const dateStr = formatJsonDateTo_ddMMyyyy(jsonDate)
+    return dateStr + ' ' + timeStr
+}
+
 export function formatJsonDateToJsDate(jsonDate) {
     return new Date(jsonDate)
 }
@@ -36,4 +43,17 @@ export function differenceDatesInDays(date1, date2) {
     const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
 
     return differenceInDays
+}
+
+export function getErrorText(error) {
+    if (error.response?.status) {
+        const status = error.response.status
+        switch(status) {
+            case 404:
+                return 'Упс... Ничего не найдено :('
+            default:
+                return 'Непредвиденная ошибка'
+        }
+    }
+    return 'ERROR!!!';
 }

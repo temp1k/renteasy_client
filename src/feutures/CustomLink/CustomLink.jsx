@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Link, useMatch} from "react-router-dom";
+import {Link, useLocation, useMatch} from "react-router-dom";
 import './custom_link.css'
 
 
 // eslint-disable-next-line react/prop-types
-const CustomLink = ({children, to, ...props}) => {
+const CustomLink = ({children, to, absolutePath=to, ...props}) => {
     const match = useMatch({
-        path: to,
+        path: absolutePath,
         // eslint-disable-next-line react/prop-types
         end: to.length === 1
     });

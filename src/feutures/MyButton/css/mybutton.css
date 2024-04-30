@@ -7,7 +7,6 @@
     font-size: var(--btn-font-size);
     font-weight: var(--bs-btn-font-weight);
     line-height: var(--bs-btn-line-height);
-    color: var(--btn-color);
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
@@ -17,7 +16,6 @@
     user-select: none;
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--btn-border-radius);
-    background-color: var(--btn-bg-color);
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -25,4 +23,8 @@
     background-color: var(--btn-bg-color-disable);
     color: var(--btn-color-disable);
     cursor: default;
+}
+
+.btn__custom_style:hover {
+    opacity: .8;
 }

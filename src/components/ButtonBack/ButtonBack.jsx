@@ -25,7 +25,7 @@ const ButtonBack = ({children, ...props}) => {
 };
 
 ButtonBack.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.any,
     className: PropTypes.string,
 }
 

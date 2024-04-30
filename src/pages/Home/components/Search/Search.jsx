@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import './search.css'
 import {ButtonSearch} from "../../../../components/index.js";
-import {getAllCountriesAPI} from "../../../../http/api/countryAPI.js";
+import {getAllDistrictsAPI} from "../../../../http/api/districtAPI.js";
 import DatePicker from "react-datepicker";
 import PropTypes from "prop-types";
 
@@ -19,7 +19,7 @@ const Search = ({fetchFunc}) => {
     const [endDate, setEndDate] = useState(null)
 
     useEffect(() => {
-        getAllCountriesAPI()
+        getAllDistrictsAPI()
             .then(data => {
                 setCountries(data)
                 console.log(data)
@@ -92,7 +92,7 @@ const Search = ({fetchFunc}) => {
     );
 };
 
-Search.propTyps = {
+Search.propTypes = {
     fetchFunc: PropTypes.func,
 }
 

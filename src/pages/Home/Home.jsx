@@ -3,6 +3,7 @@ import {getPublishHousingAPI} from "./api";
 import {Search} from "./components/Search/index.js";
 import {HousingCardList, MyPagination} from "../../components/index.js";
 import './home.css'
+import {getErrorText} from "../../utils/helpers.js";
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
             })
             .catch(err =>{
                 console.warn(err)
-                setError(err.message)
+                setError(getErrorText(err))
                 setLoading(false)
             })
     }

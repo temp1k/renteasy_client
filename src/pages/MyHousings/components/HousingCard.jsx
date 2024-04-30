@@ -7,7 +7,6 @@ import '../css/index.css'
 import {MY_HOUSING_ROUTE} from "../../../utils/consts/paths.js";
 
 const HousingCard = ({housing}) => {
-    console.log(housing)
     return (
         <div className={'my__card'}>
             <div className={'my__card__img left__img'}>
@@ -19,7 +18,7 @@ const HousingCard = ({housing}) => {
                 <div className={'text__description'}>
                     <b>Описание:</b> {housing.description}
                 </div>
-                <div className={'my__card__text'}><b>Страна:</b> {housing.country_d.name}</div>
+                <div className={'my__card__text'}><b>Округ:</b> {housing.district_d.name}</div>
                 <div className={'my__card__text__sm'}><b>Категории:</b>{' '}
                     {housing.categories_d.map(category =>
                         <span key={category.id}>{category.name} </span>

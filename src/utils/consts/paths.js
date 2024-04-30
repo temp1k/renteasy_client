@@ -25,4 +25,14 @@ export const REGISTRATION_ROUTE = '/reg'
 
 export const HOME_SCENE_ROUTE = '/'
 
+export const MODERATOR_SCENE_ROUTE = '/moderator'
+export const CONFIRM_REQUESTS_ROUTE = 'confirm_requests'
+export const AWAIT_REQUESTS_ROUTE = 'await_requests'
+export const CANCEL_REQUESTS_ROUTE = 'cancel_requests'
+export const REQUESTS_ROUTE = 'requests'
+export const MODERATOR_USERS_ROUTE = 'users'
+
+export const USERS_LIST_ROUTE = 'users_list'
+export const MODERATOR_STATISTICS_ROUTE = 'statistics'
+
 export const NO_PERMISSIONS_ROUTE = 'error/403'

@@ -74,7 +74,7 @@ const PublishHousingPage = () => {
                 </div>
                 <div className="ph_card_body">
                     <div className="ph_info">
-                        <p className={'ph_address'}>{housing.country_d.name}, {housing.address}</p>
+                        <p className={'ph_address'}>{housing.district_d.name} округ, {housing.address}</p>
                         <div className="ph_categories">
                             {housing.categories_d.map(category =>
                                 <span key={category.id}>{category.name}</span>

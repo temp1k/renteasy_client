@@ -65,6 +65,7 @@ const CategoriesModal = ({label, selectedCategories, setSelectedCategories, acti
         }
 
         setSelectedCategories([...selectedCategories, item])
+        setSearchValue('')
     }
 
     const deleteFromSelectedCategories = (item) => {
@@ -95,7 +96,6 @@ const CategoriesModal = ({label, selectedCategories, setSelectedCategories, acti
                         value={searchValue}
                         placeholder={'Введите катерогию...'}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        click={() => setSearchValue('')}
                     />
                 </form>
                 <div className="container__choice">

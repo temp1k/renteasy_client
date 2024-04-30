@@ -1,12 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from "react-paginate";
 import './pagination.css'
 
 const MyPagination = ({itemsPerPage=5, setOffset, count, ...props}) => {
     const pageCount = calculatePageCount(count, itemsPerPage)
-
-
     function calculatePageCount(totalItems, itemsPerPage) {
         let totalPages = Math.floor(totalItems / itemsPerPage);
         if (totalItems % itemsPerPage !== 0) {
