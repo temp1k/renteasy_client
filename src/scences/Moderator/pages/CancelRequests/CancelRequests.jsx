@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DoneRequests from "../DoneRequests/DoneRequests.jsx";
+import {CANCEL_REQUEST_STATUS} from "../../../../utils/consts/statuses.js";
 
 const CancelRequests = props => {
     return (
-        <div>
-            Список отклоненных заявок
-        </div>
+        <DoneRequests status={CANCEL_REQUEST_STATUS} />
     );
 };
 

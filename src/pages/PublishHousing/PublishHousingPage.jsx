@@ -63,16 +63,10 @@ const PublishHousingPage = () => {
                     Изменить
                 </CustomLinkButton>
             }
-            <ContainerImages housing={housing} />
+
             <div className="ph__card">
                 <p className={'title_housing'}>{housing.name}</p>
-                <div className="container_images">
-                    {housing.images_d.map(img =>
-                        <div key={img.id} className={'container_img'}>
-                            <img  src={img.image} alt={`Изображение ${housing.name}`}/>
-                        </div>
-                    )}
-                </div>
+                <ContainerImages housing={housing} />
                 <div className="ph_card_body">
                     <div className="ph_info">
                         <p className={'ph_address'}>{housing.district_d.name} округ, {housing.address}</p>

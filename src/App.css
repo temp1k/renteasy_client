@@ -92,6 +92,16 @@
   color: var(--btn-color)
 }
 
+.my-btn-danger {
+  background-color: var(--danger-color);
+  color: var(--btn-color);
+}
+
+.my-btn-success {
+  background-color: var(--success-color);
+  color: var(--btn-color);
+}
+
 .input__group .input__error {
   font-size: 60%;
   display: block;

@@ -10,7 +10,8 @@ const useForm = (initialFieldValues, validate) => {
         setValues({
             ...values, ...fieldValue
         })
-        validate(fieldValue, errors, setErrors)
+        setErrors({...errors, [name]: ''})
+        validate(fieldValue)
     }
 
     const resetForm = () => {

@@ -18,7 +18,7 @@ MyButton.propTypes = {
     type: PropTypes.string,
     className: PropTypes.string,
     variant: PropTypes.oneOf(
-        ['primary', 'secondary', 'dark', 'white']
+        ['primary', 'secondary', 'dark', 'white', 'danger', 'success']
     ),
     children: PropTypes.node,
     onClick: PropTypes.func,

@@ -7,7 +7,10 @@
 }
 
 .container__info__housing {
-
+    margin-top: .5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
 }
 
 .categories {
@@ -23,6 +26,35 @@
 .categories p {
     padding: .125rem .25rem;
     border-radius: .5rem;
-    background-color: var(--norm-color);
-    color: var(--background-color)
+    background-color: var(--bg-color-field);
+    color: var(--main-color)
+}
+
+.field_group {
+    text-align: left;
+    margin-bottom: .3rem;
+    --padding-horizontal: .5rem;
+}
+
+.field_group > * {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: var(--title-field-font-size);
+    padding-left: var(--padding-horizontal);
+}
+
+.data {
+    padding: .2rem var(--padding-horizontal);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color-field);
+    background-color: var(--bg-color-field);
+    min-height: 1.6rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: end;
 }

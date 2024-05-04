@@ -17,6 +17,8 @@ import {
     MODERATOR_USERS_ROUTE,
     REQUESTS_ROUTE, USERS_LIST_ROUTE
 } from "../../utils/consts/paths.js";
+import {CANCEL_REQUEST_STATUS, CONFIRM_REQUEST_STATUS} from "../../utils/consts/statuses.js";
+import DoneRequests from "./pages/DoneRequests/DoneRequests.jsx";
 
 const ModeratorScene = props => {
     return (

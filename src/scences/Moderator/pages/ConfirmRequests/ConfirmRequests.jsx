@@ -1,14 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {CONFIRM_REQUEST_STATUS} from "../../../../utils/consts/statuses.js";
+import DoneRequests from "../DoneRequests/DoneRequests.jsx";
 
 const ConfirmRequests = props => {
     return (
-        <div>
-            Список подтвержденных заявок
-        </div>
+        <DoneRequests status={CONFIRM_REQUEST_STATUS} />
     );
 };
 
-ConfirmRequests.propTypes = {};
+ConfirmRequests.propTypes = {
+
+};
 
 export default ConfirmRequests;

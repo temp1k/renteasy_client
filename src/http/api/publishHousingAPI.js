@@ -17,6 +17,17 @@ export const getMyPublishHousingsAPI = async (activity=null, params={}) => {
 }
 
 export const getPublishHousingByIdAPI = async (id) => {
+    const {data} = await $api.get('/api/published_housings/'+id)
+    return data
+}
+
+
+export const getAnyHousingByIdAPI = async (id) => {
     const {data} = await $apiAuth.get('/api/published_housings/'+id)
     return data
+}
+
+export const changeStatusPublihsHousingAPI = async (id, status, message=null) => {
+    const {data} = await $apiAuth.put(`/api/published_housings/${id}/request/`, {status, message})
+    return data;
 }

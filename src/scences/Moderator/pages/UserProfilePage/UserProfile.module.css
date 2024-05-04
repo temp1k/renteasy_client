@@ -1,0 +1,22 @@
+.container {
+    position: relative;
+}
+
+.fields {
+    display: inline-block;
+    width: auto;
+    margin: auto auto 1rem;
+}
+
+.container_field {
+    text-align: left;
+    margin-bottom: .3rem;
+}
+
+.field_title {
+
+}
+
+.field_data {
+
+}

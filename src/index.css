@@ -19,9 +19,12 @@
 
   --default-font-size: 20px;
   --field-font-size: 16px;
+  --title-field-font-size: 14px;
   --header1-font-size: 24px;
   --default-font-color: #242424;
   --table-font-size: 16px;
+
+  --border-radius: 0.6rem;
 
   --bg-color-menu: #f5f5f5;
 
@@ -33,9 +36,14 @@
   --white-color: #f5f5f5;
   --second-color-opacity: rgba(255, 136, 0, 0.3);
   --danger-color: #e31010;
-  --norm-color: #6f726f;
+  --success-color: #33d52a;
+  --norm-color: #999b99;
   --warn-color: #d3d312;
   --transparent-color: rgba(0, 0, 0, 0);
+  /*field */
+  --bg-color-field: #d5d1d1;
+  --border-color-field: #727272;
+
   /*image loader*/
   --bg-color-loader: #dad8d8;
   --bg-color-loader-active: rgba(245, 244, 244, 0.6);

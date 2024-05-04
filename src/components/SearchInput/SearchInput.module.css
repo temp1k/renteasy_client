@@ -1,6 +1,7 @@
 .container__search {
     display: inline-flex;
     width: 50%;
+    min-width: 200px;
     height: auto;
     position: relative;
     align-items: center;

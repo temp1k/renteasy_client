@@ -6,27 +6,38 @@ import {CenterLoading, CustomLinkButton, MyButton, MyTable} from "../../../../fe
 import {TfiReload} from "react-icons/tfi";
 import {formatJsonDateTo_ddMMyyyy} from "../../../../utils/helpers.js";
 import {FaEye} from "react-icons/fa";
-import {MyPagination, SearchInput} from "../../../../components/index.js";
+import {ButtonBlockUser, MyPagination, SearchInput} from "../../../../components/index.js";
 import {useState} from "react";
 import {MyContainer} from "../../../../feutures/MyContainer/index.js";
+import {GoBlocked} from "react-icons/go";
+import {BsUnlock} from "react-icons/bs";
 
 const TrUser = ({user, offset = 0, index}) => {
+
+    const [stateUser, setStateUser] = useState(user)
+
     return (
-        <tr key={user.id} className={`tr-request`}>
+        <tr key={stateUser.id} className={`tr-request`}>
             <td>{index + 1 + offset}</td>
-            <td>{user.username}</td>
-            <td>{user.email}</td>
-            <td>{user.first_name + ' ' + user.last_name}</td>
+            <td>{stateUser.username}</td>
+            <td>{stateUser.email}</td>
+            <td>{stateUser.first_name + ' ' + stateUser.last_name}</td>
             <td>{
-                user.groups.map(role =>
-                    <span key={role}>{role+' '}</span>
+                stateUser.groups.map(role =>
+                    <span key={role}>{role + ' '}</span>
                 )
             }</td>
-            <td>{formatJsonDateTo_ddMMyyyy(user.date_joined)}</td>
-            <td>{user.is_active ? 'Активен' : 'Заблокирован'}</td>
-            <td>{user.is_success ? 'Подтвержден' : 'Не подтвержден'}</td>
-            <td>
+            <td>{formatJsonDateTo_ddMMyyyy(stateUser.date_joined)}</td>
+            <td>{stateUser.is_active ? 'Активен' : 'Заблокирован'}</td>
+            <td>{stateUser.is_success ? 'Подтвержден' : 'Не подтвержден'}</td>
+            <td style={{display: 'flex', gap:'5px'}}>
                 <CustomLinkButton to={`${user.id}`}><FaEye/></CustomLinkButton>
+                <ButtonBlockUser
+                    user={stateUser}
+                    setUser={setStateUser}
+                    nodeBlock={<GoBlocked />}
+                    nodeUnlock={<BsUnlock />}
+                />
             </td>
         </tr>
     );
@@ -55,7 +66,7 @@ const UsersList = () => {
                 position: 'sticky'
             }}>Пользователи</h4>
             <div>
-                <SearchInput search={search} setSearch={setSearch} />
+                <SearchInput search={search} setSearch={setSearch}/>
             </div>
 
             <MyTable bordered>
@@ -94,7 +105,7 @@ const UsersList = () => {
                 )}
                 </tbody>
             </MyTable>
-            {count===0 &&
+            {count === 0 &&
                 <span>Ничего не найдено :(</span>
             }
             <MyPagination count={count} setOffset={setOffset} itemsPerPage={limit}/>
@@ -102,8 +113,6 @@ const UsersList = () => {
     );
 };
 
-UsersList.propTypes = {
-
-};
+UsersList.propTypes = {};
 
 export default UsersList;

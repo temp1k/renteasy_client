@@ -1,5 +1,6 @@
 export {CancelRequests} from './CancelRequests'
 export {ConfirmRequests} from './ConfirmRequests'
+export {DoneRequests} from './DoneRequests'
 export {PublishRequests} from './PublishRequests'
 export {RequestViewPage} from './RequestViewPage'
 export {StatisticsUsers} from './StatisticsUsers'
