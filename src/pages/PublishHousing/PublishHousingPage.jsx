@@ -4,7 +4,7 @@ import {ButtonBack, BuyForm, ContainerImages, Feedbacks, PostFeedback} from "../
 import {Container} from "react-bootstrap";
 import './publish_housing.css'
 import {CenterLoading, CustomLinkButton} from "../../feutures/index.js";
-import {getPublishHousingByIdAPI} from "../../http/api/publishHousingAPI.js";
+import {checkBuyProductAPI, getPublishHousingByIdAPI} from "../../http/api/publishHousingAPI.js";
 import {useUser} from "../../hook/useUser.js";
 import {MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../utils/consts/paths.js";
 import {FaStar} from "react-icons/fa";
@@ -18,14 +18,23 @@ const PublishHousingPage = () => {
     const [feedbacks, setFeedbacks] = useState([])
     let housing = publishHousing?.housing_d
     const {currentUser} = useUser()
+    const [isBuy, setIsBuy] = useState(false)
 
     useEffect(() => {
         getPublishHousingByIdAPI(id)
             .then(data => {
                 setPublishHousing(data)
                 setLoading(false)
+                checkBuyProductAPI(data.id)
+                    .then(result => {
+                        setIsBuy(result)
+                    })
+                    .catch(err => {
+                        console.error(err)
+                    })
+                console.log('check')
             })
-            .catch(err =>{
+            .catch(err => {
                 alert('Ошибка получения записи!')
                 setLoading(false)
                 console.warn(err)
@@ -44,7 +53,7 @@ const PublishHousingPage = () => {
     if (loading) {
         return (
             <div>
-                <CenterLoading />
+                <CenterLoading/>
             </div>
         )
     }
@@ -66,7 +75,7 @@ const PublishHousingPage = () => {
 
             <div className="ph__card">
                 <p className={'title_housing'}>{housing.name}</p>
-                <ContainerImages housing={housing} />
+                <ContainerImages housing={housing}/>
                 <div className="ph_card_body">
                     <div className="ph_info">
                         <p className={'ph_address'}>{housing.district_d.name} округ, {housing.address}</p>
@@ -76,7 +85,8 @@ const PublishHousingPage = () => {
                             )}
                         </div>
                         <div>
-                            <p className={'ph_numbers'}>Гостей: {housing.number_of_seats} <IoIosPeople className={'ph_icon'}/></p>
+                            <p className={'ph_numbers'}>Гостей: {housing.number_of_seats} <IoIosPeople
+                                className={'ph_icon'}/></p>
                             <p className={'ph_rating'}>Рейтинг:
                                 <span>
                                     {housing.rating} <FaStar className={'ph_icon'}/>
@@ -91,12 +101,17 @@ const PublishHousingPage = () => {
                             <CustomLinkButton to={`chat/${publishHousing.id}`}>Написать хозяину</CustomLinkButton>
                         </div>
                     </div>
-                    <BuyForm publishHousing={publishHousing} />
+                    <BuyForm publishHousing={publishHousing}/>
                 </div>
             </div>
             <br/>
-            {currentUser.id !== housing.owner_d.id && currentUser.isAuth &&
-                <PostFeedback addFeedback={addFeedback} publishHousing={publishHousing}/>
+            {currentUser.id !== housing.owner_d.id
+                && currentUser.isAuth
+                && isBuy &&
+                <div className={'container container_button_feedback'}>
+                    <PostFeedback addFeedback={addFeedback}
+                                  publishHousing={publishHousing}/>
+                </div>
             }
             <Feedbacks feedbacks={feedbacks}/>
         </Container>

@@ -1,8 +1,10 @@
+import {ADMIN_ROLE, LANDLORD_ROLE, MODERATOR_ROLE, USER_ROLE} from "./consts/roles.js";
+
 export function getLastFragmentFromUrl(url) {
     const parts = url.split('/');
 
     let fragment = parts[parts.length - 1]
-    if (fragment.length > 20) fragment = '...'+fragment.slice(-20)
+    if (fragment.length > 20) fragment = '...' + fragment.slice(-20)
 
     return fragment;
 }
@@ -48,12 +50,31 @@ export function differenceDatesInDays(date1, date2) {
 export function getErrorText(error) {
     if (error.response?.status) {
         const status = error.response.status
-        switch(status) {
+        switch (status) {
             case 404:
+                if (error.response.data?.message) return error.response.data?.message
+                else if (error.response.data?.error) return error.response.data?.error
                 return 'Упс... Ничего не найдено :('
             default:
                 return 'Непредвиденная ошибка'
         }
     }
     return 'ERROR!!!';
+}
+
+
+export function getRole(role) {
+    switch (role) {
+        case LANDLORD_ROLE:
+            return 'Арендодатель'
+
+        case USER_ROLE:
+            return 'Арендатор'
+
+        case ADMIN_ROLE:
+            return 'Администратор'
+
+        case MODERATOR_ROLE:
+            return 'Модератор'
+    }
 }

@@ -64,7 +64,7 @@ const LoginPage = () => {
 
     return (
         <div className={'container-center mt-5'}>
-            <form onSubmit={handleSubmit} className={'form-center'}>
+            <form onSubmit={handleSubmit} className={'form-center w_login_form'}>
                 <div className={'form__header'}>Войдите</div>
                 <span className="form__error">{error}</span>
                 <div className={'input__group'}>

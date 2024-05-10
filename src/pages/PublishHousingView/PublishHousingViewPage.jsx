@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {CenterLoading, CustomCheckBox, MessageAlert, MyButton, SuccessAlert} from "../../feutures/index.js";
+import {CenterLoading, CustomCheckBox, MessageAlert, MyButton} from "../../feutures/index.js";
 import {useParams} from "react-router-dom";
-import {getPublishHousingByIdAPI, updatePublishHousingAPI} from "../../http/api/publishHousingAPI.js";
+import {getAnyHousingByIdAPI, updatePublishHousingAPI} from "../../http/api/publishHousingAPI.js";
 import {ButtonBack, MinHousingCard} from "../../components/index.js";
 import DatePicker from "react-datepicker";
 import {Button} from "react-bootstrap";
@@ -63,7 +63,7 @@ const PublishHousingViewPage = props => {
 
     useEffect(() => {
         setLoading(true)
-        getPublishHousingByIdAPI(id)
+        getAnyHousingByIdAPI(id)
             .then(data => {
                 console.log(data)
                 fillForm(data)

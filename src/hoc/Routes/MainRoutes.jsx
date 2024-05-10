@@ -21,6 +21,7 @@ import {
 import {Arenda, ChatScene, ModeratorScene, ProScene} from "../../scences/index.js";
 import {RequireAuth} from "../index.js";
 import {ADMIN_ROLE, LANDLORD_ROLE, MODERATOR_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
+import ProfileRoutes from "./ProfileRoutes.jsx";
 
 
 export const MainRoutes = () => {
@@ -30,9 +31,9 @@ export const MainRoutes = () => {
                 <Route index element={<Home/>}/>
                 <Route path='/home' element={<Navigate to={'/'} replace/>}/>
                 <Route path={PUBLISH_HOUSING_ROUTE + '/:id'} element={<PublishHousingPage/>}/>
-                <Route path={PROFILE_ROUTE} element={
+                <Route path={PROFILE_ROUTE+'/*'} element={
                     <RequireAuth>
-                        <ProfilePage/>
+                        <ProfileRoutes />
                     </RequireAuth>
                 }/>
                 <Route path='/' Component={AuthLayout}>
@@ -53,14 +54,14 @@ export const MainRoutes = () => {
                     <ProScene/>
                 </RequireAuth>
             }/>
-            <Route path={'/' + CHAT_SCENE_ROUTE+'/*'} element={
+            <Route path={'/' + CHAT_SCENE_ROUTE + '/*'} element={
                 <RequireAuth requireRoles={[LANDLORD_ROLE]}>
-                    <ChatScene />
+                    <ChatScene/>
                 </RequireAuth>
             }/>
-            <Route path={MODERATOR_SCENE_ROUTE+'/*'} element={
+            <Route path={MODERATOR_SCENE_ROUTE + '/*'} element={
                 <RequireAuth requireRoles={[MODERATOR_ROLE]}>
-                    <ModeratorScene />
+                    <ModeratorScene/>
                 </RequireAuth>
             }/>
         </Routes>

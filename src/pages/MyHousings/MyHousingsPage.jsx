@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getMyHousingsAPI} from "./api/myHousingsAPI.js";
-import {CenterLoading, CustomLink, CustomLinkButton, MyButton} from "../../feutures/index.js";
+import {CenterLoading, CustomLink, CustomLinkButton} from "../../feutures/index.js";
 import HousingCard from "./components/HousingCard.jsx";
 import {HOUSING_CREATE_ROUTE} from "../../utils/consts/paths.js";
 import {MyPagination} from "../../components/index.js";

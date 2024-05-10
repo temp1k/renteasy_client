@@ -1,0 +1,44 @@
+.requests_container {
+    overflow-x: auto; /* Добавляем горизонтальный скролл */
+    white-space: nowrap;
+    text-align: center;
+}
+
+.request_container:last-child {
+    margin-right: 0;
+}
+
+.request_container {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: var(--main-color) solid 1px;
+    width: 380px;
+    text-align: left;
+    margin-right: 2rem;
+    white-space: normal;
+}
+
+.card__body {
+    position: relative;
+    font-size: var(--field-font-size);
+}
+
+.card__body span {
+    color: var(--second-color)
+}
+
+.card__body p {
+    padding: 0;
+    margin-bottom: .3rem;
+}
+
+.card__footer {
+    text-align: end;
+}
+
+.btn_view {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

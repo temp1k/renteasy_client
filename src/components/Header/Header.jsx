@@ -10,7 +10,8 @@ import {
 } from "../../utils/consts/paths.js";
 import {CustomLink, MyLogo} from "../../feutures";
 import {useUser} from "../../hook/useUser.js";
-import {LANDLORD_ROLE, MODERATOR_ROLE} from "../../utils/consts/roles.js";
+import {ADMIN_ROLE, LANDLORD_ROLE, MODERATOR_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
+import {LinkToAdminPanel} from "../LinkToAdminPanel/index.js";
 
 
 const Header = () => {
@@ -28,12 +29,16 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto"></Nav>
                     <Nav>
-                        {currentUser.roles.includes(LANDLORD_ROLE) ?
-                            (
-                                <CustomLink to={PRO_SCENE_ROUTE} className={'nav-link'}>PRO панель</CustomLink>
-                            ) : (
-                                <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
-                            )
+                        {currentUser.roles.includes(LANDLORD_ROLE) &&
+                            <CustomLink to={PRO_SCENE_ROUTE} className={'nav-link'}>PRO панель</CustomLink>
+                        }
+                        {currentUser.roles.includes(USER_ROLE) &&
+                            <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
+                        }
+                        {currentUser.roles.includes(ADMIN_ROLE) &&
+                            <LinkToAdminPanel  className={'nav-link'}>
+                                Админ панель
+                            </LinkToAdminPanel>
                         }
                         {currentUser.roles.includes(MODERATOR_ROLE) &&
                             <CustomLink to={MODERATOR_SCENE_ROUTE} className={'nav-link'}>Модерация</CustomLink>

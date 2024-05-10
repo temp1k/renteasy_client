@@ -1,0 +1,38 @@
+.link_container {
+    font-size: var(--header1-font-size);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    width: auto;
+    gap: 4px;
+    color: var(--second-color)
+}
+
+.icon {
+    z-index: 1;
+}
+
+.text {
+    white-space: nowrap;
+    display: inline;
+    transition: width 1s ease;
+    width: 0;
+    font-size: var(--field-font-size);
+}
+
+.link_container:hover {
+
+}
+.link_container:hover .text {
+    width: 260px;
+    /*animation: ani 1s forwards;*/
+}
+
+@keyframes ani {
+    0% {width: 0;}
+    30%{ width: 50px;}
+    80%{ width: 100px;}
+    100% {width: auto;}
+}
+

@@ -6,6 +6,8 @@ export const PUBLISH_HOUSING_ROUTE = '/room'
 
 export const PROFILE_ROUTE = '/profile'
 
+export const MY_REQUESTS_ROUTE = `requests`
+
 export const RENT_SCENE_ROUTE = '/rent'
 
 export const PRO_SCENE_ROUTE = 'pro'

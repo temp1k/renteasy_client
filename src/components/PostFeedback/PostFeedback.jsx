@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Container, Modal} from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 import {CenterLoading, MyButton} from "../../feutures/index.js";
 import {StarsRating} from "../StarsRating/index.js";
 import CustomTextarea from "../../feutures/CustomTextarea/CustomTextarea.jsx";
@@ -100,7 +100,7 @@ const FeedbackModal = ({callback, publishHousing, onHide, ...props}) => {
     );
 }
 
-const PostFeedback = ({addFeedback, publishHousing, ...props}) => {
+const   PostFeedback = ({addFeedback, publishHousing, ...props}) => {
     const [modalShow, setModalShow] = useState(false);
 
     const postFeedback = async (feedback) => {
@@ -117,9 +117,11 @@ const PostFeedback = ({addFeedback, publishHousing, ...props}) => {
     }
 
     return (
-        <Container className={'container_post_feedback'}>
+        <>
             <MyButton
                 onClick={() => setModalShow(true)}
+                {...props}
+                className={props.className}
             >
                 Написать отзыв
             </MyButton>
@@ -130,12 +132,14 @@ const PostFeedback = ({addFeedback, publishHousing, ...props}) => {
                 callback={postFeedback}
                 publishHousing={publishHousing}
             />
-        </Container>
+        </>
     );
 };
 
 PostFeedback.propTypes = {
     addFeedback: PropTypes.func,
+    className: PropTypes.string,
+    publishHousing: PropTypes.object,
 };
 
 export default PostFeedback;

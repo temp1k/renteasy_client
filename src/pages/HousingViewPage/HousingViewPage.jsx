@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {getHousingById, updateHousingAPI} from "../../http/api/housingAPI.js";
 import {Button, Container} from "react-bootstrap";
 import './css/housing_view.css'
 import useForm from "../../hook/useForm.js";
 import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
-import {CenterLoading, Input, MessageAlert, MyButton, MySelect, SuccessAlert, Textarea} from "../../feutures/index.js";
-import {CategoriesModal, PublishHousingModal, TypesModal} from "../../components/Modals/index.js";
+import {CenterLoading, Input, MessageAlert, MyButton, Textarea} from "../../feutures/index.js";
+import {CategoriesModal, PublishHousingModal} from "../../components/Modals/index.js";
 import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
 import SelectDistricts from "../../components/SelectDistricts/SelectDistricts.jsx";
 
@@ -32,7 +32,6 @@ const HousingViewPage = () => {
     const [loadingBtn, setLoadingBtn] = useState(false)
 
     const {id} = useParams()
-    const [modalTypesActive, setModalTypesActive] = useState(false)
     const [modalCategoriesActive, setModalCategoriesActive] = useState(false)
     const [modalPublishActive, setModalPublishActive] = useState(false)
     const [images, setImages] = useState([])

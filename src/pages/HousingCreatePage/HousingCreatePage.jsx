@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Input, MyButton, MySelect, Textarea} from "../../feutures/index.js";
+import {Input, MyButton, Textarea} from "../../feutures/index.js";
 import {DropImages, ListAtrs} from "../../components/index.js";
 import {Container} from "react-bootstrap";
 import './css/housingcreate.css'
-import {CategoriesModal, TypesModal} from "../../components/Modals/index.js";
+import {CategoriesModal} from "../../components/Modals/index.js";
 import {createHousingAPI} from "./api/housingCreateAPI.js";
 import useForm from "../../hook/useForm.js";
 import {useNavigate} from "react-router-dom";

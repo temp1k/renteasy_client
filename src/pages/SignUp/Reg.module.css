@@ -1,0 +1,23 @@
+.container_fields {
+    display: grid;
+    grid-template-columns: 1fr 2.3fr;
+    gap: 1rem;
+    margin-bottom: .5rem;
+}
+
+.container_FIO {
+    display: flex;
+    gap: 5px;
+}
+
+.container_passport_number {
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr 1.5fr;
+    gap: .5rem;
+}
+
+.input_passport {
+    text-align: center;
+    letter-spacing: 2px;
+}

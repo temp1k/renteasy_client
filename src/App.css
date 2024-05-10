@@ -27,9 +27,10 @@
 
 .container-center {
   display: flex;
+  width: 80vw;
+  margin: auto;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 
 .form__header {
@@ -39,7 +40,7 @@
 }
 
 .form-center {
-  width: 100%;
+  min-width: auto;
   align-self: center;
   justify-self: center;
   border: 3px hidden var(--second-color);
@@ -48,8 +49,28 @@
   padding: 10px 3rem;
 }
 
+.form__error {
+  color: var(--danger-color);
+  width: 100%;
+  line-height: 1.2;
+  font-size: var(--error-font-size);
+}
+
+.w_login_form {
+  width: 33vw;
+}
+
 .my__logo {
   color: var(--second-color)
+}
+
+.my_link {
+  color: var(--main-color);
+  transition: transform .3s;
+
+  &:hover {
+    transform: scale(1.08);
+  }
 }
 
 .my-btn {

@@ -1,0 +1,1 @@
+export {default as LinkToAdminPanel} from './LinkToAdminPanel.jsx'

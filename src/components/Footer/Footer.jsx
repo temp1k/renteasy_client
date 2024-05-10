@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
             <Container className={"text-center d-block"}>
-                This is footer
+
             </Container>
         </Navbar>
     );

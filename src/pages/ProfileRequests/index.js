@@ -1,1 +1,1 @@
-export {default as RequestsUserPage} from './RequestsUserPage.jsx'
+export {default as ProfileRequests} from './ProfileRequests.jsx'

@@ -2,18 +2,25 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import './buy_form.css'
 import DatePicker from "react-datepicker";
-import {MyButton} from "../../feutures/index.js";
-import {differenceDatesInDays} from "../../utils/helpers.js";
+import {MyButton, SuccessAlert} from "../../feutures/index.js";
+import {differenceDatesInDays, getErrorText} from "../../utils/helpers.js";
+import {useUser} from "../../hook/useUser.js";
+import {postBuyRequestAPI} from "../../http/api/publishHousingAPI.js";
+import {useNavigate} from "react-router-dom";
+import {MY_REQUESTS_ROUTE, PROFILE_ROUTE} from "../../utils/consts/paths.js";
 
 const BuyForm = ({publishHousing}) => {
 
+    const navigate = useNavigate()
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [count, setCount] = useState('')
     const [days, setDays] = useState(0)
     const [priceForDays, setPriceForDays] = useState(0)
+    const [loadingBuy, setLoadingBuy] = useState(false)
     let priceForRent = 250 * days
     let totalPrice = priceForDays + priceForRent
+    const {currentUser} = useUser()
 
     let [minDate, maxDate] = [new Date(publishHousing.date_begin), new Date(publishHousing.date_end)]
 
@@ -44,7 +51,6 @@ const BuyForm = ({publishHousing}) => {
         }
 
         // Проверяем, является ли введенное значение положительным числом и не превышает ли 10
-        console.log(publishHousing.number_of_seats)
         if (/^\d*\.?\d*$/.test(value) && parseFloat(value) >= 0 && parseFloat(value) <= parseFloat(housing.number_of_seats)) {
             setCount(value);
         }
@@ -52,12 +58,39 @@ const BuyForm = ({publishHousing}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        alert('Бронирование')
+        const buy_request = {
+            product: publishHousing.id,
+            user: currentUser.id,
+            number_of_seats: count,
+            date_begin: startDate,
+            date_end: endDate,
+            price: totalPrice,
+            buyer_confirm: true,
+        }
+
+        setLoadingBuy(true)
+        postBuyRequestAPI(buy_request)
+            .then(data => {
+                console.log(data)
+                SuccessAlert(
+                    'Бронирование жилья',
+                    'Жилье успешно забронировано',
+                    () => {
+                        navigate(`${PROFILE_ROUTE}/${MY_REQUESTS_ROUTE}/${data.id}`)
+                    }
+                )
+            })
+            .catch(err => {
+                console.error(err)
+                window.alert(getErrorText(err))
+            })
+            .finally(() => setLoadingBuy(false))
     }
 
     return (
         <div className="container_brone">
-            <p className={'price'}><span>{publishHousing.price} {publishHousing.currency_d.publish_name}</span> за день</p>
+            <p className={'price'}><span>{publishHousing.price} {publishHousing.currency_d.publish_name}</span> за день
+            </p>
             <form onSubmit={handleSubmit}>
                 <div className="container_buy_form">
                     <div className={'field_container first_datepicker'}>
@@ -108,6 +141,7 @@ const BuyForm = ({publishHousing}) => {
                     className={'btn_buy_form'}
                     type={'submit'}
                     disabled={!endDate || !startDate || !count}
+                    loading={loadingBuy}
                 >
                     Зарбронировать
                 </MyButton>

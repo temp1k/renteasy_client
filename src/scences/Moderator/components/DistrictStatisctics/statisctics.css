@@ -1,0 +1,9 @@
+.pie_container {
+    width: auto;
+    max-height: 400px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
