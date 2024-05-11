@@ -28,6 +28,7 @@ export const REGISTRATION_ROUTE = '/reg'
 export const HOME_SCENE_ROUTE = '/'
 
 export const MODERATOR_SCENE_ROUTE = '/moderator'
+export const ADMIN_SCENE_ROUTE = '/admin'
 export const CONFIRM_REQUESTS_ROUTE = 'confirm_requests'
 export const AWAIT_REQUESTS_ROUTE = 'await_requests'
 export const CANCEL_REQUESTS_ROUTE = 'cancel_requests'

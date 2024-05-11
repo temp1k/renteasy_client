@@ -2,6 +2,7 @@ import {Button, Container, Nav, Navbar} from "react-bootstrap"
 
 import {Link, useNavigate} from "react-router-dom";
 import {
+    ADMIN_SCENE_ROUTE,
     LOGIN_ROUTE,
     MODERATOR_SCENE_ROUTE,
     PRO_SCENE_ROUTE,
@@ -36,9 +37,7 @@ const Header = () => {
                             <CustomLink to={RENT_SCENE_ROUTE} className={'nav-link'}>Сдать жилье</CustomLink>
                         }
                         {currentUser.roles.includes(ADMIN_ROLE) &&
-                            <LinkToAdminPanel  className={'nav-link'}>
-                                Админ панель
-                            </LinkToAdminPanel>
+                            <CustomLink to={ADMIN_SCENE_ROUTE} className={'nav-link'}>Администрирование</CustomLink>
                         }
                         {currentUser.roles.includes(MODERATOR_ROLE) &&
                             <CustomLink to={MODERATOR_SCENE_ROUTE} className={'nav-link'}>Модерация</CustomLink>

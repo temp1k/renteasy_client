@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {getUrlServer} from "../../http/api/authAPI.js";
+import s from './Link.module.css'
 
 const LinkToAdminPanel = props => {
     const [linkToAdmin, setLink] = useState('#')
@@ -32,13 +33,13 @@ const LinkToAdminPanel = props => {
             target="_blank"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            style={{
-                color: 'var(--main-color)',
-                transform: isHovered ? 'scale(1.08)' : 'none',
-                transition: 'transform 0.3s'
-            }}
+            // style={{
+            //     color: 'var(--main-color)',
+            //     transform: isHovered ? 'scale(1.08)' : 'none',
+            //     transition: 'transform 0.3s'
+            // }}
             {...props}
-            className={props.className}
+            className={props.className+' '+s.link}
         >{props.children}</a>
     );
 };

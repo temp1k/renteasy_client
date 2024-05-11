@@ -11,6 +11,7 @@ import {
 } from "../../pages/index.js";
 import {HomeLayout, AuthLayout} from "../../components";
 import {
+    ADMIN_SCENE_ROUTE,
     CHAT_SCENE_ROUTE,
     LOGIN_ROUTE, MODERATOR_SCENE_ROUTE,
     NO_PERMISSIONS_ROUTE, PRO_SCENE_ROUTE,
@@ -22,6 +23,7 @@ import {Arenda, ChatScene, ModeratorScene, ProScene} from "../../scences/index.j
 import {RequireAuth} from "../index.js";
 import {ADMIN_ROLE, LANDLORD_ROLE, MODERATOR_ROLE, USER_ROLE} from "../../utils/consts/roles.js";
 import ProfileRoutes from "./ProfileRoutes.jsx";
+import {AdminScene} from "../../scences/Admin/index.js";
 
 
 export const MainRoutes = () => {
@@ -36,6 +38,11 @@ export const MainRoutes = () => {
                         <ProfileRoutes />
                     </RequireAuth>
                 }/>
+                <Route path={ADMIN_SCENE_ROUTE+'/*'} element={
+                    <RequireAuth requireRoles={[ADMIN_ROLE]}>
+                        <AdminScene />
+                    </RequireAuth>
+                } />
                 <Route path='/' Component={AuthLayout}>
                     <Route path={LOGIN_ROUTE} Component={LoginPage}/>
                     <Route path={REGISTRATION_ROUTE} Component={SignUp}/>

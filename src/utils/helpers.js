@@ -49,11 +49,13 @@ export function differenceDatesInDays(date1, date2) {
 
 export function getErrorText(error) {
     if (error.response?.status) {
+        if (error.response.data?.message) return error.response.data?.message
+        else if (error.response.data?.error) return error.response.data?.error
+        else if (error.response.data?.name) return error.response.data?.name
+
         const status = error.response.status
         switch (status) {
             case 404:
-                if (error.response.data?.message) return error.response.data?.message
-                else if (error.response.data?.error) return error.response.data?.error
                 return 'Упс... Ничего не найдено :('
             default:
                 return 'Непредвиденная ошибка'

@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 const ConfirmAlert = (title, yes_callback, no_callback = {}) => {
     Swal.fire({
-        html: `<p>${title}</p>`,
+        title: title,
         showCancelButton: true,
         confirmButtonColor: "#FF8800FF",
         cancelButtonColor: "#d33",
