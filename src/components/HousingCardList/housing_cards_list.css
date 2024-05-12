@@ -8,6 +8,11 @@
     --header-color: black;
 }
 
+.error {
+    font-size: var(--header1-font-size);
+    margin: 1rem 0;
+}
+
 .container__card {
     width: auto;
     cursor: pointer;

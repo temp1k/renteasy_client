@@ -14,20 +14,20 @@ const Home = () => {
     const [count, setCount] = useState(0)
     const limit = 12
 
-    const getPublishHousing = (country='', name='', begin_date='', end_date='') => {
+    const getPublishHousing = (district='', name='', begin_date='', end_date='') => {
         setLoading(true)
         setError('')
-        getPublishHousingAPI({country, name, begin_date, end_date, offset, limit})
+        getPublishHousingAPI({district, name, begin_date, end_date, offset, limit})
             .then(data => {
                 setHousings(data.results)
-                setLoading(false)
                 setCount(data.count)
             })
             .catch(err =>{
                 console.warn(err)
+                setHousings([])
                 setError(getErrorText(err))
-                setLoading(false)
             })
+            .finally(() => setLoading(false))
     }
 
 

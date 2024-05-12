@@ -78,6 +78,7 @@ const PublishHousingViewPage = props => {
 
     const fillForm = (data) => {
         setPublishHousing(data)
+        setValues(data)
         defaultValues = data
         setDateRange([new Date(data.date_begin), new Date(data.date_end)])
         setLoading(false)

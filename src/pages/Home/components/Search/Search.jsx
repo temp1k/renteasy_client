@@ -6,22 +6,16 @@ import DatePicker from "react-datepicker";
 import PropTypes from "prop-types";
 
 const Search = ({fetchFunc}) => {
-    const [countries, setCountries] = useState([
-        {id: 1, name: 'Россия'},
-        {id: 2, name: 'Англия'},
-        {id: 3, name: 'Финляндия'},
-        {id: 4, name: 'Швеция'},
-    ])
-
     const [name, setName] = useState('')
-    const [country, setCountry] = useState('')
+    const [districts, setDistricts] = useState([])
+    const [district, setDistrict] = useState('')
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
 
     useEffect(() => {
         getAllDistrictsAPI()
             .then(data => {
-                setCountries(data)
+                setDistricts(data)
                 console.log(data)
             })
             .catch(err => {
@@ -36,7 +30,7 @@ const Search = ({fetchFunc}) => {
         let startDateJson = startDate ? startDate.toJSON() : ''
         let endDateJson = endDate ? endDate.toJSON() : ''
 
-        fetchFunc(country, name, startDateJson, endDateJson)
+        fetchFunc(district, name, startDateJson, endDateJson)
     }
 
     return (
@@ -44,12 +38,12 @@ const Search = ({fetchFunc}) => {
             <div className={'container__search'}>
                 <select className={'field select_country'}
                         id={'select_country'}
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
+                        value={district}
+                        onChange={(e) => setDistrict(e.target.value)}
                 >
-                    <option value="">Выберите страну...</option>
-                    {countries.map(country =>
-                        <option key={country.id} value={country.id}>{country.name}</option>
+                    <option value="">Выберите округ...</option>
+                    {districts.map(district =>
+                        <option key={district.id} value={district.id}>{district.name}</option>
                     )}
                 </select>
                 <input type="text"

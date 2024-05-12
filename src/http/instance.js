@@ -1,8 +1,9 @@
 import axios from "axios";
 import {refreshTokenAPI} from "./api/authAPI.js";
 
+const apiURL = import.meta.env.VITE_URL_BACKEND || "http://127.0.0.1:8000/";
+console.log(import.meta.env.URL_BACKEND)
 
-const apiURL = "http://127.0.0.1:8000/";
 
 const $api = axios.create({
     baseURL: apiURL

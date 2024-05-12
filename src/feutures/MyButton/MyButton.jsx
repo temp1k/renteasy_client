@@ -6,7 +6,7 @@ import {Spinner} from "react-bootstrap";
 const MyButton = ({loading = false, variant='primary', ...props}) => {
     return (
         <button {...props} className={props.className + ` btn__custom_style my-btn-${variant}`}
-            disabled={loading}
+            disabled={loading || props.disabled}
         >
             {loading && <Spinner size="sm" animation={"border"} role={"status"}>
                 <span className={"sr-only"}></span>
@@ -25,6 +25,7 @@ MyButton.propTypes = {
     children: PropTypes.node,
     onClick: PropTypes.func,
     loading: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 export default MyButton;

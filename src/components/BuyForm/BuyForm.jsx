@@ -38,9 +38,13 @@ const BuyForm = ({publishHousing}) => {
             setDays(0)
             return
         }
-
+        console.log(!endDate || !startDate || !count)
         setDays(differenceDatesInDays(startDate, endDate))
     }, [startDate, endDate]);
+
+    useEffect(() => {
+        console.log(!endDate || !startDate || !count)
+    }, [endDate, startDate, count]);
 
     const changeNumberHandle = (e) => {
         const value = e.target.value;
@@ -143,7 +147,7 @@ const BuyForm = ({publishHousing}) => {
                     disabled={!endDate || !startDate || !count}
                     loading={loadingBuy}
                 >
-                    Зарбронировать
+                    Забронировать
                 </MyButton>
                 <div className={'container_prices'}>
                     <div className="price_one">

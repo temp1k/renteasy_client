@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81b70584-4d27-405a-b0bb-9f72d3fed55b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BuyForm/BuyForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BuyForm/BuyForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HousingCardList/HousingCardList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HousingCardList/HousingCardList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HousingCardList/housing_cards_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HousingCardList/housing_cards_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LinkToAdminPanel/LinkToAdminPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LinkToAdminPanel/LinkToAdminPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PublishHousingCard/SelfPublishHousingCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublishHousingCard/SelfPublishHousingCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/MyButton/MyButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/MyButton/MyButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/instance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/instance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/components/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/components/Search/Search.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyHousings/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PublishHousing/PublishHousingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PublishHousing/PublishHousingPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PublishHousingView/PublishHousingViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PublishHousingView/PublishHousingViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2dsIQdFnw03Wa2RB3hBGclQJ7eW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gnusa/OneDrive/Рабочий стол/МПТ/4 курс/1 СЕМЕСТР/Курсач БД/ClientReact/react-app&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.5\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\scences\Moderator\components" />
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\pages\SignUp" />
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\pages\Home" />
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\scences\Chat" />
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\feutures\CustomLink" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81b70584-4d27-405a-b0bb-9f72d3fed55b" name="Changes" comment="" />
+      <created>1710790343356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710790343356</updated>
+      <workItem from="1710790344396" duration="535000" />
+      <workItem from="1710873523838" duration="653000" />
+      <workItem from="1710936629748" duration="24821000" />
+      <workItem from="1711006448558" duration="13520000" />
+      <workItem from="1711106203234" duration="16681000" />
+      <workItem from="1711213526302" duration="4094000" />
+      <workItem from="1711269804072" duration="42422000" />
+      <workItem from="1711352300437" duration="7964000" />
+      <workItem from="1711363811654" duration="1451000" />
+      <workItem from="1711437903405" duration="7818000" />
+      <workItem from="1711633729324" duration="5585000" />
+      <workItem from="1711649204834" duration="2246000" />
+      <workItem from="1711702728591" duration="668000" />
+      <workItem from="1711790852413" duration="20340000" />
+      <workItem from="1711883252375" duration="26378000" />
+      <workItem from="1711981049462" duration="62492000" />
+      <workItem from="1712215767044" duration="519000" />
+      <workItem from="1712251350682" duration="1975000" />
+      <workItem from="1712304698955" duration="2584000" />
+      <workItem from="1712316698190" duration="1584000" />
+      <workItem from="1712349746148" duration="4433000" />
+      <workItem from="1712396236166" duration="3279000" />
+      <workItem from="1712570086580" duration="3055000" />
+      <workItem from="1712648118797" duration="212000" />
+      <workItem from="1712736306748" duration="18000" />
+      <workItem from="1712906341910" duration="1267000" />
+      <workItem from="1712913401497" duration="4944000" />
+      <workItem from="1713218154608" duration="556000" />
+      <workItem from="1713220995386" duration="1010000" />
+      <workItem from="1713249424784" duration="13704000" />
+      <workItem from="1713507320722" duration="1487000" />
+      <workItem from="1713860557481" duration="7318000" />
+      <workItem from="1713885930990" duration="32905000" />
+      <workItem from="1714387952782" duration="18954000" />
+      <workItem from="1714554634375" duration="23478000" />
+      <workItem from="1714727649138" duration="41985000" />
+      <workItem from="1714989922973" duration="23500000" />
+      <workItem from="1715428062799" duration="17501000" />
+      <workItem from="1715534990514" duration="4114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

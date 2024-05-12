@@ -11,7 +11,7 @@ const HousingCardList = ({housings, loading, error, ...props}) => {
         <Container
             {...props}
         >
-            <p>{error}</p>
+            <p className={'error'}>{error}</p>
             {loading ? (
                 <CenterLoading/>
             ) : (

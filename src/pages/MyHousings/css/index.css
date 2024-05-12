@@ -64,10 +64,17 @@
 }
 
 .my__card__text__sm {
-    line-height: 1;
+    line-height: 1.5;
+    display: flex;
+    gap: 5px;
 }
 
-.my__card__text__sm span {
+.container_items {
+    display: inline;
+}
+
+.my__card__text__sm .item {
+    display: inline;
     font-size: 14px;
     border: 1px hidden black;
     border-radius: 5px;

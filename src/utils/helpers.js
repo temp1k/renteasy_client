@@ -52,6 +52,7 @@ export function getErrorText(error) {
         if (error.response.data?.message) return error.response.data?.message
         else if (error.response.data?.error) return error.response.data?.error
         else if (error.response.data?.name) return error.response.data?.name
+        else if (error.response.data?.non_field_errors) return 'У вас уже есть активная бронь на это жилье'
 
         const status = error.response.status
         switch (status) {
@@ -61,6 +62,8 @@ export function getErrorText(error) {
                 return 'Непредвиденная ошибка'
         }
     }
+    if (error.code === 'ERR_NETWORK') return 'Ошибка подключения к сети'
+
     return 'ERROR!!!';
 }
 

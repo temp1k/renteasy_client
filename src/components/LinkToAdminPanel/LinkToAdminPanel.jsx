@@ -1,16 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {getUrlServer} from "../../http/api/authAPI.js";
 import s from './Link.module.css'
+import {CenterLoading} from "../../feutures/index.js";
 
 const LinkToAdminPanel = props => {
     const [linkToAdmin, setLink] = useState('#')
-    const [isHovered, setIsHovered] = useState(false);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getUrlServer()
             .then(data => {
                 setLink(data + '/admin')
+                setLoading(false)
             })
     }, []);
 
@@ -19,28 +21,15 @@ const LinkToAdminPanel = props => {
             <></>
         )
     }
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
 
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
 
     return (
         <a
             href={linkToAdmin}
             target="_blank"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            // style={{
-            //     color: 'var(--main-color)',
-            //     transform: isHovered ? 'scale(1.08)' : 'none',
-            //     transition: 'transform 0.3s'
-            // }}
             {...props}
             className={props.className+' '+s.link}
-        >{props.children}</a>
+        >{loading ? <CenterLoading/> : props.children}</a>
     );
 };
 

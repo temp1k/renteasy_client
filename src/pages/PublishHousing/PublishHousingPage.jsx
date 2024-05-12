@@ -32,7 +32,6 @@ const PublishHousingPage = () => {
                     .catch(err => {
                         console.error(err)
                     })
-                console.log('check')
             })
             .catch(err => {
                 alert('Ошибка получения записи!')

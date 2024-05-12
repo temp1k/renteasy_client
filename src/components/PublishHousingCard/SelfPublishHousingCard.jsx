@@ -55,14 +55,18 @@ const SelfPublishHousingCard = ({publishHousing}) => {
                 </div>
                 <div className={'my__card__text'}><b>Округ:</b> {housing.district_d.name}</div>
                 <div className={'my__card__text__sm'}><b>Категории:</b>{' '}
-                    {housing.categories_d.map(category =>
-                        <span key={category.id}>{category.name} </span>
-                    )}
+                    <span className={'container_items'}>
+                       {housing.categories_d.map(category =>
+                           <span className={'item'} key={category.id}>{category.name} </span>
+                       )}
+                    </span>
                 </div>
                 <div className={'my__card__text__sm'}><b>Теги:</b>{' '}
-                    {housing.tags_d.map(tag =>
-                        <span key={tag.id}>{tag.name} </span>
-                    )}
+                    <span className={'container_items'}>
+                        {housing.tags_d.map(tag =>
+                            <span className={'item'} key={tag.id}>{tag.name} </span>
+                        )}
+                    </span>
                 </div>
                 <div className={'my__card__text'}><b>Статус:</b>{' '}
                     <span className={status ? 'status status__active' : 'status status__no_active'}>{statusStr}</span>
