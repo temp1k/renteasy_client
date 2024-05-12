@@ -131,6 +131,7 @@ const HousingViewPage = () => {
         });
         formData.append('district', district.value)
         formData.delete('metro')
+        formData.delete('city')
 
         updateHousingAPI(id, formData)
             .then(data => {
