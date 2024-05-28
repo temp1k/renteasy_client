@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Card} from "react-bootstrap";
-import {ImageSlider} from "../../../components/index.js";
-import {CustomLinkButton} from "../../../feutures/index.js";
+import {ImageSlider} from "../../../../../components/index.js";
+import {CustomLinkButton} from "../../../../../feutures/index.js";
 import '../css/index.css'
-import {MY_HOUSING_ROUTE} from "../../../utils/consts/paths.js";
+import {MY_HOUSING_ROUTE} from "../../../../../utils/consts/paths.js";
 
 const HousingCard = ({housing}) => {
     return (
@@ -31,7 +31,7 @@ const HousingCard = ({housing}) => {
                 </div>
             </Card.Body>
             <div className={'my__card__footer'}>
-                <CustomLinkButton to={MY_HOUSING_ROUTE + '/' + housing.id}>Изменить</CustomLinkButton>
+                <CustomLinkButton to={housing.id.toString()}>Изменить</CustomLinkButton>
             </div>
         </div>
     );

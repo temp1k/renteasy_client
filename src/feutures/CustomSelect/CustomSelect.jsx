@@ -21,7 +21,7 @@ const CustomSelect = ({children, label, ...props}) => {
 };
 
 CustomSelect.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.any,
     label: PropTypes.string,
 };
 

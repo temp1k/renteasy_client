@@ -4,11 +4,12 @@ import './custom_link.css'
 
 
 // eslint-disable-next-line react/prop-types
-const CustomLink = ({children, to, absolutePath=to, ...props}) => {
+const CustomLink = ({children, to, prePath='', absolutePath=to, ...props}) => {
+    if (prePath) absolutePath = `${prePath}/${to}`
     const match = useMatch({
         path: absolutePath,
         // eslint-disable-next-line react/prop-types
-        end: to.length === 1
+        end: absolutePath.length === 1
     });
     if (match) {
         props.className += ' active'

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Input, MyButton, Textarea} from "../../feutures/index.js";
-import {DropImages, ListAtrs} from "../../components/index.js";
+import {Input, MyButton, Textarea} from "../../../../feutures/index.js";
+import {ButtonBack, DropImages, ListAtrs, SelectCities} from "../../../../components/index.js";
 import {Container} from "react-bootstrap";
 import './css/housingcreate.css'
-import {CategoriesModal} from "../../components/Modals/index.js";
+import {CategoriesModal} from "../../../../components/Modals/index.js";
 import {createHousingAPI} from "./api/housingCreateAPI.js";
-import useForm from "../../hook/useForm.js";
+import useForm from "../../../../hook/useForm.js";
 import {useNavigate} from "react-router-dom";
-import SelectDistricts from "../../components/SelectDistricts/SelectDistricts.jsx";
+import SelectDistricts from "../../../../components/SelectDistricts/SelectDistricts.jsx";
 
 let defaultValues = {
     name: '',
@@ -35,6 +35,7 @@ const HousingCreatePage = () => {
     const [modalCategoriesActive, setModalCategoriesActive] = useState(false)
 
     const [selectedDistrict, setSelectedDistrict]= useState(0)
+    const [selectedCity, setSelectedCity]= useState(0)
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
@@ -50,6 +51,7 @@ const HousingCreatePage = () => {
         temp.images = images.length > 0 ? "" : 'Изображения не могут быть пустыми'
         temp.categories = categories.length > 0 ? "" : 'Категории не могут быть пустыми'
         temp.district = selectedDistrict.value ? "" : "Округ не может быть пустым"
+        temp.city = selectedCity.value ? "" : "Город не может быть пустым"
 
         setErrors({...temp});
 
@@ -84,6 +86,7 @@ const HousingCreatePage = () => {
                 }
             }
             formData.append('district', selectedDistrict.value)
+            formData.append('city', selectedCity.value)
 
             let imagesOfIds = images.map(obj => obj.id);
             imagesOfIds.forEach((value) => {
@@ -122,6 +125,7 @@ const HousingCreatePage = () => {
 
     return (
         <div className={'container'}>
+            <ButtonBack className={'btn__back'}>Назад</ButtonBack>
             <h4>Создание жилья</h4>
             <Container>
                 <form className={'form__create__housing'} onSubmit={handleSubmit}>
@@ -140,6 +144,11 @@ const HousingCreatePage = () => {
                             selectedDistrict={selectedDistrict}
                             setSelectedDistrict={setSelectedDistrict}
                             error={errors.district}
+                        />
+                        <SelectCities
+                            selectedCity={selectedCity}
+                            setSelectedCity={setSelectedCity}
+                            error={errors.city}
                         />
                         <Input type={'text'} label={'Адрес'}
                                name={'address'}

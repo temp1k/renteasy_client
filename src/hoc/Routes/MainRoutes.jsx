@@ -49,10 +49,11 @@ export const MainRoutes = () => {
                 </Route>
                 <Route path={NO_PERMISSIONS_ROUTE} element={<NoPermissionsPage/>}/>
                 <Route path="*" Component={NotFoundPage}/>
+                <Route path="*/404" Component={NotFoundPage}/>
             </Route>
-            <Route path={'/' + RENT_SCENE_ROUTE + '/*'} Component={Arenda}/>
+            <Route path={RENT_SCENE_ROUTE} Component={Arenda}/>
             <Route path={SUBSCRIBE_PRO_ROUTE} element={
-                <RequireAuth requireRoles={[USER_ROLE]} unrequireRoles={[LANDLORD_ROLE]}>
+                <RequireAuth requireRoles={[USER_ROLE]}>
                     <SubscribeProPage/>
                 </RequireAuth>}
             />

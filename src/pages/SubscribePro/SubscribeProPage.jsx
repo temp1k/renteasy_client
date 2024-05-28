@@ -14,7 +14,7 @@ const SubscribeProPage = () => {
             .then(data => {
                 console.log(data);
                 updateRoles(data.groups)
-                navigate(PRO_SCENE_ROUTE, {replace: true})
+                navigate('/', {replace: true})
             })
             .catch(err => {
                 console.error(err)

@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getHousingById, updateHousingAPI} from "../../http/api/housingAPI.js";
+import {getHousingById, updateHousingAPI} from "../../../../http/api/housingAPI.js";
 import {Button, Container} from "react-bootstrap";
 import './css/housing_view.css'
-import useForm from "../../hook/useForm.js";
-import {ButtonBack, DropImages, ImageSlider, ListAtrs} from "../../components/index.js";
-import {CenterLoading, Input, MessageAlert, MyButton, Textarea} from "../../feutures/index.js";
-import {CategoriesModal, PublishHousingModal} from "../../components/Modals/index.js";
-import {remakeArrayOfObjectsToArrayId} from "../../utils/helpers.js";
-import SelectDistricts from "../../components/SelectDistricts/SelectDistricts.jsx";
+import useForm from "../../../../hook/useForm.js";
+import {ButtonBack, DropImages, ImageSlider, ListAtrs, SelectCities} from "../../../../components/index.js";
+import {CenterLoading, Input, MessageAlert, MyButton, Textarea} from "../../../../feutures/index.js";
+import {CategoriesModal, PublishHousingModal} from "../../../../components/Modals/index.js";
+import {remakeArrayOfObjectsToArrayId} from "../../../../utils/helpers.js";
+import SelectDistricts from "../../../../components/SelectDistricts/SelectDistricts.jsx";
 
 let defaultValues = {
     name: '',
@@ -38,6 +38,7 @@ const HousingViewPage = () => {
     const [categories, setCategories] = useState([])
     const [tags, setTags] = useState([])
     const [district, setDistrict] = useState({})
+    const [city, setCity] = useState({})
 
     const validate = (fieldValues = defaultValues) => {
         let temp = {...errors}
@@ -73,6 +74,7 @@ const HousingViewPage = () => {
         setCategories(housingAPI.categories_d)
         setTags(housingAPI.tags_d)
         setDistrict({label: housingAPI.district_d.name, value: housingAPI.district_d.id})
+        setCity({label: housingAPI.city_d.name, value: housingAPI.city_d.id})
     }
 
     useEffect(() => {
@@ -185,6 +187,10 @@ const HousingViewPage = () => {
                                     selectedDistrict={district}
                                     setSelectedDistrict={setDistrict}
                                     error={errors.district}
+                                />
+                                <SelectCities
+                                    selectedCity={city}
+                                    setSelectedCity={setCity}
                                 />
                                 <Input type={'text'} label={'Адрес'}
                                        name={'address'}

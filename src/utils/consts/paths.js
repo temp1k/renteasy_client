@@ -10,14 +10,15 @@ export const MY_REQUESTS_ROUTE = `requests`
 
 export const RENT_SCENE_ROUTE = '/rent'
 
-export const PRO_SCENE_ROUTE = 'pro'
+export const PRO_SCENE_ROUTE = '/pro'
 
 export const CHAT_SCENE_ROUTE = 'chats'
 
 export const MY_HOUSING_ROUTE = 'housings'
 export const MY_PUBLISH_HOUSING_ROUTE = 'publish_housings'
 
-export const HOUSING_CREATE_ROUTE = 'housings/create'
+export const CREATE_ROUTE = 'create'
+export const NEWS_ROUTE = 'news'
 
 export const SUBSCRIBE_PRO_ROUTE = '/subscribe_pro'
 
@@ -38,4 +39,4 @@ export const MODERATOR_USERS_ROUTE = 'users'
 export const USERS_LIST_ROUTE = 'users_list'
 export const MODERATOR_STATISTICS_ROUTE = 'statistics'
 
-export const NO_PERMISSIONS_ROUTE = 'error/403'
+export const NO_PERMISSIONS_ROUTE = '/error/403'

@@ -1,0 +1,30 @@
+.request_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+
+.card__body {
+    position: relative;
+    font-size: var(--field-font-size);
+}
+
+.card__body span {
+    color: var(--second-color)
+}
+
+.card__body p {
+    padding: 0;
+    margin-bottom: .3rem;
+}
+
+.card__footer {
+    display: flex;
+    gap: .5rem;
+    justify-content: end;
+}
+
+.btn_view {
+
+}

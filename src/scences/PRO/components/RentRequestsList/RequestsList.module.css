@@ -1,0 +1,16 @@
+.list_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.list_item {
+    width: 40%; /* Для десктопа: два элемента на строку */
+}
+
+@media (max-width: 768px) {
+    .list_item {
+        width: 100%; /* Для мобильных устройств: один элемент на строку */
+    }
+}

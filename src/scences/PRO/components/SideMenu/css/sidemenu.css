@@ -3,7 +3,6 @@
     position: fixed;
     background: var(--bg-color-menu);
     padding: 20px 2.5vw 3vh 2vw;
-    color: var(--default-font-color);
     border-right: 5px solid #4d4d4d;
     width: 20%;
     height: 90%; /* Задаем высоту в 100% от высоты видимой области */
@@ -20,9 +19,7 @@
     position: relative;
     top: -5px;
 }
-.sideMenu a:hover {
-    color: var(--default-font-color)
-}
+
 .sideMenu h3 {
     margin-top: 50px;
     font-size: 25px;
@@ -35,7 +32,6 @@
 }
 
 .sideMenu ul li {
-    color: var(--default-font-color);
     display: flex;
     align-items: center;
     gap: 5px;

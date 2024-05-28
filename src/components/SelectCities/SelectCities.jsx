@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import {getAllCitiesAPI} from "../../http/api/districtAPI.js";
 import AsyncSelect from "react-select/async";
-import {getAllDistrictsAPI} from "../../http/api/districtAPI.js";
 
-const SelectDistricts = ({selectedDistrict, setSelectedDistrict, error}) => {
+const SelectCities = ({selectedCity, setSelectedCity, error}) => {
     const [defaultItems, setDefaultItems] = useState([])
 
     useEffect(() => {
-        getAllDistrictsAPI()
+        getAllCitiesAPI()
             .then(data => {
                 setDefaultItems(data.map(i => ({label: i.name, value: i.id})))
             })
@@ -17,30 +17,30 @@ const SelectDistricts = ({selectedDistrict, setSelectedDistrict, error}) => {
     }, []);
 
     const onChangeHandle = (e) => {
-        setSelectedDistrict(e)
+        setSelectedCity(e)
     }
 
     const loadOptions = async (
         inputValue,
         callback
     ) => {
-        let districts = []
-        districts = await getAllDistrictsAPI({name_like: inputValue})
+        let items = []
+        items = await getAllCitiesAPI({name_like: inputValue})
             .catch(err => {
                 console.warn(err)
             })
-        callback(districts.map(i => ({label: i.name, value: i.id})))
+        callback(items.map(i => ({label: i.name, value: i.id})))
     };
 
     return (
         <div className={'container_field'}>
-            <label htmlFor="selectDistrict" className="input__label">Округ:</label>
+            <label htmlFor="selectDistrict" className="input__label">Город:</label>
             <AsyncSelect
                 id='selectDistrict'
                 className={'select_form_container'}
                 classNamePrefix={'select_prefix'}
-                placeholder="Выберите округ..."
-                value={selectedDistrict}
+                placeholder="Выберите город..."
+                value={selectedCity}
                 onChange={onChangeHandle}
                 loadOptions={loadOptions}
                 defaultOptions={defaultItems}
@@ -50,10 +50,10 @@ const SelectDistricts = ({selectedDistrict, setSelectedDistrict, error}) => {
     );
 };
 
-SelectDistricts.propTypes = {
-    selectedDistrict: PropTypes.any,
-    setSelectedDistrict: PropTypes.func,
+SelectCities.propTypes = {
+    selectedCity: PropTypes.any,
+    setSelectedCity: PropTypes.func,
     error: PropTypes.string,
 };
 
-export default SelectDistricts;
+export default SelectCities;

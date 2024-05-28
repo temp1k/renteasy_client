@@ -1,5 +1,4 @@
 import React from 'react';
-import {useRouteError} from "react-router-dom";
 
 const NotFoundPage = ({text='Извините, такой страницы не существует'}) => {
     return (
@@ -14,4 +13,4 @@ const NotFoundPage = ({text='Извините, такой страницы не 
     );
 };
 
-export {NotFoundPage}
+export default NotFoundPage

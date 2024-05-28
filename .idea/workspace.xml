@@ -5,8 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81b70584-4d27-405a-b0bb-9f72d3fed55b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/SelectCities/SelectCities.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SelectCities/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/ProfileRequest/ProfileRequest.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/CancelRequestAction/CancelRequestAction.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/CancelRequestAction/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/ConfirmRequestAction/ConfirmRequestAction.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/ConfirmRequestAction/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestItem/RentItem.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestItem/RentRequestItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestItem/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestsList/RentRequestsList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestsList/RequestsList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/components/RentRequestsList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/pages/RequestPage/RequestPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/pages/RequestPage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/pages/RequestsPage/RequestsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/pages/RequestsPage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scences/PRO/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HousingViewPage/HousingViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HousingViewPage/HousingViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PublishHousingCard/SelfPublishHousingCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublishHousingCard/SelfPublishHousingCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectDistricts/SelectDistricts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SelectDistricts/SelectDistricts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/CustomLink/CustomLink.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/CustomLink/CustomLink.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/CustomLinkButton/CustomLinkButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/CustomLinkButton/CustomLinkButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/CustomSelect/CustomSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/CustomSelect/CustomSelect.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/MyButton/MyButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/MyButton/MyButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feutures/MyButton/css/mybutton.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/feutures/MyButton/css/mybutton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Routes/MainRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Routes/MainRoutes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/api/buyRequestsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/api/buyRequestsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/api/districtAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/api/districtAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Error/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Error/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingCreatePage/HousingCreatePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingCreatePage/HousingCreatePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingCreatePage/api/housingCreateAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingCreatePage/api/housingCreateAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingCreatePage/css/housingcreate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingCreatePage/css/housingcreate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingCreatePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingCreatePage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingViewPage/HousingViewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingViewPage/HousingViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingViewPage/css/housing_view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingViewPage/css/housing_view.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HousingViewPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/HousingViewPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/MyHousingsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyHousings/MyHousingsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/api/myHousingsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyHousings/api/myHousingsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/components/HousingCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyHousings/components/HousingCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyHousings/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyHousings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyHousings/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPublishHousings/MyPublishHousingsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyPublishHousings/MyPublishHousingsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPublishHousings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/pages/MyPublishHousings/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NoPermissionsPage/NoPermissionsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Error/NoPermissionsPage/NoPermissionsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NoPermissionsPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Error/NoPermissionsPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NotFound/NotFoundPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Error/NotFoundPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NotFound/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ProfileRequest/ProfileRequestPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProfileRequest/ProfileRequestPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SubscribePro/SubscribeProPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SubscribePro/SubscribeProPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scences/PRO/ProScene.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/ProScene.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scences/PRO/components/SideMenu/SideMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/components/SideMenu/SideMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scences/PRO/components/SideMenu/css/sidemenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/components/SideMenu/css/sidemenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scences/PRO/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scences/PRO/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/consts/paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/consts/paths.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +117,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\pages\Error" />
+      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\scences\PRO\pages" />
       <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\scences\Moderator\components" />
       <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\pages\SignUp" />
       <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\pages\Home" />
-      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\scences\Chat" />
-      <recent name="C:\Users\gnusa\Diplom\dev\client_react\src\feutures\CustomLink" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -114,7 +170,9 @@
       <workItem from="1714727649138" duration="41985000" />
       <workItem from="1714989922973" duration="23500000" />
       <workItem from="1715428062799" duration="17501000" />
-      <workItem from="1715534990514" duration="7255000" />
+      <workItem from="1715534990514" duration="18849000" />
+      <workItem from="1715838766009" duration="803000" />
+      <workItem from="1716906680958" duration="19865000" />
     </task>
     <servers />
   </component>

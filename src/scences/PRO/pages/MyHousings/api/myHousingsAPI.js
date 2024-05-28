@@ -1,4 +1,4 @@
-import {$apiAuth} from "../../../http/instance.js";
+import {$apiAuth} from "../../../../../http/instance.js";
 
 
 export const getMyHousingsAPI = async (params={}) => {

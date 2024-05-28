@@ -183,3 +183,44 @@
 .select_prefix {
   margin-bottom: 10rem;
 }
+
+.card__border {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: var(--main-color) solid 1px;
+  text-align: left;
+  white-space: normal;
+}
+
+.text-2line {
+  height: 3em; /* Например, 2 строки */
+  line-height: 1.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-3line {
+  height: 5em; /* Например, 2 строки */
+  line-height: 1.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.container_field_item {
+  display: flex;
+  gap: .5em;
+  font-size: initial;
+}
+
+.title_field_item {
+  font-weight: bold;
+}
+
+.text_field_item {
+  height: auto;
+  line-height: 1.5em;
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

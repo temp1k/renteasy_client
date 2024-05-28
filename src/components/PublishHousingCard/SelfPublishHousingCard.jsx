@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {ImageSlider} from "../ImageSlider/index.js";
 import {Button, Card} from "react-bootstrap";
-import '../../pages/MyHousings/css/index.css'
+import '../../scences/PRO/pages/MyHousings/css/index.css'
 import './publish_housing.css'
 import {formatJsonDateTo_ddMMyyyy} from "../../utils/helpers.js";
 import {ConfirmAlert, CustomLinkButton} from "../../feutures/index.js";

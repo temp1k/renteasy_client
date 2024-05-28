@@ -8,6 +8,7 @@ const CustomLinkButton = ({children, variant, to, ...props}) => {
     return (
         <Link
             to={to}
+            className={'my-btn'}
             {...props}
         >{children}</Link>
     );

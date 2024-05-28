@@ -1,0 +1,6 @@
+export {HousingCreatePage} from './HousingCreatePage'
+export {HousingViewPage} from './HousingViewPage'
+export {MyHousingsPage} from './MyHousings'
+export {MyPublishHousingsPage} from './MyPublishHousings'
+export {RequestsPage} from './RequestsPage'
+export {RequestPage} from './RequestPage'

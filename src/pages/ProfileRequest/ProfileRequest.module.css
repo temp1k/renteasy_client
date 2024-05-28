@@ -1,0 +1,43 @@
+.container_housing {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+
+    --bg-second-color: #e8e4e4;
+}
+
+.first_column {}
+
+.second_column {
+}
+
+.categories {
+    padding-left: 2rem;
+    font-size: var(--table-font-size);
+}
+
+.categories:last-child {
+    margin: 0;
+}
+
+.category {
+    margin-right: 5px;
+    border: 1px hidden black;
+    border-radius: 5px;
+    background-color: var(--bg-second-color);
+    padding: .07rem .15rem;
+}
+
+.rating_container {
+    padding-left: 2rem;
+}
+
+.rating {
+    display: inline-flex;
+    align-items: center;
+    color: var(--second-color)
+}
+
+s.date {
+    color: var(--second-color);
+}

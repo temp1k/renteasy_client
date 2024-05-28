@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {CenterLoading, CustomLink} from "../../feutures/index.js";
-import {getMyPublishHousingsAPI} from "../../http/api/publishHousingAPI.js";
-import {MyPagination, SelfPublishHousingCard} from "../../components/index.js";
-import {CustomSelect} from "../../feutures/CustomSelect/index.js";
-import {MY_HOUSING_ROUTE, MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../utils/consts/paths.js";
+import {CenterLoading, CustomLink} from "../../../../feutures/index.js";
+import {getMyPublishHousingsAPI} from "../../../../http/api/publishHousingAPI.js";
+import {MyPagination, SelfPublishHousingCard} from "../../../../components/index.js";
+import {CustomSelect} from "../../../../feutures/CustomSelect/index.js";
+import {MY_HOUSING_ROUTE, MY_PUBLISH_HOUSING_ROUTE, PRO_SCENE_ROUTE} from "../../../../utils/consts/paths.js";
 
 const MyPublishHousingsPage = () => {
     const [activity, setActivity] = useState('')
